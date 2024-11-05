@@ -1,8 +1,9 @@
-
+/* 
 body{ background-color: #D76C82;
-}
-*{
+} */
+*{color:#273238;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }.cards{
 margin-bottom: 400px;
     width:80%;
@@ -14,8 +15,26 @@ margin-bottom: 400px;
     margin:0 auto;
  
 }
-.card{
+/* .card{
     border-radius: 10px;
     height:900px;
+    width: 400px;
+} */
+ .card{
+    background-color: aliceblue;
+    height: 600px;
+    border-radius:  10px ;
+    background-color:wheat
+ }
+h1{ text-align: center;
+font-family: arial;
+font-weight: bold;
 }
-h1{ text-align: center;}
+p{
+    font-size: medium;
+    font-weight:lighter;
+}
+button{
+    font-size: 16px;
+    font-weight: bolder;
+}
