@@ -4,13 +4,17 @@ body{ background-color: #D76C82;
 *{color:#273238;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+
+}
+body{
+    background-color: grey;
 }.cards{
 margin-bottom: 400px;
     width:80%;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 50px;
     flex-wrap: wrap;
     margin:0 auto;
  
@@ -20,9 +24,11 @@ margin-bottom: 400px;
     height:900px;
     width: 400px;
 } */
- .card{
-    background-color: aliceblue;
-    height: 600px;
+ .card{ line-height: 0.8em;
+    background-color:red;
+    height: 550px;
+    border-color:#273238;
+    border-style: solid;
     border-radius:  10px ;
     background-color:wheat
  }
