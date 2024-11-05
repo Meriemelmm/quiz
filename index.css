@@ -1,0 +1,21 @@
+
+body{ background-color: #D76C82;
+}
+*{
+    box-sizing: border-box;
+}.cards{
+margin-bottom: 400px;
+    width:80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin:0 auto;
+ 
+}
+.card{
+    border-radius: 10px;
+    height:900px;
+}
+h1{ text-align: center;}
