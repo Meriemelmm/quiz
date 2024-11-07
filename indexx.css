@@ -2,7 +2,7 @@
 *{
     box-sizing: border-box;
     /* color: #003049; */
-    color:black;
+    color:#06090f
     
 }
 .cards{
@@ -32,6 +32,7 @@ border:15px;
 
 
 
+
 }
 img{
 width: 350px;
@@ -41,8 +42,7 @@ border-top-left-radius: 15px;
 border-top-right-radius: 15px;
 
 }
-h1{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+h1{font-family:cursive;
     text-align: center;
     font-size: 1.6rem;
     
@@ -51,24 +51,23 @@ h1{
 }
 p{text-align: center;
     margin-top: 0px;
-font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family:cursive;
 line-height: 1.2em;}
 
 span{
-    text-decoration-color: #888888;
-    font-weight: normal;
+    font-family:cursive;
     font-size: 1em;
-    color: #003049;
+  
     text-align: center;
 }
 button{
     width:150px;
     height: 30px;
     text-align: center;
-    background-color: #c1121f;
-    color:#fdf0d5;
-    border-radius: 15px;
-    border-color: #003049;
+    background-color:#8d77ca;
+  
+   
+   
     font-size: 1.2em;
     font-weight: lighter;
     
