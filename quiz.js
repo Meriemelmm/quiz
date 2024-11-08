@@ -1,33 +1,37 @@
-const questions=[
+    
+    const questions=[
+        {
+                  
+                type: 'mcq',
+                   question: 'Quelle méthode JavaScript permet de filtrer les éléments d\'un tableau?',
+                  options: ['map()', 'filter()', 'reduce()', 'forEach()'],
+                  correctAnswer: 1,
+                 explanation: 'filter() crée un nouveau tableau avec les éléments qui passent le test.'
+                 },
+                 {
+                  
+                    type: 'mcq',
+                       question: 'Quelle méthode JavaScript permet de filtrer les éléments d\'un tableau?',
+                      options: ['map()', 'filter()', 'reduce()', 'forEach()'],
+                      correctAnswer: 1,
+                     explanation: 'filter() crée un nouveau tableau avec les éléments qui passent le test.'
+                     }
     
     
-    {question:" hello?",
-        answers:[ {text:"  a", correct:false} ,{text:"b", correct:false},{ text:"c", correct:false},{ text:"d", correct:true}],
+    
         
 
-    }, {question:" hello?",
-        answers:[ {text:"  a", correct:false} ,{text:"b", correct:false},{ text:"c", correct:false},{ text:"d", correct:true}],
-        
-
-    }, {question:" hello?",
-        answers:[ {text:"  a", correct:false} ,{text:"b", correct:false},{ text:"c", correct:false},{ text:"d", correct:true}],
-        
-
-    }, {question:" hello?",
-        answers:[ {text:"  a", correct:false} ,{text:"b", correct:false},{ text:"c", correct:false},{ text:"d", correct:true}],
-        
-
-    }
+    
 ]
-array=[ document.getElementsByClassName('btn_qcm')];
-console.log(array);
-const questionelement= document.getElementById('question') ;
-const reponse=document.getElementsByClassName('btn_qcm');
-const next=document.getElementsByClassName('next button');
-console.log(next);
-console.log(reponse);
 
-console.log( questionelement.innerText) ;
+
+const questionelement= document.getElementById('question') ;
+// const reponse=document.getElementsByClassName('btn_qcm');
+const next=document.getElementsByClassName('next');
+
+
+
+console.log("hello");
 
 function show(){    
     
@@ -36,10 +40,25 @@ question_index=0;
     querrentquestion=questions[question_index];
     qestion_no=question_index+1;
     questionelement.innerhtml=  qestion_no+"."+querrentquestion;
+    for( question_index=0;question_index<5;question_index++){
+       
+        querrentquestion=questions[question_index];
+        qestion_no=question_index+1;
+        questionelement.innerhtml=  qestion_no+"."+querrentquestion;
+        next.addEventListener("click");
+        
+        
+
+        
+
+    }
+    
+
 
 
 }
 show();
+
 
 
 //      Example de structure de données
