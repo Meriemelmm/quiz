@@ -1,6 +1,7 @@
 *{
     box-sizing: border-box;
     color: #06090f;
+
    
 }
 section{
@@ -24,7 +25,7 @@ section{
  border-top-style: hidden;
  border-top-right-radius: 80px;
  border-bottom-left-radius: 80px;
-   
+   position: relative;
     
 }
 
@@ -93,6 +94,7 @@ section{
 
  border-top-right-radius: 80px;
  border-bottom-left-radius: 80px;
+ position: relative;
 }
 .choix_btn{
     display:flex;
@@ -149,6 +151,7 @@ section{
     justify-content: center;
     background-color: #8d77ca;
     width: 40%;
+    position: relative;
  
     height: 400px;
     margin: 0 auto;
