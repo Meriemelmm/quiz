@@ -1,0 +1,48 @@
+[
+    {
+        "title":"why we use<br> element?",
+        "answer_1":"to make text bold",
+        "answer_2":"to make  text italic",
+        "answer_3":"to  add break line",
+        "answer_4":"to  add horizontal line",
+        "right_answer":"to  add break line"
+        
+    },
+    {
+        "title":"why we use<br> element?",
+        "answer_1":"to make text bold",
+        "answer_2":"to make  text italic",
+        "answer_3":"to  add break line",
+        "answer_4":"to  add horizontal line",
+        "right_answer":"to  add break line"
+        
+    },
+    {
+        "title":"why we use<br> element?",
+        "answer_1":"to make text bold",
+        "answer_2":"to make  text italic",
+        "answer_3":"to  add break line",
+        "answer_4":"to  add horizontal line",
+        "right_answer":"to  add break line"
+        
+    },
+    {
+        "title": "is <img> elemnet has attribute href?",
+        "answer_1":"yes",
+        "answer_2":"no its for anchor tag <a>",
+        "answer_3":"all elemnt has this attribute",
+        "answer_4":" answwers 1 and 3 right",
+        "right_answer":"no its for anchor tag <a>"
+        
+    },
+    {
+        "title":"how can we make element text bold?",
+        "answer_1":" putting it inside <b> tag",
+        "answer_2":" putting it inside<strong> tag",
+        "answer_3":"customizing it with font-weight property in css",
+        "answer_4":"all answers it right",
+        "right_answer":"all answers it right"
+        
+    }
+
+]
