@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        .answer.correct {
+    background-color: green;
+    color: white;
+}
+
+.answer.incorrect {
+    background-color: red;
+    color: white;
+}
+
+.answer.disabled {
+    background-color: grey;
+    color: white;
+}
+
+#next-button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#next-button:hover {
+    background-color: #45a049;
+}
+
+#progress-bar {
+    height: 20px;
+    border-radius: 20px;
+    margin-top: 15px;
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="quiz-app">
+        <div class="quiz-info">
+            <div class="score">Score: <span id="score">0</span>/10</div>
+            <div class="timer">Timer: <span id="timer">0</span>s</div>
+            <div class="count">Questions count: <span id="total-questions">3</span></div>
+        </div>
+    
+        <div class="quiz-area">
+            <h2 id="question">Pourquoi utiliser l'élément <br> ?</h2>
+        </div>
+    
+        <div id="answers-area">
+            <!-- Les boutons de réponses seront insérés ici -->
+        </div>
+    
+        <button id="next-button" style="display:none;">Next</button>
+    
+        <div class="progress-bar">
+            <div id="progress-bar" style="width: 40%; background-color: #018ABE;"></div>
+        </div>
+    </div>
+    
+
+
+<script>// Tableau des questions
+    const questions = [
+        {
+            question: "Pourquoi utiliser l'élément <br> ?",
+            options: ["Créer un saut de ligne", "Ajouter une couleur", "Créer un nouveau paragraphe", "Créer une ligne dans un tableau"],
+            correctAnswer: 0 
+        },
+        {
+            question: "Quelle est la capitale de la France ?",
+            options: ["Berlin", "Madrid", "Paris", "Rome"],
+            correctAnswer: 2 
+        },
+        {
+            question: "Quel est le résultat de 2 + 2 ?",
+            options: ["3", "4", "5", "6"],
+            correctAnswer: 1 
+        }
+    ];
+    
+    let currentQuestionIndex = 0;  
+    let score = 0;  
+    let totalQuestions = questions.length;  
+    
+    // Récupérer les éléments du DOM
+    const questionElement = document.getElementById("question");
+    const answersArea = document.getElementById("answers-area");
+    const scoreElement = document.getElementById("score");
+    const nextButton = document.getElementById("next-button");
+   
+    
+    
+    function displayQuestion() {
+        const currentQuestion = questions[currentQuestionIndex];  
+        questionElement.textContent = currentQuestion.question;  
+        // Vider les anciennes réponses
+        answersArea.innerHTML = '';
+    
+        // Créer un bouton pour chaque option de réponse
+        currentQuestion.options.forEach((option, index) => {
+            const button = document.createElement('button');
+            button.classList.add('answer');
+            button.textContent = option;
+            button.dataset.index = index; // Stocker l'index de la réponse
+            button.disabled = false;  // Activer tous les boutons au départ
+    
+//             // Ajouter un événement sur chaque bouton
+//             button.addEventListener('click', () => {
+//                 selectAnswer(button, currentQuestion.correctAnswer); // Gérer la sélection de réponse
+//             });
+    
+//             answersArea.appendChild(button);
+//         });
+    
+//         // Cacher le bouton "Next" jusqu'à ce qu'une réponse soit sélectionnée
+//         nextButton.style.display = 'none';
+//     }
+    
+//     // Fonction pour gérer la sélection de la réponse
+//     function selectAnswer(selectedButton, correctAnswerIndex) {
+//         // Désactiver tous les boutons après la sélection
+//         const buttons = answersArea.querySelectorAll('.answer');
+//         buttons.forEach(button => {
+//             button.disabled = true;  // Désactiver tous les boutons
+//             button.classList.add('disabled'); // Appliquer une couleur grise
+//         });
+    
+//         // Vérifier si la réponse est correcte
+//         if (selectedButton.dataset.index == correctAnswerIndex) {
+//             selectedButton.classList.add('correct');  // Réponse correcte -> vert
+//             score++;  // Augmenter le score
+//         } else {
+//             selectedButton.classList.add('incorrect');  // Réponse incorrecte -> rouge
+//         }
+    
+//         // Mettre à jour le score
+//         scoreElement.textContent = score;
+    
+//         // Afficher le bouton Next
+//         nextButton.style.display = 'block';
+//     }
+    
+//     // Fonction pour passer à la question suivante
+//     function nextQuestion() {
+//         // Passer à la question suivante
+//         currentQuestionIndex++;
+//         if (currentQuestionIndex < totalQuestions) {
+//             displayQuestion(); // Afficher la question suivante
+//             updateProgressBar();  // Mettre à jour la barre de progression
+//         } else {
+//             showResults(); // Afficher les résultats finaux
+//         }
+//     }
+    
+//     // Fonction pour afficher les résultats finaux
+//     function showResults() {
+//         questionElement.textContent = `Quiz terminé ! Ton score : ${score} sur ${totalQuestions}`;
+//         answersArea.innerHTML = '';  // Vider les réponses
+    
+//         // Ajouter un bouton pour recommencer
+//         nextButton.textContent = 'Recommencer le quiz';
+//         nextButton.addEventListener('click', restartQuiz);
+//     }
+    
+//     // Fonction pour recommencer le quiz
+//     function restartQuiz() {
+//         currentQuestionIndex = 0;  // Réinitialiser l'index
+//         score = 0;  // Réinitialiser le score
+//         scoreElement.textContent = score;  // Réinitialiser le score affiché
+//         displayQuestion();  // Afficher la première question
+//         nextButton.style.display = 'none';  // Masquer le bouton de redémarrage
+//         updateProgressBar();  // Réinitialiser la barre de progression
+//     }
+    
+    
+//     // Lier le bouton Next à la fonction nextQuestion
+//     nextButton.addEventListener('click', nextQuestion);
+    
+//     // Lancer la première question
+//     displayQuestion();
+//     </script>
+
+// </body>
+// </html>

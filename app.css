@@ -1,7 +1,9 @@
 *{ box-sizing: :border-box;
 color: #000;}
 body{
-    font-family: :tahoma,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: tahoma,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #97CADB;
+    
     
 }
 .quiz-app{ margin: 0px auto;
@@ -34,11 +36,11 @@ padding:15px}
     margin:15px;
    text-align: center;
 }
-.quiz-app .answers-area{
+.quiz-app #answers-area{
     background-color:#97CADB;
     padding:20px;
 }
-.quiz-app .answers-area    .answer{
+.quiz-app #answers-area    .answer{
     background-color: white;
 
 
@@ -66,7 +68,8 @@ padding:15px}
 
 
 }
-.quiz-app .submit-button{
+.quiz-app #answers-area    .answer:hover{background: red;}
+.quiz-app #submit-button{
     background-color: #018ABE;
     display:block;
     margin: 0 auto;
@@ -79,14 +82,19 @@ padding:15px}
     margin-top: 15px;
     
 
+    
 }
-.quiz-app .answers-area button{
+ .correct {
+            background-color: green !important;  /* Appliquer un fond vert pour une réponse correcte */
+        }
+.quiz-app #answers-area button{
  
     cursor:pointer;
     font-weight: bold;
     color:#777;
     font-left:5px;
     position:relative;
+
 
     top:10px;
     
@@ -96,7 +104,8 @@ padding:15px}
  width:10%;background-color: #018ABE	; border-radius: 20px; height: 20px;
 }
 
-.quiz-app .submit-button :focus{
+/* .quiz-app .submit-button{display:none} */
+.quiz-app #submit-button :focus{
     outline:none;
 }
  .quiz-app #second #third{

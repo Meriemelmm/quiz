@@ -9,22 +9,22 @@
 <body>
      <div class="quiz-app">
 <div class="quiz-info">
-    <div class="category">  score:<span>1</span>/10</div>
-    <div class="timer"> timer :<span>0</span>s</div>
+    <div class="category">  score:<span id="score">0</span>/10</div>
+    <div class="timer"> timer :<span id="time">0</span>s</div>
     <div class="count"> questions count: <span>10</span></div>
 
 </div>
 <div class="quiz-area">
-    <h2> why we use  br elment</h2>
+    <h2 id ="question"> why we use  br elment</h2>
 </div>
-<div class="answers-area">
-   <button class="answer">answer1</button>
-   <button class="answer">answer2</button>
-   <button class="answer">answer3</button>
-   <button class="answer">answer4</button>
+<div id="answers-area">
+   <button  class="answer"id="answer1">answer1</button>
+   <button  class="answer"id="answer2">answer2</button>
+   <button  class="answer"id="answer3">answer3</button>
+   <button  class="answer"id="answer4">answer4</button>
     
 </div>
-<button class="submit-button">  submit answer</button>
+<button id="submit-button" >  submit answer</button>
 
    
   
@@ -42,7 +42,7 @@
         <div class="quiz-area">
             <h2> why we use  br elment</h2>
         </div>
-        <div class="answers-area" style="display:grid ;grid-template-columns: 1fr 1fr; gap: 60px;margin:0 auto; height: 100px;" >
+        <div id="answers-area" style="display:grid ;grid-template-columns: 1fr 1fr; gap: 60px;margin:0 auto; height: 100px;" >
            <button class="answer">vrai </button>
            <button class="answer">faux</button>
           
@@ -63,9 +63,9 @@
               
               </div>
               <div class="quiz-area">
-                  <h2> why we use  br elment</h2>
+                  <h2 id="question"> why we use  br elment</h2>
               </div>
-              <div class="answers-area"  >
+              <div id="answers-area"  >
                 <input type="text" placeholder="enter your answer" style="width:100%;height: 60px; text-align: center; border: none;">
                  
                 
