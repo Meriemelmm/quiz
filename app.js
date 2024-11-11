@@ -110,129 +110,310 @@
 // const answersbutton=document.getElementById("answer-button ");
 // const nextbutton=document
 
+// const questions = [
+//     {
+//         question: "Which is the largest animal in the world?",
+//         answers: [
+//              "Shark" ,
+//            "Blue whale", 
+//               "Elephant",
+//              "Giraffe"
+//         ]
+//         , correctAnswer: 1,
+//         wrongAnswer:0
+//     },
+//     {
+//         question: "Which is the smallest planet?",
+//         answers: [
+//              "Earth", 
+//             "Mercury", 
+//            "Mars", 
+//             "Jupiter", 
+//         ]
+//     }
+// ];
+
+// const answerButtons = [
+//     document.getElementById('answer1'),
+//     document.getElementById('answer2'),
+//     document.getElementById('answer3'),
+//     document.getElementById('answer4')
+// ];
+// let currentIndex = 0; 
+
+// let score = 0;  // Pour compter les bonnes réponses
+// const questionelemnt=document.getElementById("question");
+// const answersbutton=document.getElementById("answers-area ");
+// const nextbutton=document.getElementById('submit-button');
+// console.log(questionelemnt);
+
+
+
+
+
+
+
+// function showQuestion() { const departMinutes = 5
+// let temps = departMinutes * 60
+
+// const timerElement = document.getElementById("time")
+
+// setInterval(() => {
+//   let minutes = parseInt(temps / 60, 10)
+//   let secondes = parseInt(temps % 60, 10)
+
+//   minutes = minutes < 10 ? "0" + minutes : minutes
+//   secondes = secondes < 10 ? "0" + secondes : secondes
+
+//   timerElement.innerText = `${minutes}:${secondes}`
+//   temps = temps <= 0 ? 0 : temps - 1
+// }, 1000)
+    
+    
+
+  
+//     const currentQuestion = questions[currentIndex]; 
+//     questionelemnt.innerHTML = currentQuestion.question; 
+
+//     answerButtons.forEach((button, index) => {
+//         button.innerHTML = currentQuestion.answers[index]; 
+
+      
+//         button.addEventListener('click', () => {
+//             checkAnswer(index,button); 
+//             const currentQuestion = questions[currentIndex];
+
+//             if (index === currentQuestion.correctAnswer) {
+//                 score++;
+//                 document.getElementById('score').innerHTML=score++;
+//                 console.log("correct" , score);
+//             }
+
+//         });
+//     });
+     
+   
+// }
+
+
+
+
+// function checkAnswer(selectedIndex,button) {
+//     const currentQuestion = questions[currentIndex];
+   
+
+//     answerButtons.forEach(button => button.disabled =true);
+
+//     answerButtons.forEach((button, index) => {
+//         if (index === currentQuestion.correctAnswer) {
+
+//             button.style.backgroundColor = 'green'; 
+            
+            
+//             // score++;
+
+//             // document.getElementById('score').innerHTML=score++;
+//             // console.log("correct" , score);
+            
+
+//         } else if (index === selectedIndex) {
+//             button.style.backgroundColor = 'red';    
+//             //console.log("incorrect " ,  score);
+
+//         }
+//         else{  button.style.backgroundColor = 'grey';
+
+//         }
+//     });
+    
+   
+// }
+
+  
+
+
+// showQuestion();
 const questions = [
     {
-        question: "Which is the largest animal in the world?",
-        answers: [
-             "Shark" ,
-           "Blue whale", 
-              "Elephant",
-             "Giraffe"
-        ]
-        , correctAnswer: 1,
-        wrongAnswer:0
+        question: "What does HTML stand for?",
+        answers: ["HyperText Markup Language", "HighText Machine Language", "Hyperlink Text Markup Language", "None of the above"],
+        correctAnswer: 0
     },
     {
-        question: "Which is the smallest planet?",
-        answers: [
-             "Earth", 
-            "Mercury", 
-           "Mars", 
-            "Jupiter", 
-        ]
+        question: "Which tag is used for a line break in HTML?",
+        answers: ["<break>", "<lb>", "<br>", "<line>"],
+        correctAnswer: 2
+    },
+    {
+        question: "Which element is used to define an HTML document?",
+        answers: ["<html>", "<body>", "<head>", "<header>"],
+        correctAnswer: 0
+    },
+    {
+        question: "What is the correct HTML for creating a hyperlink?",
+        answers: ["<a url='www.example.com'>Link</a>", "<a href='www.example.com'>Link</a>", "<link href='www.example.com'>Link</link>", "<a link='www.example.com'>Link</a>"],
+        correctAnswer: 1
+    },
+    {
+        question: "What is the correct HTML for inserting an image?",
+        answers: ["<img src='image.jpg'>", "<image src='image.jpg'>", "<img href='image.jpg'>", "<img alt='image.jpg'>"],
+        correctAnswer: 0
+    },
+    {
+        question: "What does the <title> tag define in an HTML document?",
+        answers: ["The document title", "The body of the document", "The header of the document", "The footer of the document"],
+        correctAnswer: 0
+    },
+    {
+        question: "Which tag is used to create a list in HTML?",
+        answers: ["<ul>", "<list>", "<li>", "<ol>"],
+        correctAnswer: 0
+    },
+    {
+        question: "Which HTML attribute is used to define the style of an element?",
+        answers: ["style", "class", "id", "color"],
+        correctAnswer: 0
+    },
+    {
+        question: "Which tag is used to define a table in HTML?",
+        answers: ["<table>", "<grid>", "<tab>", "<list>"],
+        correctAnswer: 0
+    },
+    {
+        question: "What tag is used to define a division or section in HTML?",
+        answers: ["<div>", "<section>", "<span>", "<header>"],
+        correctAnswer: 0
+    },
+    {
+        question: "Which tag is used to create a form in HTML?",
+        answers: ["<form>", "<input>", "<button>", "<textarea>"],
+        correctAnswer: 0
     }
 ];
 
+let currentIndex = 0;
+let score = 0;
+let timeRemaining = 60; // 1 minute timer
+let quizTimer;
+let progress = 0; // Progress variable
+
+const questionElement = document.getElementById("question");
 const answerButtons = [
     document.getElementById('answer1'),
     document.getElementById('answer2'),
     document.getElementById('answer3'),
     document.getElementById('answer4')
 ];
-let currentIndex = 0; 
+const submitButton = document.getElementById("submit-button");
+const nextButton = document.getElementById("next-button");
+const scoreElement = document.getElementById("score");
+const timerElement = document.getElementById("time");
+const progressBar = document.getElementById("progress-bar");
 
-let score = 0;  // Pour compter les bonnes réponses
-const questionelemnt=document.getElementById("question");
-const answersbutton=document.getElementById("answers-area ");
-const nextbutton=document.getElementById('submit-button');
-console.log(questionelemnt);
+// Start the timer
+function startTimer() {
+    quizTimer = setInterval(() => {
+        let minutes = Math.floor(timeRemaining / 60);
+        let seconds = timeRemaining % 60;
+        timerElement.innerText = `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
 
-
-
-
-
-
-
-function showQuestion() { const departMinutes = 5
-let temps = departMinutes * 60
-
-const timerElement = document.getElementById("time")
-
-setInterval(() => {
-  let minutes = parseInt(temps / 60, 10)
-  let secondes = parseInt(temps % 60, 10)
-
-  minutes = minutes < 10 ? "0" + minutes : minutes
-  secondes = secondes < 10 ? "0" + secondes : secondes
-
-  timerElement.innerText = `${minutes}:${secondes}`
-  temps = temps <= 0 ? 0 : temps - 1
-}, 1000)
-    
-    
-
-  
-    const currentQuestion = questions[currentIndex]; 
-    questionelemnt.innerHTML = currentQuestion.question; 
-
-    answerButtons.forEach((button, index) => {
-        button.innerHTML = currentQuestion.answers[index]; 
-
-      
-        button.addEventListener('click', () => {
-            checkAnswer(index,button); 
-            const currentQuestion = questions[currentIndex];
-
-            if (index === currentQuestion.correctAnswer) {
-                score++;
-                document.getElementById('score').innerHTML=score++;
-                console.log("correct" , score);
-            }
-
-        });
-    });
-     
-   
+        if (timeRemaining <= 0) {
+            clearInterval(quizTimer);
+            showResults(); // Time is up, show results
+        }
+        timeRemaining--;
+    }, 1000);
 }
 
-
-
-
-function checkAnswer(selectedIndex,button) {
+// Show question and answers
+function showQuestion() {
     const currentQuestion = questions[currentIndex];
-   
+    questionElement.innerText = currentQuestion.question;
+    answerButtons.forEach((button, index) => {
+        button.innerText = currentQuestion.answers[index];
+        button.style.backgroundColor = ""; // Reset background color
+        button.disabled = false; // Enable buttons
+        button.onclick = () => checkAnswer(index); // Handle click event
+    });
 
-    answerButtons.forEach(button => button.disabled =true);
+    updateProgressBar(); // Update the progress bar when changing questions
+}
+
+// Check answer and update score
+function checkAnswer(selectedIndex) {
+    const currentQuestion = questions[currentIndex];
+    answerButtons.forEach(button => button.disabled = true); // Disable buttons after answer
 
     answerButtons.forEach((button, index) => {
         if (index === currentQuestion.correctAnswer) {
-
-            button.style.backgroundColor = 'green'; 
-            
-            
-            // score++;
-
-            // document.getElementById('score').innerHTML=score++;
-            // console.log("correct" , score);
-            
-
+            button.style.backgroundColor = 'green'; // Correct answer
         } else if (index === selectedIndex) {
-            button.style.backgroundColor = 'red';    
-            //console.log("incorrect " ,  score);
-
-        }
-        else{  button.style.backgroundColor = 'grey';
-
+            button.style.backgroundColor = 'red'; // Incorrect answer
+        } else {
+            button.style.backgroundColor = 'gray'; // Not selected answer
         }
     });
-    
-   
+
+    if (selectedIndex === currentQuestion.correctAnswer) {
+        score++;
+        scoreElement.innerText = score;
+    }
+
+    nextButton.style.display = 'inline-block'; // Show "Next" button
 }
 
-  
+// Go to the next question
+function goToNextQuestion() {
+    currentIndex++;
 
+    if (currentIndex < questions.length) {
+        showQuestion(); // Show the next question
+        nextButton.style.display = 'none'; // Hide "Next" button until an answer is chosen
+    } else {
+        showResults(); // All questions answered, show results
+    }
+}
 
-showQuestion();
+// Update progress bar
+function updateProgressBar() {
+    progress = ((currentIndex + 1) / questions.length) * 100;
+    progressBar.style.width = `${progress}%`; // Update the width of the progress bar
+}
+
+// Show results
+function showResults() {
+       // Créer un élément h1 pour afficher le résultat
+       const result = document.createElement('h1');
+       result.innerText = `Quiz complete! Your score is ${score} out of ${questions.length}`;
+       
+       // Styliser l'élément h1
+       result.style.background = score === questions.length ? 'green' : 'red'; // Si le score est égal au nombre total de questions, vert, sinon rouge.
+       result.style.color = 'white'; // Mettre le texte en blanc pour le contraste
+       result.style.textAlign = 'center'; // Centrer le texte
+       result.style.padding = '20px'; // Ajouter un peu de padding
+       result.style.marginTop = '20px'; // Ajouter un peu de marge en haut
+       
+       // Ajouter l'élément à la page
+       document.body.appendChild(result);
+   
+    
+    
+    
+    nextButton.style.display = 'none'; // Hide "Next" button
+    timerElement.innerText = '00:00'; // Show 00:00 when the quiz ends
+}
+
+// Initialize the quiz
+function startQuiz() {
+    startTimer(); // Start the timer
+    showQuestion(); // Show the first question
+}
+
+submitButton.addEventListener('click', goToNextQuestion);
+
+// Start the quiz
+startQuiz();
+
 
 
 

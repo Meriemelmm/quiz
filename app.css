@@ -105,9 +105,9 @@ padding:15px}
 }
 
 /* .quiz-app .submit-button{display:none} */
-.quiz-app #submit-button :focus{
-    outline:none;
-}
+/* .quiz-app #submit-button :focus{
+    outline:none; */
+
  .quiz-app #second #third{
   display:none;
  }
