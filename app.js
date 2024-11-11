@@ -139,7 +139,8 @@ const answerButtons = [
     document.getElementById('answer3'),
     document.getElementById('answer4')
 ];
-let currentIndex = 0;  // L'index de la question actuelle
+let currentIndex = 0; 
+
 let score = 0;  // Pour compter les bonnes réponses
 const questionelemnt=document.getElementById("question");
 const answersbutton=document.getElementById("answers-area ");
@@ -148,52 +149,92 @@ console.log(questionelemnt);
 
 
 
- 
+
+
+
+
+function showQuestion() { const departMinutes = 5
+let temps = departMinutes * 60
+
+const timerElement = document.getElementById("time")
+
+setInterval(() => {
+  let minutes = parseInt(temps / 60, 10)
+  let secondes = parseInt(temps % 60, 10)
+
+  minutes = minutes < 10 ? "0" + minutes : minutes
+  secondes = secondes < 10 ? "0" + secondes : secondes
+
+  timerElement.innerText = `${minutes}:${secondes}`
+  temps = temps <= 0 ? 0 : temps - 1
+}, 1000)
+    
+    
+
   
+    const currentQuestion = questions[currentIndex]; 
+    questionelemnt.innerHTML = currentQuestion.question; 
 
-
-function showQuestion() {
-    const currentQuestion = questions[currentIndex]; // Question actuelle
-    questionelemnt.innerHTML = currentQuestion.question; // Afficher la question
-
-    // Remplir les boutons de réponse
     answerButtons.forEach((button, index) => {
-        button.innerHTML = currentQuestion.answers[index]; // Remplir le bouton avec la réponse
+        button.innerHTML = currentQuestion.answers[index]; 
 
-        // Ajouter l'événement au bouton
+      
         button.addEventListener('click', () => {
-            checkAnswer(index,button); // Passer l'index de la réponse sélectionnée
+            checkAnswer(index,button); 
+            const currentQuestion = questions[currentIndex];
+
+            if (index === currentQuestion.correctAnswer) {
+                score++;
+                document.getElementById('score').innerHTML=score++;
+                console.log("correct" , score);
+            }
+
         });
     });
+     
+   
 }
 
-// Fonction pour vérifier la réponse de l'utilisateur
+
+
+
 function checkAnswer(selectedIndex,button) {
     const currentQuestion = questions[currentIndex];
-    // Question actuelle
+   
 
-    // Comparer l'index de la réponse sélectionnée avec l'index de la bonne réponse
     answerButtons.forEach(button => button.disabled =true);
 
-    // Vérifier chaque bouton et appliquer la couleur correspondante
     answerButtons.forEach((button, index) => {
         if (index === currentQuestion.correctAnswer) {
-            button.style.backgroundColor = 'green';  // Bonne réponse : vert
+
+            button.style.backgroundColor = 'green'; 
+            
+            
+            // score++;
+
+            // document.getElementById('score').innerHTML=score++;
+            // console.log("correct" , score);
+            
+
         } else if (index === selectedIndex) {
-            button.style.backgroundColor = 'red';    // Mauvaise réponse : rouge
+            button.style.backgroundColor = 'red';    
+            //console.log("incorrect " ,  score);
+
         }
         else{  button.style.backgroundColor = 'grey';
 
         }
     });
-
-    // Optionnel : Passer à la question suivante ou afficher un message de fin
-    // nextButton.disabled = false; // Activer le bouton "Next"
+    
+   
 }
 
+  
 
 
 showQuestion();
+
+
 
 
 
