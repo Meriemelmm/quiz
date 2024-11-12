@@ -1,192 +1,194 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
     <style>
-        .answer.correct {
-    background-color: green;
-    color: white;
-}
-
-.answer.incorrect {
-    background-color: red;
-    color: white;
-}
-
-.answer.disabled {
-    background-color: grey;
-    color: white;
-}
-
-#next-button {
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-#next-button:hover {
-    background-color: #45a049;
-}
-
-#progress-bar {
-    height: 20px;
-    border-radius: 20px;
-    margin-top: 15px;
-}
-
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .question-container {
+            margin-bottom: 20px;
+        }
+        .question-container input, .question-container button {
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
 
-    <div class="quiz-app">
-        <div class="quiz-info">
-            <div class="score">Score: <span id="score">0</span>/10</div>
-            <div class="timer">Timer: <span id="timer">0</span>s</div>
-            <div class="count">Questions count: <span id="total-questions">3</span></div>
-        </div>
-    
-        <div class="quiz-area">
-            <h2 id="question">Pourquoi utiliser l'élément <br> ?</h2>
-        </div>
-    
-        <div id="answers-area">
-            <!-- Les boutons de réponses seront insérés ici -->
-        </div>
-    
-        <button id="next-button" style="display:none;">Next</button>
-    
-        <div class="progress-bar">
-            <div id="progress-bar" style="width: 40%; background-color: #018ABE;"></div>
-        </div>
-    </div>
-    
+<h1>HTML Quiz</h1>
 
+<form id="quizForm">
+    <!-- Les questions seront ajoutées dynamiquement ici -->
+</form>
 
-<script>// Tableau des questions
-    const questions = [
-        {
-            question: "Pourquoi utiliser l'élément <br> ?",
-            options: ["Créer un saut de ligne", "Ajouter une couleur", "Créer un nouveau paragraphe", "Créer une ligne dans un tableau"],
-            correctAnswer: 0 
-        },
-        {
-            question: "Quelle est la capitale de la France ?",
-            options: ["Berlin", "Madrid", "Paris", "Rome"],
-            correctAnswer: 2 
-        },
-        {
-            question: "Quel est le résultat de 2 + 2 ?",
-            options: ["3", "4", "5", "6"],
-            correctAnswer: 1 
+<button type="button" onclick="submitQuiz()">Submit Quiz</button>
+
+<script>
+// Structure des questions avec différents types (QCM, Vrai/Faux, Textuelles)
+const questions = [
+    {
+        type: "multiple-choice", 
+        question: "What does HTML stand for?",
+        answers: [
+            "HyperText Markup Language", 
+            "HighText Machine Language", 
+            "Hyperlink Text Markup Language", 
+            "None of the above"
+        ],
+        correctAnswer: 0
+    },
+    {
+        type: "true-false",
+        question: "HTML is used to style web pages.",
+        answers: ["True", "False"],
+        correctAnswer: 1
+    },
+    {
+        type: "textual",
+        question: "What is the purpose of the <head> element in an HTML document?",
+        correctAnswer: "It contains metadata like the document's title, links to stylesheets, and scripts."
+    },
+    {
+        type: "multiple-choice",
+        question: "Which tag is used for a line break in HTML?",
+        answers: ["<break>", "<lb>", "<br>", "<line>"],
+        correctAnswer: 2
+    },
+    {
+        type: "true-false",
+        question: "The <img> tag is used to insert images in HTML.",
+        answers: ["True", "False"],
+        correctAnswer: 0
+    }
+];
+
+// Fonction pour afficher les questions
+function displayQuestions() {
+    const quizForm = document.getElementById('quizForm');
+    questions.forEach((question, index) => {
+        const div = document.createElement('div');
+        div.classList.add('question-container');
+        const questionElement = document.createElement('p');
+        questionElement.innerHTML = (index + 1) + '. ' + question.question;
+        div.appendChild(questionElement);
+
+        if (question.type === 'multiple-choice') {
+            question.answers.forEach((answer, i) => {
+                const answerLabel = document.createElement('label');
+                const answerInput = document.createElement('input');
+                answerInput.type = 'radio';
+                answerInput.name = 'question' + index;
+                answerInput.value = i;
+                answerLabel.appendChild(answerInput);
+                answerLabel.appendChild(document.createTextNode(answer));
+                div.appendChild(answerLabel);
+                div.appendChild(document.createElement('br'));
+            });
+        } else if (question.type === 'true-false') {
+            // Boutons Vrai / Faux
+            const trueButton = document.createElement('button');
+            trueButton.innerHTML = "True";
+            trueButton.type = "button";
+            trueButton.onclick = () => handleTrueFalseAnswer(index, true);
+            div.appendChild(trueButton);
+
+            const falseButton = document.createElement('button');
+            falseButton.innerHTML = "False";
+            falseButton.type = "button";
+            falseButton.onclick = () => handleTrueFalseAnswer(index, false);
+            div.appendChild(falseButton);
+        } else if (question.type === 'textual') {
+            const inputText = document.createElement('input');
+            inputText.type = 'text';
+            inputText.name = 'question' + index;
+            div.appendChild(inputText);
         }
-    ];
-    
-    let currentQuestionIndex = 0;  
-    let score = 0;  
-    let totalQuestions = questions.length;  
-    
-    // Récupérer les éléments du DOM
-    const questionElement = document.getElementById("question");
-    const answersArea = document.getElementById("answers-area");
-    const scoreElement = document.getElementById("score");
-    const nextButton = document.getElementById("next-button");
-   
-    
-    
-    function displayQuestion() {
-        const currentQuestion = questions[currentQuestionIndex];  
-        questionElement.textContent = currentQuestion.question;  
-        // Vider les anciennes réponses
-        answersArea.innerHTML = '';
-    
-        // Créer un bouton pour chaque option de réponse
-        currentQuestion.options.forEach((option, index) => {
-            const button = document.createElement('button');
-            button.classList.add('answer');
-            button.textContent = option;
-            button.dataset.index = index; // Stocker l'index de la réponse
-            button.disabled = false;  // Activer tous les boutons au départ
-    
-//             // Ajouter un événement sur chaque bouton
-//             button.addEventListener('click', () => {
-//                 selectAnswer(button, currentQuestion.correctAnswer); // Gérer la sélection de réponse
-//             });
-    
-//             answersArea.appendChild(button);
-//         });
-    
-//         // Cacher le bouton "Next" jusqu'à ce qu'une réponse soit sélectionnée
-//         nextButton.style.display = 'none';
-//     }
-    
-//     // Fonction pour gérer la sélection de la réponse
-//     function selectAnswer(selectedButton, correctAnswerIndex) {
-//         // Désactiver tous les boutons après la sélection
-//         const buttons = answersArea.querySelectorAll('.answer');
-//         buttons.forEach(button => {
-//             button.disabled = true;  // Désactiver tous les boutons
-//             button.classList.add('disabled'); // Appliquer une couleur grise
-//         });
-    
-//         // Vérifier si la réponse est correcte
-//         if (selectedButton.dataset.index == correctAnswerIndex) {
-//             selectedButton.classList.add('correct');  // Réponse correcte -> vert
-//             score++;  // Augmenter le score
-//         } else {
-//             selectedButton.classList.add('incorrect');  // Réponse incorrecte -> rouge
-//         }
-    
-//         // Mettre à jour le score
-//         scoreElement.textContent = score;
-    
-//         // Afficher le bouton Next
-//         nextButton.style.display = 'block';
-//     }
-    
-//     // Fonction pour passer à la question suivante
-//     function nextQuestion() {
-//         // Passer à la question suivante
-//         currentQuestionIndex++;
-//         if (currentQuestionIndex < totalQuestions) {
-//             displayQuestion(); // Afficher la question suivante
-//             updateProgressBar();  // Mettre à jour la barre de progression
-//         } else {
-//             showResults(); // Afficher les résultats finaux
-//         }
-//     }
-    
-//     // Fonction pour afficher les résultats finaux
-//     function showResults() {
-//         questionElement.textContent = `Quiz terminé ! Ton score : ${score} sur ${totalQuestions}`;
-//         answersArea.innerHTML = '';  // Vider les réponses
-    
-//         // Ajouter un bouton pour recommencer
-//         nextButton.textContent = 'Recommencer le quiz';
-//         nextButton.addEventListener('click', restartQuiz);
-//     }
-    
-//     // Fonction pour recommencer le quiz
-//     function restartQuiz() {
-//         currentQuestionIndex = 0;  // Réinitialiser l'index
-//         score = 0;  // Réinitialiser le score
-//         scoreElement.textContent = score;  // Réinitialiser le score affiché
-//         displayQuestion();  // Afficher la première question
-//         nextButton.style.display = 'none';  // Masquer le bouton de redémarrage
-//         updateProgressBar();  // Réinitialiser la barre de progression
-//     }
-    
-    
-//     // Lier le bouton Next à la fonction nextQuestion
-//     nextButton.addEventListener('click', nextQuestion);
-    
-//     // Lancer la première question
-//     displayQuestion();
-//     </script>
 
-// </body>
-// </html>
+        quizForm.appendChild(div);
+    });
+}
+
+// Fonction pour gérer les réponses des questions Vrai/Faux
+function handleTrueFalseAnswer(questionIndex, answer) {
+    const question = questions[questionIndex];
+    const buttons = document.getElementsByName('question' + questionIndex);
+    
+    // Cacher les boutons après sélection de la réponse
+    buttons.forEach(button => button.classList.add('hidden'));
+    
+    // Vérifier si la réponse est correcte
+    checkAnswer(questionIndex, answer);
+}
+
+// Fonction pour vérifier les réponses des questions QCM et Textuelles
+function checkAnswer(questionIndex, userAnswer) {
+    const question = questions[questionIndex];
+    const correctAnswer = question.correctAnswer;
+    let isCorrect = false;
+
+    if (question.type === 'multiple-choice') {
+        isCorrect = correctAnswer === userAnswer;
+    } else if (question.type === 'true-false') {
+        isCorrect = correctAnswer === userAnswer;
+    } else if (question.type === 'textual') {
+        const userText = userAnswer.trim().toLowerCase();
+        const correctText = question.correctAnswer.trim().toLowerCase();
+        isCorrect = userText === correctText;
+    }
+
+    // Afficher si la réponse est correcte ou non
+    alert(isCorrect ? 'Correct answer!' : 'Incorrect answer!');
+}
+
+// Fonction de soumission du quiz
+function submitQuiz() {
+    let score = 0;
+
+    questions.forEach((question, index) => {
+        const userAnswer = getUserAnswer(index);
+        const isCorrect = checkAnswer(index, userAnswer);
+        if (isCorrect) {
+            score++;
+        }
+    });
+
+    alert("Your score is: " + score + " out of " + questions.length);
+}
+
+// Fonction pour récupérer la réponse de l'utilisateur
+function getUserAnswer(index) {
+    const question = questions[index];
+    let answer = "";
+
+    if (question.type === "multiple-choice") {
+        const radios = document.getElementsByName('question' + index);
+        for (let i = 0; i < radios.length; i++) {
+            if (radios[i].checked) {
+                answer = radios[i].value;
+                break;
+            }
+        }
+    } else if (question.type === "true-false") {
+        // La réponse a déjà été gérée par handleTrueFalseAnswer
+    } else if (question.type === "textual") {
+        const input = document.querySelector('input[name="question' + index + '"]');
+        answer = input ? input.value : "";
+    }
+
+    return answer;
+}
+
+// Afficher les questions
+displayQuestions();
+
+</script>
+
+</body>
+</html>
+

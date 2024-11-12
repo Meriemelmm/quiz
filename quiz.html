@@ -1,36 +1,230 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="stylesheet" href="quiz.css">
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .quiz-app {
+            display: none;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .quiz-info {
+            margin-bottom: 20px;
+        }
+        .quiz-area h2 {
+            font-size: 24px;
+        }
+        .answer {
+            background-color: #018ABE;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        .answer:hover {
+            background-color: #01668B;
+        }
+        .submit-button {
+            background-color: #018ABE;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .submit-button:hover {
+            background-color: #01668B;
+        }
+        .barre {
+            width: 100%;
+            height: 20px;
+            background-color: #D6E8EE;
+            border-radius: 50px;
+            margin-top: 15px;
+        }
+        .barre > div {
+            height: 100%;
+            background-color: #018ABE;
+            border-radius: 20px;
+        }
+        .quiz-info .category, .quiz-info .timer, .quiz-info .count {
+            margin-bottom: 10px;
+        }
+        #submit-button {
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
-    <div class="collection">
-    <div class="qcm">
-          <h1> est ce que la vie est rose ?</h1>
-          <div class="btn">
-            <button> option 1</button>
-            <button> option2</button>
-            <button> option 3</button>
-            <button> option 4</button>
-          </div>
-          <div class="next"><button  id=" next"  > next</button></div> 
+
+<div class="quiz-app" id="first">
+    <div class="quiz-info">
+        <div class="category">Score: <span id="score">0</span>/10</div>
+        <div class="timer">Timer: <span id="time">05:00</span></div>
+        <div class="count">Questions: <span>10</span></div>
     </div>
-    <div class="vf">
-      <h1> est ce que la vie est black? </h1>
-      <div class="btn_vf"> 
-        <button> vrai</button>
-        <button>faux</button>
+    <div class="quiz-area">
+        <h2 id="question">Why do we use the <code>&lt;br&gt;</code> element?</h2>
     </div>
-    <div class="next"><button  id=" next"  > next</button></div> 
+    <div id="answers-area">
+        <button class="answer" id="answer1">Answer 1</button>
+        <button class="answer" id="answer2">Answer 2</button>
+        <button class="answer" id="answer3">Answer 3</button>
+        <button class="answer" id="answer4">Answer 4</button>
     </div>
-    <div class="reponse_textuelle">
-<h1> la vie  est blue?</h1>
-    <input type="text" placeholder=" entrez votre reponse"> 
-    <div class="next"><button  id=" next"  > next</button></div> 
+    <button id="submit-button">Next</button>
+    <div class="barre"><div id="progress-bar" style="width: 1%;"></div></div>
 </div>
+
+<div class="quiz-app" id="second" style="display:none;">
+    <div class="quiz-info">
+        <div class="category">Score: <span id="score2">1</span>/10</div>
+        <div class="timer">Timer: <span id="time2">04:59</span></div>
+        <div class="count">Questions: <span>10</span></div>
+    </div>
+    <div class="quiz-area">
+        <h2>Is <code>&lt;br&gt;</code> used to break lines?</h2>
+    </div>
+    <div id="answers-area" style="display:grid; grid-template-columns: 1fr 1fr; gap: 60px; margin:0 auto; height: 100px;">
+        <button class="answer">True</button>
+        <button class="answer">False</button>
+    </div>
+    <button class="submit-button" id="submit-button-2">Submit Answer</button>
+    <div class="barre"><div id="pr" style="width: 40%;"></div></div>
+</div>
+
+<div class="quiz-app" id="third" style="display:none;">
+    <div class="quiz-info">
+        <div class="category">Score: <span id="score3">2</span>/10</div>
+        <div class="timer">Timer: <span id="time3">00:00</span></div>
+        <div class="count">Questions: <span>10</span></div>
+    </div>
+    <div class="quiz-area">
+        <h2>Explain why we use the <code>&lt;br&gt;</code> element.</h2>
+    </div>
+    <div id="answers-area">
+        <input type="text" id="text-answer" placeholder="Enter your answer" style="width:100%; height: 60px; text-align: center; border: none;">
+    </div>
+    <button class="submit-button" id="submit-button-3">Submit Answer</button>
+    <div class="barre"><div id="progress-bar-3" style="width: 10%;"></div></div>
+</div>
+
+<script>
+let currentQuestion = 0;  // Current question index
+let score = 0;  // Score
+let timer;  // Timer variable
+let timeRemaining = 300;  // Timer in seconds (5 minutes)
+
+let questions = [
+    { 
+        type: "qcm", 
+        question: "Why do we use the <code>&lt;br&gt;</code> element?", 
+        answers: ["For line breaks", "For bold text", "For paragraph breaks", "For comments"], 
+        correct: 0
+    },
+    { 
+        type: "trueFalse", 
+        question: "Is <code>&lt;br&gt;</code> used to break lines?", 
+        answers: ["True", "False"], 
+        correct: 0
+    },
+    { 
+        type: "text", 
+        question: "Explain why we use the <code>&lt;br&gt;</code> element.", 
+        correctAnswer: "For line breaks"
+    }
+];
+
+function startTimer() {
+    timer = setInterval(() => {
+        timeRemaining--;
+        const minutes = Math.floor(timeRemaining / 60);
+        const seconds = timeRemaining % 60;
+        document.getElementById('time').innerText = `${minutes}:${seconds}`;
+        if (timeRemaining <= 0) {
+            clearInterval(timer);
+            showResults(); 
+        }
+    }, 1000);
+}
+
+function updateScore(isCorrect) {
+    if (isCorrect) {
+        score++;
+    }
+    document.getElementById('score').innerText = score;
+}
+
+function updateProgressBar() {
+    const progress = ((currentQuestion + 1) / questions.length) * 100;
+    document.getElementById('progress-bar').style.width = `${progress}%`;
+}
+
+function showTab(n) {
+    const tabs = document.querySelectorAll('.quiz-app');
+    tabs.forEach(tab => tab.style.display = 'none');
+    document.getElementById(tabs[n].id).style.display = 'block';
+}
+
+function nextQuestion() {
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+        showTab(currentQuestion);
+        updateProgressBar();
+    } else {
+        showResults();
+    }
+}
+
+function showResults() {
+    alert(`Your score is ${score} out of ${questions.length}`);
+    // Here you can implement further actions like displaying results on the page
+}
+
+document.getElementById('submit-button').onclick = function() {
+    if (questions[currentQuestion].type === "qcm") {
+        const selectedAnswer = Array.from(document.querySelectorAll('.answer')).findIndex(answer => answer.classList.contains('selected'));
+        updateScore(selectedAnswer === questions[currentQuestion].correct);
+    }
+    nextQuestion();
+};
+
+document.querySelectorAll('.answer').forEach((button, index) => {
+    button.onclick = function() {
+        document.querySelectorAll('.answer').forEach(btn => btn.classList.remove('selected'));
+        button.classList.add('selected');
+    };
+});
+
+document.getElementById('submit-button-2').onclick = function() {
+    const selectedTF = Array.from(document.querySelectorAll('.answer')).findIndex(button => button.classList.contains('selected'));
+    updateScore(selectedTF === questions[currentQuestion].correct);
+    nextQuestion();
+};
+
+document.getElementById('submit-button-3').onclick = function() {
+    const textAnswer = document.getElementById('text-answer').value.trim();
+    if (textAnswer.toLowerCase() === questions[currentQuestion].correctAnswer.toLowerCase()) {
+        updateScore(true);
+    }
+    nextQuestion();
+};
+
+startTimer();
+showTab(currentQuestion);
+</script>
+</body>
 </html>
-<!-- ##f8f9fc backgrounde un 
- #5173bd #8d77ca #5173bd #f8f9fc #06090f  texte-->

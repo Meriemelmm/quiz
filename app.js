@@ -234,68 +234,140 @@
 
 // showQuestion();
 const questions = [
+    // Question QCM
     {
+        type: "multiple-choice",  // Type de la question : Choix multiple
         question: "What does HTML stand for?",
-        answers: ["HyperText Markup Language", "HighText Machine Language", "Hyperlink Text Markup Language", "None of the above"],
-        correctAnswer: 0
+        answers: [
+            "HyperText Markup Language", 
+            "HighText Machine Language", 
+            "Hyperlink Text Markup Language", 
+            "None of the above"
+        ],
+        correctAnswer: 0  // L'index de la réponse correcte
     },
+    
+    // Question Vrai/Faux
     {
+        type: "true-false",  // Type de la question : Vrai ou Faux
+        question: "HTML is used to style web pages.",
+        answers: [
+            "True",
+            "False"
+        ],
+        correctAnswer: 1  // La réponse correcte est "False"
+    },
+
+    // Question Textuelle
+    {
+        type: "textual",  // Type de la question : Question textuelle
+        question: "What is the purpose of the <title> tag in HTML?",
+        correctAnswer: "It defines the title of the document, shown in the browser tab."  // Réponse libre à fournir par l'utilisateur
+    },
+
+    // Question QCM
+    {
+        type: "multiple-choice",
         question: "Which tag is used for a line break in HTML?",
         answers: ["<break>", "<lb>", "<br>", "<line>"],
         correctAnswer: 2
     },
+
+    // Question Vrai/Faux
     {
-        question: "Which element is used to define an HTML document?",
-        answers: ["<html>", "<body>", "<head>", "<header>"],
-        correctAnswer: 0
+        type: "true-false",
+        question: "The <img> tag is used to insert images in HTML.",
+        answers: ["True", "False"],
+        correctAnswer: 0  // La réponse correcte est "True"
     },
+
+    // Question Textuelle
     {
+        type: "textual",
+        question: "What is the purpose of the <head> element in an HTML document?",
+        correctAnswer: "It contains metadata like the document's title, links to stylesheets, and scripts." 
+    },
+
+    // Question QCM
+    {
+        type: "multiple-choice",
         question: "What is the correct HTML for creating a hyperlink?",
         answers: ["<a url='www.example.com'>Link</a>", "<a href='www.example.com'>Link</a>", "<link href='www.example.com'>Link</link>", "<a link='www.example.com'>Link</a>"],
         correctAnswer: 1
     },
+
+    // Question Vrai/Faux
     {
-        question: "What is the correct HTML for inserting an image?",
-        answers: ["<img src='image.jpg'>", "<image src='image.jpg'>", "<img href='image.jpg'>", "<img alt='image.jpg'>"],
-        correctAnswer: 0
+        type: "true-false",
+        question: "HTML stands for HyperText Markup Language.",
+        answers: ["True", "False"],
+        correctAnswer: 0  // La réponse correcte est "True"
     },
+
+    // Question Textuelle
     {
+        type: "textual",
+        question: "Explain the difference between an <ol> and <ul> tag in HTML.",
+        correctAnswer: "The <ol> tag creates an ordered list, while <ul> creates an unordered list." 
+    },
+
+    // Question QCM
+    {
+        type: "multiple-choice",
         question: "What does the <title> tag define in an HTML document?",
         answers: ["The document title", "The body of the document", "The header of the document", "The footer of the document"],
         correctAnswer: 0
     },
+
+    // Question QCM
     {
-        question: "Which tag is used to create a list in HTML?",
-        answers: ["<ul>", "<list>", "<li>", "<ol>"],
-        correctAnswer: 0
-    },
-    {
-        question: "Which HTML attribute is used to define the style of an element?",
-        answers: ["style", "class", "id", "color"],
-        correctAnswer: 0
-    },
-    {
+        type: "multiple-choice",
         question: "Which tag is used to define a table in HTML?",
         answers: ["<table>", "<grid>", "<tab>", "<list>"],
         correctAnswer: 0
     },
+
+    // Question Vrai/Faux
     {
-        question: "What tag is used to define a division or section in HTML?",
-        answers: ["<div>", "<section>", "<span>", "<header>"],
-        correctAnswer: 0
+        type: "true-false",
+        question: "The <div> tag is used to create a division or section in HTML.",
+        answers: ["True", "False"],
+        correctAnswer: 0  // La réponse correcte est "True"
     },
+
+    // Question QCM
     {
-        question: "Which tag is used to create a form in HTML?",
+        type: "multiple-choice",
+        question: "What tag is used to create a form in HTML?",
         answers: ["<form>", "<input>", "<button>", "<textarea>"],
         correctAnswer: 0
     }
 ];
 
+
+// var quiz_app=0;
+// QuizApp(quiz_app);
+// function QuizApp(n){
+//     var x = document.getElementsByClassName("quiz-app");
+//     x[n].style.display = "block";
+//     if(n=0){
+
+        
+// } 
+
+// else if(n=1){
+
+// }
+// else if(n=2){
+
+// }}
+
+
 let currentIndex = 0;
 let score = 0;
-let timeRemaining = 60; // 1 minute timer
+let timeRemaining = 180; 
 let quizTimer;
-let progress = 0; // Progress variable
+let progress = 0; 
 
 const questionElement = document.getElementById("question");
 const answerButtons = [
@@ -306,11 +378,13 @@ const answerButtons = [
 ];
 const submitButton = document.getElementById("submit-button");
 const nextButton = document.getElementById("next-button");
+console.log(nextButton)
 const scoreElement = document.getElementById("score");
 const timerElement = document.getElementById("time");
 const progressBar = document.getElementById("progress-bar");
+ const next=document.getElementById("next")
 
-// Start the timer
+
 function startTimer() {
     quizTimer = setInterval(() => {
         let minutes = Math.floor(timeRemaining / 60);
@@ -319,24 +393,85 @@ function startTimer() {
 
         if (timeRemaining <= 0) {
             clearInterval(quizTimer);
-            showResults(); // Time is up, show results
+            showResults(); 
         }
         timeRemaining--;
     }, 1000);
 }
 
-// Show question and answers
+
 function showQuestion() {
     const currentQuestion = questions[currentIndex];
     questionElement.innerText = currentQuestion.question;
-    answerButtons.forEach((button, index) => {
-        button.innerText = currentQuestion.answers[index];
-        button.style.backgroundColor = ""; // Reset background color
-        button.disabled = false; // Enable buttons
-        button.onclick = () => checkAnswer(index); // Handle click event
-    });
+    if("answers" in questions[currentIndex]){
+        document.getElementById("answers-area").style.display = "block";
+        document.getElementById("enter").style.display = "none";
+        answerButtons.forEach((button, index) => {
+            if(currentQuestion.answers[index] == undefined){
+                let answer3 = document.getElementById("answer3"); 
+                let answer4 = document.getElementById("answer4"); 
+                answer3.style.display = "none";
+                answer4.style.display = "none";
 
-    updateProgressBar(); // Update the progress bar when changing questions
+                
+            }else{
+                let answer3 = document.getElementById("answer3"); 
+                let answer4 = document.getElementById("answer4"); 
+                answer3.style.display = "block";
+                answer4.style.display = "block";
+            }
+    
+          
+            button.innerText = currentQuestion.answers[index];
+            console.log("hani ; " ,currentQuestion.answers[index]);
+    
+            button.style.backgroundColor = ""; 
+            button.disabled = false; 
+            button.onclick = () => checkAnswer(index); // Handle click event
+        });
+    
+        updateProgressBar(); // Update the progress bar when changing questions
+    }
+    // else{
+    //     let answers_text = document.getElementById("answers-text");
+    //     let answers_area = document.getElementById("answers-area");
+    //     let index
+        
+    //     answers_area.style.display = "none";
+    //     input=document.getElementById('enter').style.display="block";
+    //     submitButton.addEventListener('click',correctinswer);
+       
+
+    // }
+    else {
+        // Question textuelle
+        document.getElementById("answers-area").style.display = "none";
+        document.getElementById("enter").style.display = "block"; // Afficher la zone de saisie
+        
+        // Assurez-vous que le bouton de soumission déclenche correctement la fonction de validation
+        let submitButton = document.getElementById('submit-button');
+        submitButton.addEventListener('click', correctinswer); // Passez une référence à la fonction
+    }
+  
+}
+
+function correctinswer() {
+    const currentQuestion = questions[currentIndex];
+    let userAnswer = document.getElementById('enter').value.trim().toLowerCase(); // Récupère la réponse de l'utilisateur
+   
+   
+    document.getElementById('answers-area').style.display = 'none';
+    document.getElementById('enter').style.display = 'none'; 
+
+    
+    let result = document.createElement('h1');
+    if (userAnswer === currentQuestion.answers.trim().toLowerCase()) {
+        result.innerText = "Correct answer!";
+    } else {
+        result.innerText = `Incorrect! The correct answer is: ${currentQuestion.answers}`;
+    }
+
+    
 }
 
 // Check answer and update score
@@ -359,7 +494,7 @@ function checkAnswer(selectedIndex) {
         scoreElement.innerText = score;
     }
 
-    nextButton.style.display = 'inline-block'; // Show "Next" button
+    // nextButton.style.display = 'inline-block'; // Show "Next" button
 }
 
 // Go to the next question
