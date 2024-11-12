@@ -1,8 +1,9 @@
 *{ box-sizing: :border-box;
-color: #000;}
+color: black;}
 body{
     font-family: tahoma,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: #97CADB;
+    /* background-color: #97CADB; */
+    color:black
     
     
 }
@@ -83,6 +84,19 @@ padding:15px}
     
 
     
+}
+#next-button{
+  background-color: #018ABE;
+    display:block;
+    margin: 0 auto;
+   
+    padding:10px 15px;
+    border:none;
+    font-weight: #fff;
+    font-size:18px;
+    cursor:pointer;
+    margin-top: 15px;
+
 }
  .correct {
             background-color: green !important;  /* Appliquer un fond vert pour une réponse correcte */

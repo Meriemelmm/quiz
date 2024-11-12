@@ -1,194 +1,648 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .question-container {
-            margin-bottom: 20px;
-        }
-        .question-container input, .question-container button {
-            margin-top: 10px;
-        }
-        .hidden {
-            display: none;
-        }
-    </style>
-</head>
-<body>
-
-<h1>HTML Quiz</h1>
-
-<form id="quizForm">
-    <!-- Les questions seront ajoutées dynamiquement ici -->
-</form>
-
-<button type="button" onclick="submitQuiz()">Submit Quiz</button>
-
-<script>
-// Structure des questions avec différents types (QCM, Vrai/Faux, Textuelles)
-const questions = [
-    {
-        type: "multiple-choice", 
+<!-- <div class="quiz-app">
+    <div class="quiz-info">
+      <div class="category">score: <span id="score">0</span>/13</div>
+      <div class="timer">timer: <span id="time">03:00</span></div>
+      <div class="count">questions count: <span>10</span></div>
+    </div>
+  
+    <div class="quiz-area">
+      <h2 id="question" style="margin-top: 40px;">Why we use can't be element?</h2>
+  
+      <div id="answers-text">
+        <input type="text" placeholder="Enter your answer" id="enter" style="width:100%; height: 60px; text-align: center; border: none; display: none;">
+      </div>
+    </div>
+  
+    <div id="answers-area">
+      <button class="answer" id="answer1">Answer 1</button>
+      <button class="answer" id="answer2">Answer 2</button>
+      <button class="answer" id="answer3">Answer 3</button>
+      <button class="answer" id="answer4">Answer 4</button>
+    </div>
+  
+    <div style="display:flex; justify-content: space-between;">
+      <button id="submit-button">Submit</button>
+      <button id="next-button" style="display:none;">Next</button>
+    </div>
+  
+    <div class="barre" style="width:100%; height: 20px; background-color:#D6E8EE; border-radius: 50px; margin-top: 15px;">
+      <div id="progress-bar" style="width:1%; background-color: #018ABE; border-radius: 20px; height: 20px;"></div>
+    </div>
+  </div>
+  
+  <script>
+    const questions = [
+      {
+        type: "multiple-choice",
         question: "What does HTML stand for?",
-        answers: [
-            "HyperText Markup Language", 
-            "HighText Machine Language", 
-            "Hyperlink Text Markup Language", 
-            "None of the above"
-        ],
+        answers: ["HyperText Markup Language", "HighText Machine Language", "Hyperlink Text Markup Language", "None of the above"],
         correctAnswer: 0
-    },
-    {
+      },
+      {
         type: "true-false",
         question: "HTML is used to style web pages.",
         answers: ["True", "False"],
         correctAnswer: 1
-    },
-    {
+      },
+      {
         type: "textual",
-        question: "What is the purpose of the <head> element in an HTML document?",
-        correctAnswer: "It contains metadata like the document's title, links to stylesheets, and scripts."
-    },
-    {
+        question: "What is the purpose of the <title> tag in HTML?",
+        correctAnswer: "It defines the title of the document, shown in the browser tab."
+      },
+      {
         type: "multiple-choice",
         question: "Which tag is used for a line break in HTML?",
         answers: ["<break>", "<lb>", "<br>", "<line>"],
         correctAnswer: 2
-    },
-    {
-        type: "true-false",
-        question: "The <img> tag is used to insert images in HTML.",
-        answers: ["True", "False"],
-        correctAnswer: 0
-    }
-];
-
-// Fonction pour afficher les questions
-function displayQuestions() {
-    const quizForm = document.getElementById('quizForm');
-    questions.forEach((question, index) => {
-        const div = document.createElement('div');
-        div.classList.add('question-container');
-        const questionElement = document.createElement('p');
-        questionElement.innerHTML = (index + 1) + '. ' + question.question;
-        div.appendChild(questionElement);
-
-        if (question.type === 'multiple-choice') {
-            question.answers.forEach((answer, i) => {
-                const answerLabel = document.createElement('label');
-                const answerInput = document.createElement('input');
-                answerInput.type = 'radio';
-                answerInput.name = 'question' + index;
-                answerInput.value = i;
-                answerLabel.appendChild(answerInput);
-                answerLabel.appendChild(document.createTextNode(answer));
-                div.appendChild(answerLabel);
-                div.appendChild(document.createElement('br'));
-            });
-        } else if (question.type === 'true-false') {
-            // Boutons Vrai / Faux
-            const trueButton = document.createElement('button');
-            trueButton.innerHTML = "True";
-            trueButton.type = "button";
-            trueButton.onclick = () => handleTrueFalseAnswer(index, true);
-            div.appendChild(trueButton);
-
-            const falseButton = document.createElement('button');
-            falseButton.innerHTML = "False";
-            falseButton.type = "button";
-            falseButton.onclick = () => handleTrueFalseAnswer(index, false);
-            div.appendChild(falseButton);
-        } else if (question.type === 'textual') {
-            const inputText = document.createElement('input');
-            inputText.type = 'text';
-            inputText.name = 'question' + index;
-            div.appendChild(inputText);
-        }
-
-        quizForm.appendChild(div);
-    });
-}
-
-// Fonction pour gérer les réponses des questions Vrai/Faux
-function handleTrueFalseAnswer(questionIndex, answer) {
-    const question = questions[questionIndex];
-    const buttons = document.getElementsByName('question' + questionIndex);
-    
-    // Cacher les boutons après sélection de la réponse
-    buttons.forEach(button => button.classList.add('hidden'));
-    
-    // Vérifier si la réponse est correcte
-    checkAnswer(questionIndex, answer);
-}
-
-// Fonction pour vérifier les réponses des questions QCM et Textuelles
-function checkAnswer(questionIndex, userAnswer) {
-    const question = questions[questionIndex];
-    const correctAnswer = question.correctAnswer;
-    let isCorrect = false;
-
-    if (question.type === 'multiple-choice') {
-        isCorrect = correctAnswer === userAnswer;
-    } else if (question.type === 'true-false') {
-        isCorrect = correctAnswer === userAnswer;
-    } else if (question.type === 'textual') {
-        const userText = userAnswer.trim().toLowerCase();
-        const correctText = question.correctAnswer.trim().toLowerCase();
-        isCorrect = userText === correctText;
-    }
-
-    // Afficher si la réponse est correcte ou non
-    alert(isCorrect ? 'Correct answer!' : 'Incorrect answer!');
-}
-
-// Fonction de soumission du quiz
-function submitQuiz() {
+      }
+    ];
+  
+    let currentIndex = 0;
     let score = 0;
+    let timeRemaining = 180;
+    let quizTimer;
+    let progress = 0;
+  
+    const questionElement = document.getElementById("question");
+    const answerButtons = [
+      document.getElementById('answer1'),
+      document.getElementById('answer2'),
+      document.getElementById('answer3'),
+      document.getElementById('answer4')
+    ];
+    const submitButton = document.getElementById("submit-button");
+    const nextButton = document.getElementById("next-button");
+    const scoreElement = document.getElementById("score");
+    const timerElement = document.getElementById("time");
+    const progressBar = document.getElementById("progress-bar");
+  
+    function startTimer() {
+      quizTimer = setInterval(() => {
+        let minutes = Math.floor(timeRemaining / 60);
+        let seconds = timeRemaining % 60;
+        timerElement.innerText = `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+  
+        if (timeRemaining <= 0) {
+          clearInterval(quizTimer);
+          showResults();
+        }
+        timeRemaining--;
+      }, 1000);
+    }
+  
+    function showQuestion() {
+      const currentQuestion = questions[currentIndex];
+      questionElement.innerText = currentQuestion.question;
+      
+      if (currentQuestion.type === "multiple-choice" || currentQuestion.type === "true-false") {
+        document.getElementById("enter").style.display = "none";
+        document.getElementById("answers-area").style.display = "block";
+  
+        answerButtons.forEach((button, index) => {
+          if (currentQuestion.answers[index] === undefined) {
+            button.style.display = "none";
+          } else {
+            button.style.display = "block";
+            button.innerText = currentQuestion.answers[index];
+            button.style.backgroundColor = "";
+            button.disabled = false;
+            button.onclick = () => checkAnswer(index);
+          }
+        });
+  
+      } else if (currentQuestion.type === "textual") {
+        document.getElementById("answers-area").style.display = "none";
+        document.getElementById("enter").style.display = "block";
+        nextButton.style.display = "none"; // Masquer "Next" tant que la réponse n'est pas soumise
+      }
+  
+      updateProgressBar();
+    }
+  
+    function checkTextualAnswer() {
+      const currentQuestion = questions[currentIndex];
+      const userAnswer = document.getElementById("enter").value.trim();
+  
+      if (userAnswer.toLowerCase() === currentQuestion.correctAnswer.toLowerCase()) {
+        score++;
+        scoreElement.innerText = score;
+        document.createElement('h1').innerHTML="correct";
 
-    questions.forEach((question, index) => {
-        const userAnswer = getUserAnswer(index);
-        const isCorrect = checkAnswer(index, userAnswer);
-        if (isCorrect) {
+      } else {
+        document.createElement('h1')=("Incorrect! The correct answer is: " + currentQuestion.correctAnswer);
+      }
+  
+      nextButton.style.display = 'block'; // Afficher le bouton "Next" après soumission de la réponse
+    }
+  
+    function checkAnswer(selectedIndex) {
+      const currentQuestion = questions[currentIndex];
+      answerButtons.forEach(button => button.disabled = true);
+  
+      answerButtons.forEach((button, index) => {
+        if (index === currentQuestion.correctAnswer) {
+          button.style.backgroundColor = 'green';
+        } else if (index === selectedIndex) {
+          button.style.backgroundColor = 'red';
+        } else {
+          button.style.backgroundColor = 'gray';
+        }
+      });
+  
+      if (selectedIndex === currentQuestion.correctAnswer) {
+        score++;
+        scoreElement.innerText = score;
+      }
+  
+      // Afficher "Next"
+    }
+  
+    function goToNextQuestion() {
+      currentIndex++;
+  
+      if (currentIndex < questions.length) {
+        showQuestion(); // Afficher la prochaine question
+        nextButton.style.display = 'none'; // Masquer le bouton "Next" jusqu'à ce qu'une réponse soit donnée
+      } else {
+        showResults(); // Si toutes les questions sont répondues, afficher les résultats
+      }
+    }
+  
+    function updateProgressBar() {
+      progress = ((currentIndex + 1) / questions.length) * 100;
+      progressBar.style.width = `${progress}%`;
+    }
+  
+    function showResults() {
+      const result = document.createElement('h1');
+      result.innerText = `Quiz complete! Your score is ${score} out of ${questions.length}`;
+      result.style.background = score === questions.length ? 'green' : 'red';
+      result.style.color = 'white';
+      result.style.textAlign = 'center';
+      result.style.padding = '20px';
+      result.style.marginTop = '20px';
+  
+      document.body.appendChild(result);
+  
+      nextButton.style.display = 'none';
+      timerElement.innerText = '00:00';
+    }
+  
+    function startQuiz() {
+      startTimer();
+      showQuestion();
+    }
+  
+    submitButton.addEventListener('click', () => {
+      if (questions[currentIndex].type === "textual") {
+        checkTextualAnswer();
+      } else {
+        goToNextQuestion();
+      }
+    });
+  
+    submitButton.addEventListener('click', goToNextQuestion);
+  
+    startQuiz();
+  </script> -->
+  <!-- <div class="quiz-app">
+    <div class="quiz-info">
+        <div class="category">score: <span id="score">0</span>/13</div>
+        <div class="timer">timer: <span id="time">03:00</span></div>
+        <div class="count">questions count: <span>10</span></div>
+    </div>
+
+    <div class="quiz-area">
+        <h2 id="question" style="margin-top: 40px;">Why we use can't be element?</h2>
+
+        <div id="answers-text">
+            <input type="text" placeholder="Enter your answer" id="enter" style="width:100%; height: 60px; text-align: center; border: none; display: none;">
+        </div>
+    </div>
+
+    <div id="answers-area">
+        <button class="answer" id="answer1">Answer 1</button>
+        <button class="answer" id="answer2">Answer 2</button>
+        <button class="answer" id="answer3">Answer 3</button>
+        <button class="answer" id="answer4">Answer 4</button>
+    </div>
+
+    <div style="display:flex; justify-content: space-between;">
+        <button id="submit-button">Submit</button>
+        <button id="next-button" style="display:none;">Next</button>
+    </div>
+
+    <div class="barre" style="width:100%; height: 20px; background-color:#D6E8EE; border-radius: 50px; margin-top: 15px;">
+        <div id="progress-bar" style="width:1%; background-color: #018ABE; border-radius: 20px; height: 20px;"></div>
+    </div>
+</div>
+
+<script>
+    const questions = [
+        {
+            type: "multiple-choice",
+            question: "What does HTML stand for?",
+            answers: ["HyperText Markup Language", "HighText Machine Language", "Hyperlink Text Markup Language", "None of the above"],
+            correctAnswer: 0
+        },
+        {
+            type: "true-false",
+            question: "HTML is used to style web pages.",
+            answers: ["True", "False"],
+            correctAnswer: 1
+        },
+        {
+            type: "textual",
+            question: "What is the purpose of the <title> tag in HTML?",
+            correctAnswer: "It defines the title of the document, shown in the browser tab."
+        },
+        {
+            type: "multiple-choice",
+            question: "Which tag is used for a line break in HTML?",
+            answers: ["<break>", "<lb>", "<br>", "<line>"],
+            correctAnswer: 2
+        }
+    ];
+
+    let currentIndex = 0;
+    let score = 0;
+    let timeRemaining = 180;
+    let quizTimer;
+    let progress = 0;
+
+    const questionElement = document.getElementById("question");
+    const answerButtons = [
+        document.getElementById('answer1'),
+        document.getElementById('answer2'),
+        document.getElementById('answer3'),
+        document.getElementById('answer4')
+    ];
+    const submitButton = document.getElementById("submit-button");
+    const nextButton = document.getElementById("next-button");
+    const scoreElement = document.getElementById("score");
+    const timerElement = document.getElementById("time");
+    const progressBar = document.getElementById("progress-bar");
+
+    function startTimer() {
+        quizTimer = setInterval(() => {
+            let minutes = Math.floor(timeRemaining / 60);
+            let seconds = timeRemaining % 60;
+            timerElement.innerText = `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+
+            if (timeRemaining <= 0) {
+                clearInterval(quizTimer);
+                showResults();
+            }
+            timeRemaining--;
+        }, 1000);
+    }
+
+    function showQuestion() {
+        const currentQuestion = questions[currentIndex];
+        questionElement.innerText = currentQuestion.question;
+
+        if (currentQuestion.type === "multiple-choice" || currentQuestion.type === "true-false") {
+            document.getElementById("enter").style.display = "none";
+            document.getElementById("answers-area").style.display = "block";
+
+            answerButtons.forEach((button, index) => {
+                if (currentQuestion.answers[index] === undefined) {
+                    button.style.display = "none";
+                } else {
+                    button.style.display = "block";
+                    button.innerText = currentQuestion.answers[index];
+                    button.style.backgroundColor = "";
+                    button.disabled = false;
+                    button.onclick = () => checkAnswer(index);
+                }
+            });
+
+        } else if (currentQuestion.type === "textual") {
+            document.getElementById("answers-area").style.display = "none";
+            document.getElementById("enter").style.display = "block";
+            nextButton.style.display = "none"; // Masquer "Next" tant que la réponse n'est pas soumise
+        }
+
+        updateProgressBar();
+    }
+
+    function checkTextualAnswer() {
+        const currentQuestion = questions[currentIndex];
+        const userAnswer = document.getElementById("enter").value.trim();
+
+        const resultMessage = document.createElement('h1');
+        resultMessage.style.textAlign = 'center';
+
+        if (userAnswer.toLowerCase() === currentQuestion.correctAnswer.toLowerCase()) {
             score++;
+            scoreElement.innerText = score;
+            resultMessage.innerText = "Correct!";
+            resultMessage.style.color = 'green';
+        } else {
+            resultMessage.innerText = `Incorrect! The correct answer is: ${currentQuestion.correctAnswer}`;
+            resultMessage.style.color = 'red';
+        }
+
+        // Ajouter le message au DOM
+        document.querySelector('.quiz-area').appendChild(resultMessage);
+        nextButton.style.display = 'block'; // Afficher le bouton "Next" après soumission de la réponse
+    }
+
+    function checkAnswer(selectedIndex) {
+        const currentQuestion = questions[currentIndex];
+        answerButtons.forEach(button => button.disabled = true);
+
+        answerButtons.forEach((button, index) => {
+            if (index === currentQuestion.correctAnswer) {
+                button.style.backgroundColor = 'green';
+            } else if (index === selectedIndex) {
+                button.style.backgroundColor = 'red';
+            } else {
+                button.style.backgroundColor = 'gray';
+            }
+        });
+
+        if (selectedIndex === currentQuestion.correctAnswer) {
+            score++;
+            scoreElement.innerText = score;
+        }
+
+        nextButton.style.display = 'block'; // Afficher "Next"
+    }
+
+    function goToNextQuestion() {
+        currentIndex++;
+
+        if (currentIndex < questions.length) {
+            showQuestion(); // Afficher la prochaine question
+            nextButton.style.display = 'none'; // Masquer le bouton "Next" jusqu'à ce qu'une réponse soit donnée
+        } else {
+            showResults(); // Si toutes les questions sont répondues, afficher les résultats
+        }
+    }
+
+    function updateProgressBar() {
+        progress = ((currentIndex + 1) / questions.length) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+
+    function showResults() {
+        const result = document.createElement('h1');
+        result.innerText = `Quiz complete! Your score is ${score} out of ${questions.length}`;
+        result.style.background = score === questions.length ? 'green' : 'red';
+        result.style.color = 'white';
+        result.style.textAlign = 'center';
+        result.style.padding = '20px';
+        result.style.marginTop = '20px';
+
+        document.body.appendChild(result);
+
+        nextButton.style.display = 'none';
+        timerElement.innerText = '00:00';
+    }
+
+    function startQuiz() {
+        startTimer();
+        showQuestion();
+    }
+
+    submitButton.addEventListener('click', () => {
+        if (questions[currentIndex].type === "textual") {
+            checkTextualAnswer();
+        } else {
+            goToNextQuestion();
         }
     });
 
-    alert("Your score is: " + score + " out of " + questions.length);
-}
+    nextButton.addEventListener('click', goToNextQuestion);
 
-// Fonction pour récupérer la réponse de l'utilisateur
-function getUserAnswer(index) {
-    const question = questions[index];
-    let answer = "";
+    startQuiz();
+</script> -->
+<div class="quiz-app">
+    <div class="quiz-info">
+        <div class="category">score: <span id="score">0</span>/13</div>
+        <div class="timer">timer: <span id="time">03:00</span></div>
+        <div class="count">questions count: <span>10</span></div>
+    </div>
 
-    if (question.type === "multiple-choice") {
-        const radios = document.getElementsByName('question' + index);
-        for (let i = 0; i < radios.length; i++) {
-            if (radios[i].checked) {
-                answer = radios[i].value;
-                break;
-            }
+    <div class="quiz-area">
+        <h2 id="question" style="margin-top: 40px;">Why we use can't be element?</h2>
+        <!-- Zone pour afficher la réponse -->
+        <div id="answer-feedback" style="text-align: center; margin-top: 10px;"></div>
+
+        <div id="answers-text">
+            <input type="text" placeholder="Enter your answer" id="enter" style="width:100%; height: 60px; text-align: center; border: none; display: none;">
+        </div>
+    </div>
+
+    <div id="answers-area">
+        <button class="answer" id="answer1">Answer 1</button>
+        <button class="answer" id="answer2">Answer 2</button>
+        <button class="answer" id="answer3">Answer 3</button>
+        <button class="answer" id="answer4">Answer 4</button>
+    </div>
+
+    <div style="display:flex; justify-content: space-between;">
+        <button id="submit-button">Submit</button>
+        <button id="next-button" style="display:none;">Next</button>
+    </div>
+
+    <div class="barre" style="width:100%; height: 20px; background-color:#D6E8EE; border-radius: 50px; margin-top: 15px;">
+        <div id="progress-bar" style="width:1%; background-color: #018ABE; border-radius: 20px; height: 20px;"></div>
+    </div>
+</div>
+
+<script>
+    const questions = [
+        {
+            type: "multiple-choice",
+            question: "What does HTML stand for?",
+            answers: ["HyperText Markup Language", "HighText Machine Language", "Hyperlink Text Markup Language", "None of the above"],
+            correctAnswer: 0
+        },
+        {
+            type: "true-false",
+            question: "HTML is used to style web pages.",
+            answers: ["True", "False"],
+            correctAnswer: 1
+        },
+        {
+            type: "textual",
+            question: "What is the purpose of the <title> tag in HTML?",
+            correctAnswer: "It defines the title of the document, shown in the browser tab."
+        },
+        {
+            type: "multiple-choice",
+            question: "Which tag is used for a line break in HTML?",
+            answers: ["<break>", "<lb>", "<br>", "<line>"],
+            correctAnswer: 2
         }
-    } else if (question.type === "true-false") {
-        // La réponse a déjà été gérée par handleTrueFalseAnswer
-    } else if (question.type === "textual") {
-        const input = document.querySelector('input[name="question' + index + '"]');
-        answer = input ? input.value : "";
+    ];
+
+    let currentIndex = 0;
+    let score = 0;
+    let timeRemaining = 180;
+    let quizTimer;
+    let progress = 0;
+
+    const questionElement = document.getElementById("question");
+    const answerButtons = [
+        document.getElementById('answer1'),
+        document.getElementById('answer2'),
+        document.getElementById('answer3'),
+        document.getElementById('answer4')
+    ];
+    const submitButton = document.getElementById("submit-button");
+    const nextButton = document.getElementById("next-button");
+    const scoreElement = document.getElementById("score");
+    const timerElement = document.getElementById("time");
+    const progressBar = document.getElementById("progress-bar");
+    const answerFeedback = document.getElementById("answer-feedback");
+
+    function startTimer() {
+        quizTimer = setInterval(() => {
+            let minutes = Math.floor(timeRemaining / 60);
+            let seconds = timeRemaining % 60;
+            timerElement.innerText = `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+
+            if (timeRemaining <= 0) {
+                clearInterval(quizTimer);
+                showResults();
+            }
+            timeRemaining--;
+        }, 1000);
     }
 
-    return answer;
-}
+    function showQuestion() {
+        const currentQuestion = questions[currentIndex];
+        questionElement.innerText = currentQuestion.question;
 
-// Afficher les questions
-displayQuestions();
+        // Effacer la rétroaction de la question précédente
+        answerFeedback.innerHTML = "";
 
+        if (currentQuestion.type === "multiple-choice" || currentQuestion.type === "true-false") {
+            document.getElementById("enter").style.display = "none";
+            document.getElementById("answers-area").style.display = "block";
+
+            answerButtons.forEach((button, index) => {
+                if (currentQuestion.answers[index] === undefined) {
+                    button.style.display = "none";
+                } else {
+                    button.style.display = "block";
+                    button.innerText = currentQuestion.answers[index];
+                    button.style.backgroundColor = "";
+                    button.disabled = false;
+                    button.onclick = () => checkAnswer(index);
+                }
+            });
+
+        } else if (currentQuestion.type === "textual") {
+            document.getElementById("answers-area").style.display = "none";
+            document.getElementById("enter").style.display = "block";
+            nextButton.style.display = "none"; // Masquer "Next" tant que la réponse n'est pas soumise
+        }
+
+        updateProgressBar();
+    }
+
+    function checkTextualAnswer() {
+        const currentQuestion = questions[currentIndex];
+        const userAnswer = document.getElementById("enter").value.trim();
+
+        // Afficher la réponse immédiatement sous la question
+        const resultMessage = document.createElement('h3');
+        resultMessage.style.textAlign = 'center';
+        if (userAnswer.toLowerCase() === currentQuestion.correctAnswer.toLowerCase()) {
+            score++;
+            scoreElement.innerText = score;
+            resultMessage.innerText = "Correct!";
+            resultMessage.style.color = 'green';
+            document.getElementById('enter').style.display="none";
+        } else {
+            resultMessage.innerText = `Incorrect! The correct answer is: ${currentQuestion.correctAnswer}`;
+            resultMessage.style.color = 'red';
+            document.getElementById('enter').style.display="none";
+
+        }
+
+        // Ajouter le message au DOM dans la zone de rétroaction
+        answerFeedback.appendChild(resultMessage);
+
+        nextButton.style.display = 'block'; // Afficher le bouton "Next" après soumission de la réponse
+    }
+
+    function checkAnswer(selectedIndex) {
+        const currentQuestion = questions[currentIndex];
+        answerButtons.forEach(button => button.disabled = true);
+
+        answerButtons.forEach((button, index) => {
+            if (index === currentQuestion.correctAnswer) {
+                button.style.backgroundColor = 'green';
+            } else if (index === selectedIndex) {
+                button.style.backgroundColor = 'red';
+            } else {
+                button.style.backgroundColor = 'gray';
+            }
+        });
+
+        if (selectedIndex === currentQuestion.correctAnswer) {
+            score++;
+            scoreElement.innerText = score;
+        }
+
+        // nextButton.style.display = 'block'; // Afficher "Next"
+    }
+
+    function goToNextQuestion() {
+        currentIndex++;
+
+        if (currentIndex < questions.length) {
+            showQuestion(); // Afficher la prochaine question
+            nextButton.style.display = 'none'; // Masquer le bouton "Next" jusqu'à ce qu'une réponse soit donnée
+        } else {
+            showResults(); // Si toutes les questions sont répondues, afficher les résultats
+        }
+    }
+
+    function updateProgressBar() {
+        progress = ((currentIndex + 1) / questions.length) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+
+    function showResults() {
+        const result = document.createElement('h1');
+        result.innerText = `Quiz complete! Your score is ${score} out of ${questions.length}`;
+        result.style.background = score === questions.length ? 'green' : 'red';
+        result.style.color = 'white';
+        result.style.textAlign = 'center';
+        result.style.padding = '20px';
+        result.style.marginTop = '20px';
+
+        document.body.appendChild(result);
+
+        nextButton.style.display = 'none';
+        timerElement.innerText = '00:00';
+    }
+
+    function startQuiz() {
+        startTimer();
+        showQuestion();
+    }
+
+    submitButton.addEventListener('click', () => {
+        if (questions[currentIndex].type === "textual") {
+            checkTextualAnswer();
+        } else {
+            goToNextQuestion();
+        }
+    });
+
+    nextButton.addEventListener('click', goToNextQuestion);
+
+    startQuiz();
 </script>
 
-</body>
-</html>
 
+  
+  
+  

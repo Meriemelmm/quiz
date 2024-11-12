@@ -309,8 +309,8 @@ const questions = [
     // Question Textuelle
     {
         type: "textual",
-        question: "Explain the difference between an <ol> and <ul> tag in HTML.",
-        correctAnswer: "The <ol> tag creates an ordered list, while <ul> creates an unordered list." 
+        question: "best you ",
+        correctAnswer: "me" 
     },
 
     // Question QCM
@@ -365,217 +365,567 @@ const questions = [
 // }}
 
 
-let currentIndex = 0;
-console.log( question[0].correctAnswer)
+// let currentIndex = 0;
+// console.log( question[0].correctAnswer)
 
-let score = 0;
-let timeRemaining = 180; 
-let quizTimer;
-let progress = 0; 
-console.log(questions.answers);
-questions.forEach(question => {
-    // Vérifier si la question est de type textuelle
-    if (question.type === "textual") {
-       
-        console.log(`Correct Answer: "${question.correctAnswer}"`);
-    }
-});
+// let score = 0;
+// let timeRemaining = 180; 
+// let quizTimer;
+// let progress = 0; 
+
+
+  
 
 
 
     
 
-const questionElement = document.getElementById("question");
-const answerButtons = [
-    document.getElementById('answer1'),
-    document.getElementById('answer2'),
-    document.getElementById('answer3'),
-    document.getElementById('answer4')
-];
-const submitButton = document.getElementById("submit-button");
-const nextButton = document.getElementById("next-button");
-console.log(nextButton)
-const scoreElement = document.getElementById("score");
-const timerElement = document.getElementById("time");
-const progressBar = document.getElementById("progress-bar");
- const next=document.getElementById("next");
+// const questionElement = document.getElementById("question");
+// const answerButtons = [
+//     document.getElementById('answer1'),
+//     document.getElementById('answer2'),
+//     document.getElementById('answer3'),
+//     document.getElementById('answer4')
+// ];
+// const submitButton = document.getElementById("submit-button");
+// const nextButton = document.getElementById("next-button");
+// console.log(nextButton)
+// const scoreElement = document.getElementById("score");
+// const timerElement = document.getElementById("time");
+// const progressBar = document.getElementById("progress-bar");
+//  const next=document.getElementById("next");
  
 
 
-function startTimer() {
-    quizTimer = setInterval(() => {
-        let minutes = Math.floor(timeRemaining / 60);
-        let seconds = timeRemaining % 60;
-        timerElement.innerText = `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+// function startTimer() {
+//     quizTimer = setInterval(() => {
+//         let minutes = Math.floor(timeRemaining / 60);
+//         let seconds = timeRemaining % 60;
+//         timerElement.innerText = `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
 
-        if (timeRemaining <= 0) {
-            clearInterval(quizTimer);
-            showResults(); 
-        }
-        timeRemaining--;
-    }, 1000);
-}
+//         if (timeRemaining <= 0) {
+//             clearInterval(quizTimer);
+//             showResults(); 
+//         }
+//         timeRemaining--;
+//     }, 1000);
+// }
 
 
-function showQuestion() {
-    const currentQuestion = questions[currentIndex];
-    questionElement.innerText = currentQuestion.question;
-    if("answers" in questions[currentIndex]){
+// function showQuestion() {
+//     const currentQuestion = questions[currentIndex];
+//     questionElement.innerText = currentQuestion.question;
+//     if("answers" in questions[currentIndex]){
         
         
-        document.getElementById("enter").style.display = "none";
-        answerar.style.display = "block"
+//         document.getElementById("enter").style.display = "none";
+//         answerar.style.display = "block"
         
     
         
-        answerButtons.forEach((button, index) => {
-            if(currentQuestion.answers[index] == undefined){
-                let answer3 = document.getElementById("answer3"); 
-                let answer4 = document.getElementById("answer4"); 
-                answer3.style.display = "none";
-                answer4.style.display = "none";
+//         answerButtons.forEach((button, index) => {
+//             if(currentQuestion.answers[index] == undefined){
+//                 let answer3 = document.getElementById("answer3"); 
+//                 let answer4 = document.getElementById("answer4"); 
+//                 answer3.style.display = "none";
+//                 answer4.style.display = "none";
                 
-            }else{
-                let answer3 = document.getElementById("answer3"); 
-                let answer4 = document.getElementById("answer4"); 
-                answer3.style.display = "block";
-                answer4.style.display = "block";
-            }
+//             }else{
+//                 let answer3 = document.getElementById("answer3"); 
+//                 let answer4 = document.getElementById("answer4"); 
+//                 answer3.style.display = "block";
+//                 answer4.style.display = "block";
+//             }
     
           
-            button.innerText = currentQuestion.answers[index];
-            console.log("hani ; " ,currentQuestion.answers[index]);
+//             button.innerText = currentQuestion.answers[index];
+//             console.log("hani ; " ,currentQuestion.answers[index]);
     
-            button.style.backgroundColor = ""; 
-            button.disabled = false; 
-            button.onclick = () => checkAnswer(index); 
-        });
+//             button.style.backgroundColor = ""; 
+//             button.disabled = false; 
+//             button.onclick = () => checkAnswer(index); 
+//         });
     
-        updateProgressBar(); 
-    }
-    // else{
-    //     let answers_text = document.getElementById("answers-text");
-    //     let answers_area = document.getElementById("answers-area");
-    //     let index
+       
+//     }
+//     // else{
+//     //     let answers_text = document.getElementById("answers-text");
+//     //     let answers_area = document.getElementById("answers-area");
+//     //     let index
         
-    //     answers_area.style.display = "none";
-    //     input=document.getElementById('enter').style.display="block";
-    //     submitButton.addEventListener('click',correctinswer);
+//     //     answers_area.style.display = "none";
+//     //     input=document.getElementById('enter').style.display="block";
+//     //     submitButton.addEventListener('click',correctinswer);
        
 
-    // }
-    else {
-        
-        answerar.style.display = "none" 
-        document.getElementById("enter").style.display = "block"; // Afficher la zone de saisie
-        
-        // let submitButton = document.getElementById('submit-button');
-        // submitButton.addEventListener('click', correctAnswer); // Passez une référence à la fonction
-    
-    }}
-    let userAnswer=document.getElementById('enter').value;
-console.log(userAnswer);
-// correctInput{
-//     let userAnswer=document.getElementById('enter').value;
-//     let  correctAnswer
-// }
-
-// function correctAnswer() {
-   
-//     const currentQuestion = questions[currentIndex];
-//     // let userAnswer = document.getElementById('enter').value.trim().toLowerCase(); // Récupère la réponse de l'utilisateur
-
-//     let correctAnswer = currentQuestion.correctAnswer;
-//     console.log( correctAnswer)
-//     // console.log(correctAnswer);
-
-    
-//     // let result = document.createElement('h1');
-//     // if (userAnswer === correctAnswer) {
-//     //     result.innerText = "Correct answer!";
-        
-//     // } else {
-//     //     result.innerText = `Incorrect! The correct answer is: ${currentQuestion.answers}`;
 //     // }
+   
+        
+//         else if (currentQuestion.type === "textual") {
+//             document.getElementById("answers-area").style.display = "none";
+//             document.getElementById("enter").style.display = "block";
+//             nextButton.style.display = "none"; // Masquer le bouton "Next" jusqu'à ce qu'une réponse soit soumise
+//           }
+//     updateProgressBar(); 
+//      }
+//      function checkTextualAnswer() {
+//         const currentQuestion = questions[currentIndex];
+//         const userAnswer = document.getElementById("enter").value.trim();
+      
+//         if (userAnswer.toLowerCase() === currentQuestion.correctAnswer.toLowerCase()) {
+//           score++;
+//           scoreElement.innerText = score;
+//         }
+      
+//         nextButton.style.display = 'block'; // Afficher le bouton "Next"
+//       }
+//       submitButton.addEventListener('click', () => {
+//         if (questions[currentIndex].type === "textual") {
+//           checkTextualAnswer();
+//         } else {
+//           goToNextQuestion();
+//         }
+//       });
+//       nextButton.addEventListener('click', goToNextQuestion);      
+// // correctInput{
+// //     let userAnswer=document.getElementById('enter').value;
+// //     let  correctAnswer
+// // }
+
+// // function correctAnswer() {
+   
+// //     const currentQuestion = questions[currentIndex];
+// //     // let userAnswer = document.getElementById('enter').value.trim().toLowerCase(); // Récupère la réponse de l'utilisateur
+
+// //     let correctAnswer = currentQuestion.correctAnswer;
+// //     console.log( correctAnswer)
+// //     // console.log(correctAnswer);
+
+    
+// //     // let result = document.createElement('h1');
+// //     // if (userAnswer === correctAnswer) {
+// //     //     result.innerText = "Correct answer!";
+        
+// //     // } else {
+// //     //     result.innerText = `Incorrect! The correct answer is: ${currentQuestion.answers}`;
+// //     // }
+
+    
+// // }
+
+
+// function checkAnswer(selectedIndex) {
+//     const currentQuestion = questions[currentIndex];
+//     answerButtons.forEach(button => button.disabled = true); 
+
+//     answerButtons.forEach((button, index) => {
+//         if (index === currentQuestion.correctAnswer) {
+//             button.style.backgroundColor = 'green'; 
+//         } else if (index === selectedIndex) {
+//             button.style.backgroundColor = 'red'; 
+//         } else {
+//             button.style.backgroundColor = 'gray'; 
+//         }
+//     });
+
+//     if (selectedIndex === currentQuestion.correctAnswer) {
+//         score++;
+//         scoreElement.innerText = score;
+//     }
 
     
 // }
 
 
-function checkAnswer(selectedIndex) {
-    const currentQuestion = questions[currentIndex];
-    answerButtons.forEach(button => button.disabled = true); 
+// function goToNextQuestion() {
+//     currentIndex++;
 
-    answerButtons.forEach((button, index) => {
-        if (index === currentQuestion.correctAnswer) {
-            button.style.backgroundColor = 'green'; 
-        } else if (index === selectedIndex) {
-            button.style.backgroundColor = 'red'; 
+//     if (currentIndex < questions.length) {
+//         showQuestion(); // Show the next question
+//         nextButton.style.display = 'none'; // Hide "Next" button until an answer is chosen
+//     } else {
+//         showResults(); // All questions answered, show results
+//     }
+// }
+
+// // Update progress bar
+// function updateProgressBar() {
+//     progress = ((currentIndex + 1) / questions.length) * 100;
+//     progressBar.style.width = `${progress}%`; // Update the width of the progress bar
+// }
+
+// // Show results
+// function showResults() {
+//        // Créer un élément h1 pour afficher le résultat
+//        const result = document.createElement('h1');
+//        result.innerText = `Quiz complete! Your score is ${score} out of ${questions.length}`;
+       
+//        // Styliser l'élément h1
+//        result.style.background = score === questions.length ? 'green' : 'red'; // Si le score est égal au nombre total de questions, vert, sinon rouge.
+//        result.style.color = 'white'; // Mettre le texte en blanc pour le contraste
+//        result.style.textAlign = 'center'; // Centrer le texte
+//        result.style.padding = '20px'; // Ajouter un peu de padding
+//        result.style.marginTop = '20px'; // Ajouter un peu de marge en haut
+       
+//        // Ajouter l'élément à la page
+//        document.body.appendChild(result);
+   
+    
+    
+    
+//     nextButton.style.display = 'none'; 
+//     timerElement.innerText = '00:00'; 
+// }
+
+// // Initialize the quiz
+// function startQuiz() {
+//     startTimer(); // Start the timer
+//     showQuestion(); // Show the first question
+// }
+
+// submitButton.addEventListener('click', goToNextQuestion);
+
+// // Start the quiz
+// startQuiz();
+// // window location a href
+// let currentIndex = 0;
+// let score = 0;
+// let timeRemaining = 180;
+// let quizTimer;
+// let progress = 0;
+
+// const questionElement = document.getElementById("question");
+// const answerButtons = [
+//     document.getElementById('answer1'),
+//     document.getElementById('answer2'),
+//     document.getElementById('answer3'),
+//     document.getElementById('answer4')
+// ];
+// const submitButton = document.getElementById("submit-button");
+// const nextButton = document.getElementById("next-button");
+// const scoreElement = document.getElementById("score");
+// const timerElement = document.getElementById("time");
+// const progressBar = document.getElementById("progress-bar");
+// const answerFeedback = document.getElementById("answer-feedback");
+
+// function startTimer() {
+//     quizTimer = setInterval(() => {
+//         let minutes = Math.floor(timeRemaining / 60);
+//         let seconds = timeRemaining % 60;
+//         timerElement.innerText = `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+
+//         if (timeRemaining <= 0) {
+//             clearInterval(quizTimer);
+//             showResults();
+//         }
+//         timeRemaining--;
+//     }, 1000);
+// }
+
+// function showQuestion() {
+//     const currentQuestion = questions[currentIndex];
+//     questionElement.innerText = currentQuestion.question;
+
+//     // Effacer la rétroaction de la question précédente
+    
+//     answerFeedback.innerHTML = "";
+
+//     if (currentQuestion.type === "multiple-choice" || currentQuestion.type === "true-false") {
+//         document.getElementById("enter").style.display = "none";
+//         document.getElementById("answers-area").style.display = "block";
+
+//         answerButtons.forEach((button, index) => {
+//             if (currentQuestion.answers[index] === undefined) {
+//                 button.style.display = "none";
+//             } else {
+//                 button.style.display = "block";
+//                 button.innerText = currentQuestion.answers[index];
+//                 button.style.backgroundColor = "";
+//                 button.disabled = false;
+//                 button.onclick = () => checkAnswer(index);
+//             }
+//         });
+
+//     } else if (currentQuestion.type === "textual") {
+//         document.getElementById("answers-area").style.display = "none";
+//         document.getElementById("enter").style.display = "block";
+//         nextButton.style.display = "none"; // Masquer "Next" tant que la réponse n'est pas soumise
+//     }
+
+//     updateProgressBar();
+// }
+
+// function checkTextualAnswer() {
+//     const currentQuestion = questions[currentIndex];
+//     const userAnswer = document.getElementById("enter").value.trim();
+
+//     // Afficher la réponse immédiatement sous la question
+//     const resultMessage = document.createElement('h3');
+//     resultMessage.style.textAlign = 'center';
+//     if (userAnswer.toLowerCase() === currentQuestion.correctAnswer.toLowerCase()) {
+//         score++;
+//         scoreElement.innerText = score;
+//         resultMessage.innerText = "Correct!";
+//         resultMessage.style.color = 'green';
+//         document.getElementById('enter').style.display="none";
+//     } else {
+//         resultMessage.innerText = `Incorrect! The correct answer is: ${currentQuestion.correctAnswer}`;
+//         resultMessage.style.color = 'red';
+//         document.getElementById('enter').style.display="none";
+
+//     }
+
+//     // Ajouter le message au DOM dans la zone de rétroaction
+//     answerFeedback.appendChild(resultMessage);
+
+//     nextButton.style.display = 'block'; // Afficher le bouton "Next" après soumission de la réponse
+// }
+
+// function checkAnswer(selectedIndex) {
+//     const currentQuestion = questions[currentIndex];
+//     answerButtons.forEach(button => button.disabled = true);
+
+//     answerButtons.forEach((button, index) => {
+//         if (index === currentQuestion.correctAnswer) {
+//             button.style.backgroundColor = 'green';
+//         } else if (index === selectedIndex) {
+//             button.style.backgroundColor = 'red';
+//         } else {
+//             button.style.backgroundColor = 'gray';
+//         }
+//     });
+
+//     if (selectedIndex === currentQuestion.correctAnswer) {
+//         score++;
+//         scoreElement.innerText = score;
+//     }
+
+//     // nextButton.style.display = 'block'; // Afficher "Next"
+// }
+
+// function goToNextQuestion() {
+//     currentIndex++;
+
+//     if (currentIndex < questions.length) {
+//         showQuestion(); // Afficher la prochaine question
+//         nextButton.style.display = 'none'; // Masquer le bouton "Next" jusqu'à ce qu'une réponse soit donnée
+//     } else {
+//         showResults(); // Si toutes les questions sont répondues, afficher les résultats
+//     }
+// }
+
+// function updateProgressBar() {
+//     progress = ((currentIndex + 1) / questions.length) * 100;
+//     progressBar.style.width = `${progress}%`;
+// }
+
+// function showResults() {
+//     const result = document.createElement('h1');
+//     result.innerText = `Quiz complete! Your score is ${score} out of ${questions.length}`;
+//     result.style.background = score === questions.length ? 'green' : 'red';
+//     result.style.color = 'white';
+//     result.style.textAlign = 'center';
+//     result.style.padding = '20px';
+//     result.style.marginTop = '20px';
+
+//     document.body.appendChild(result);
+
+//     nextButton.style.display = 'none';
+//     timerElement.innerText = '00:00';
+// }
+
+// function startQuiz() {
+//     startTimer();
+//     showQuestion();
+// }
+
+// submitButton.addEventListener('click', () => {
+//     if (questions[currentIndex].type === "textual") {
+//         checkTextualAnswer();
+//     } else {
+//         goToNextQuestion();
+//     }
+// });
+
+// nextButton.addEventListener('click', goToNextQuestion);
+
+// startQuiz();
+let currentIndex = 0;
+    let score = 0;
+    let timeRemaining = 180;
+    let quizTimer;
+    let progress = 0;
+
+    const questionElement = document.getElementById("question");
+    const answerButtons = [
+        document.getElementById('answer1'),
+        document.getElementById('answer2'),
+        document.getElementById('answer3'),
+        document.getElementById('answer4')
+    ];
+    const submitButton = document.getElementById("submit-button");
+    const nextButton = document.getElementById("next-button");
+    const scoreElement = document.getElementById("score");
+    const timerElement = document.getElementById("time");
+    const progressBar = document.getElementById("progress-bar");
+    const answerFeedback = document.getElementById("answer-feedback");
+
+    function startTimer() {
+        quizTimer = setInterval(() => {
+            let minutes = Math.floor(timeRemaining / 60);
+            let seconds = timeRemaining % 60;
+            timerElement.innerText = `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+
+            if (timeRemaining <= 0) {
+                clearInterval(quizTimer);
+                showResults();
+            }
+            timeRemaining--;
+        }, 1000);
+    }
+
+    function showQuestion() {
+        const currentQuestion = questions[currentIndex];
+        questionElement.innerText = currentQuestion.question;
+
+        // Effacer la rétroaction de la question précédente
+        answerFeedback.innerHTML = "";
+
+        if (currentQuestion.type === "multiple-choice" || currentQuestion.type === "true-false") {
+            document.getElementById("enter").style.display = "none";
+            document.getElementById("answers-area").style.display = "block";
+
+            answerButtons.forEach((button, index) => {
+                if (currentQuestion.answers[index] === undefined) {
+                    button.style.display = "none";
+                } else {
+                    button.style.display = "block";
+                    button.innerText = currentQuestion.answers[index];
+                    button.style.backgroundColor = "";
+                    button.disabled = false;
+                    button.onclick = () => checkAnswer(index);
+                }
+            });
+
+        } else if (currentQuestion.type === "textual") {
+            document.getElementById("answers-area").style.display = "none";
+            document.getElementById("enter").style.display = "block";
+            nextButton.style.display = "none"; // Masquer "Next" tant que la réponse n'est pas soumise
+            document.getElementById("enter").value = "";
+        }
+
+        updateProgressBar();
+    }
+
+    function checkTextualAnswer() {
+        const currentQuestion = questions[currentIndex];
+        
+        let userAnswer = document.getElementById("enter").value.trim();
+       
+        correctAnswer=currentQuestion.correctAnswer;
+        console.log("User Answer: ", userAnswer);  // عرض الإجابة المدخلة
+  console.log("Correct Answer: ", correctAnswer);  // عرض الإجابة الصحيحة
+
+        // Afficher la réponse immédiatement sous la question
+        const resultMessage = document.createElement('h3');
+        resultMessage.style.textAlign = 'center';
+        if (userAnswer.toLowerCase() === currentQuestion.correctAnswer.toLowerCase()) {
+            score++;
+            scoreElement.innerText = score;
+            resultMessage.innerText = "Correct!";
+            resultMessage.style.color = 'green';
+            document.getElementById('enter').style.display="none";
         } else {
-            button.style.backgroundColor = 'gray'; 
+            resultMessage.innerText = `Incorrect! The correct answer is: ${currentQuestion.correctAnswer}`;
+            resultMessage.style.color = 'red';
+            document.getElementById('enter').style.display="none";
+
+        }
+
+        // Ajouter le message au DOM dans la zone de rétroaction
+        answerFeedback.appendChild(resultMessage);
+
+        nextButton.style.display = 'block'; 
+        submitButton.style.display='none';// Afficher le bouton "Next" après soumission de la réponse
+    }
+
+    function checkAnswer(selectedIndex) {
+        const currentQuestion = questions[currentIndex];
+        answerButtons.forEach(button => button.disabled = true);
+        submitButton.style.display='block';
+
+        answerButtons.forEach((button, index) => {
+            if (index === currentQuestion.correctAnswer) {
+                button.style.backgroundColor = 'green';
+            } else if (index === selectedIndex) {
+                button.style.backgroundColor = 'red';
+            } else {
+                button.style.backgroundColor = 'gray';
+            }
+        });
+
+        if (selectedIndex === currentQuestion.correctAnswer) {
+            score++;
+            scoreElement.innerText = score;
+        }
+
+        // nextButton.style.display = 'block'; // Afficher "Next"
+    }
+
+    function goToNextQuestion() {
+        currentIndex++;
+
+        if (currentIndex < questions.length) {
+            showQuestion(); // Afficher la prochaine question
+            nextButton.style.display = 'none'; // Masquer le bouton "Next" jusqu'à ce qu'une réponse soit donnée
+        } else {
+            showResults(); // Si toutes les questions sont répondues, afficher les résultats
+        }
+    }
+
+    function updateProgressBar() {
+        progress = ((currentIndex + 1) / questions.length) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+
+    function showResults() {
+        const result = document.createElement('h1');
+        result.innerText = `Quiz complete! Your score is ${score} out of ${questions.length}`;
+        result.style.background = score === questions.length ? 'green' : 'red';
+        result.style.color = 'white';
+        result.style.textAlign = 'center';
+        result.style.padding = '20px';
+        result.style.marginTop = '20px';
+
+        document.body.appendChild(result);
+
+        nextButton.style.display = 'none';
+        timerElement.innerText = '00:00';
+    }
+
+    function startQuiz() {
+        startTimer();
+        showQuestion();
+    }
+
+    submitButton.addEventListener('click', () => {
+        if (questions[currentIndex].type === "textual") {
+            checkTextualAnswer();
+            
+        } else {
+            goToNextQuestion();
         }
     });
 
-    if (selectedIndex === currentQuestion.correctAnswer) {
-        score++;
-        scoreElement.innerText = score;
-    }
+    nextButton.addEventListener('click', goToNextQuestion);
 
-    
-}
+    startQuiz();
 
 
-function goToNextQuestion() {
-    currentIndex++;
 
-    if (currentIndex < questions.length) {
-        showQuestion(); // Show the next question
-        nextButton.style.display = 'none'; // Hide "Next" button until an answer is chosen
-    } else {
-        showResults(); // All questions answered, show results
-    }
-}
-
-// Update progress bar
-function updateProgressBar() {
-    progress = ((currentIndex + 1) / questions.length) * 100;
-    progressBar.style.width = `${progress}%`; // Update the width of the progress bar
-}
-
-// Show results
-function showResults() {
-       // Créer un élément h1 pour afficher le résultat
-       const result = document.createElement('h1');
-       result.innerText = `Quiz complete! Your score is ${score} out of ${questions.length}`;
-       
-       // Styliser l'élément h1
-       result.style.background = score === questions.length ? 'green' : 'red'; // Si le score est égal au nombre total de questions, vert, sinon rouge.
-       result.style.color = 'white'; // Mettre le texte en blanc pour le contraste
-       result.style.textAlign = 'center'; // Centrer le texte
-       result.style.padding = '20px'; // Ajouter un peu de padding
-       result.style.marginTop = '20px'; // Ajouter un peu de marge en haut
-       
-       // Ajouter l'élément à la page
-       document.body.appendChild(result);
-   
-    
-    
-    
-    nextButton.style.display = 'none'; 
-    timerElement.innerText = '00:00'; 
-}
-
-// Initialize the quiz
-function startQuiz() {
-    startTimer(); // Start the timer
-    showQuestion(); // Show the first question
-}
-
-submitButton.addEventListener('click', goToNextQuestion);
-
-// Start the quiz
-startQuiz();
-// window location a href
+  
+  
+  
 
 
 

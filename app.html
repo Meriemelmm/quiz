@@ -14,12 +14,17 @@
     <div class="count"> questions count: <span>10</span></div>
 
 </div>
-<div class="quiz-area">
-    
+<div class="quiz-area"> 
     <h2 id ="question" style="margin-top: 40px;"> why we us caant br elment</h2><div id="answers-text">
-        <input type="text" placeholder="enter your answer"  id="enter" style="width:100%;height: 60px; text-align: center; border: none; display:none;  margin-left:0px">
+    <div id="answer-feedback" style="text-align: center; margin-top: 10px;"></div>
+
+        <div id="answers-text">
+            
+       
     
-</div>
+        <input type="text" placeholder="enter your answer"  id="enter" style="width:100%;height: 60px; text-align: center; border: none; display:none;  margin-left:0px">
+     </div>
+
 </div>
 <div id="answers-area">
    <button  class="answer"id="answer1">answer1</button>
@@ -31,6 +36,7 @@
 
 <div   style="display:flex;justify-content: space-between;">
 <button id="submit-button"  >  submit</button> 
+<button id="next-button" style="display: none;">next</button>
 
 </div>
    
