@@ -366,10 +366,24 @@ const questions = [
 
 
 let currentIndex = 0;
+console.log( question[0].correctAnswer)
+
 let score = 0;
 let timeRemaining = 180; 
 let quizTimer;
 let progress = 0; 
+console.log(questions.answers);
+questions.forEach(question => {
+    // Vérifier si la question est de type textuelle
+    if (question.type === "textual") {
+       
+        console.log(`Correct Answer: "${question.correctAnswer}"`);
+    }
+});
+
+
+
+    
 
 const questionElement = document.getElementById("question");
 const answerButtons = [
@@ -384,7 +398,8 @@ console.log(nextButton)
 const scoreElement = document.getElementById("score");
 const timerElement = document.getElementById("time");
 const progressBar = document.getElementById("progress-bar");
- const next=document.getElementById("next")
+ const next=document.getElementById("next");
+ 
 
 
 function startTimer() {
@@ -454,32 +469,37 @@ function showQuestion() {
         answerar.style.display = "none" 
         document.getElementById("enter").style.display = "block"; // Afficher la zone de saisie
         
-        let submitButton = document.getElementById('submit-button');
-        submitButton.addEventListener('click', correctinswer); // Passez une référence à la fonction
+        // let submitButton = document.getElementById('submit-button');
+        // submitButton.addEventListener('click', correctAnswer); // Passez une référence à la fonction
     
-    }
-  
-}
+    }}
+    let userAnswer=document.getElementById('enter').value;
+console.log(userAnswer);
+// correctInput{
+//     let userAnswer=document.getElementById('enter').value;
+//     let  correctAnswer
+// }
 
-function correctinswer() {
+// function correctAnswer() {
    
-    const currentQuestion = questions[currentIndex];
-    let userAnswer = document.getElementById('enter').value.trim().toLowerCase(); // Récupère la réponse de l'utilisateur
+//     const currentQuestion = questions[currentIndex];
+//     // let userAnswer = document.getElementById('enter').value.trim().toLowerCase(); // Récupère la réponse de l'utilisateur
 
-    let correctAnswer = currentQuestion.correctAnswer.trim().toLowerCase();
-    console.log(correctAnswer);
+//     let correctAnswer = currentQuestion.correctAnswer;
+//     console.log( correctAnswer)
+//     // console.log(correctAnswer);
 
     
-    let result = document.createElement('h1');
-    if (userAnswer === correctAnswer) {
-        result.innerText = "Correct answer!";
+//     // let result = document.createElement('h1');
+//     // if (userAnswer === correctAnswer) {
+//     //     result.innerText = "Correct answer!";
         
-    } else {
-        result.innerText = `Incorrect! The correct answer is: ${currentQuestion.answers}`;
-    }
+//     // } else {
+//     //     result.innerText = `Incorrect! The correct answer is: ${currentQuestion.answers}`;
+//     // }
 
     
-}
+// }
 
 
 function checkAnswer(selectedIndex) {
@@ -555,6 +575,7 @@ submitButton.addEventListener('click', goToNextQuestion);
 
 // Start the quiz
 startQuiz();
+// window location a href
 
 
 
