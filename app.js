@@ -1,3 +1,5 @@
+var answerar = document.getElementById("answers-area")
+
 
 // function getQuestions() {
 //     let myRequest = new XMLHttpRequest();
@@ -404,15 +406,19 @@ function showQuestion() {
     const currentQuestion = questions[currentIndex];
     questionElement.innerText = currentQuestion.question;
     if("answers" in questions[currentIndex]){
-        document.getElementById("answers-area").style.display = "block";
+        
+        
         document.getElementById("enter").style.display = "none";
+        answerar.style.display = "block"
+        
+    
+        
         answerButtons.forEach((button, index) => {
             if(currentQuestion.answers[index] == undefined){
                 let answer3 = document.getElementById("answer3"); 
                 let answer4 = document.getElementById("answer4"); 
                 answer3.style.display = "none";
                 answer4.style.display = "none";
-
                 
             }else{
                 let answer3 = document.getElementById("answer3"); 
@@ -427,10 +433,10 @@ function showQuestion() {
     
             button.style.backgroundColor = ""; 
             button.disabled = false; 
-            button.onclick = () => checkAnswer(index); // Handle click event
+            button.onclick = () => checkAnswer(index); 
         });
     
-        updateProgressBar(); // Update the progress bar when changing questions
+        updateProgressBar(); 
     }
     // else{
     //     let answers_text = document.getElementById("answers-text");
@@ -444,29 +450,30 @@ function showQuestion() {
 
     // }
     else {
-        // Question textuelle
-        document.getElementById("answers-area").style.display = "none";
+        
+        answerar.style.display = "none" 
         document.getElementById("enter").style.display = "block"; // Afficher la zone de saisie
         
-        // Assurez-vous que le bouton de soumission déclenche correctement la fonction de validation
         let submitButton = document.getElementById('submit-button');
         submitButton.addEventListener('click', correctinswer); // Passez une référence à la fonction
+    
     }
   
 }
 
 function correctinswer() {
+   
     const currentQuestion = questions[currentIndex];
     let userAnswer = document.getElementById('enter').value.trim().toLowerCase(); // Récupère la réponse de l'utilisateur
-   
-   
-    document.getElementById('answers-area').style.display = 'none';
-    document.getElementById('enter').style.display = 'none'; 
+
+    let correctAnswer = currentQuestion.correctAnswer.trim().toLowerCase();
+    console.log(correctAnswer);
 
     
     let result = document.createElement('h1');
-    if (userAnswer === currentQuestion.answers.trim().toLowerCase()) {
+    if (userAnswer === correctAnswer) {
         result.innerText = "Correct answer!";
+        
     } else {
         result.innerText = `Incorrect! The correct answer is: ${currentQuestion.answers}`;
     }
@@ -474,18 +481,18 @@ function correctinswer() {
     
 }
 
-// Check answer and update score
+
 function checkAnswer(selectedIndex) {
     const currentQuestion = questions[currentIndex];
-    answerButtons.forEach(button => button.disabled = true); // Disable buttons after answer
+    answerButtons.forEach(button => button.disabled = true); 
 
     answerButtons.forEach((button, index) => {
         if (index === currentQuestion.correctAnswer) {
-            button.style.backgroundColor = 'green'; // Correct answer
+            button.style.backgroundColor = 'green'; 
         } else if (index === selectedIndex) {
-            button.style.backgroundColor = 'red'; // Incorrect answer
+            button.style.backgroundColor = 'red'; 
         } else {
-            button.style.backgroundColor = 'gray'; // Not selected answer
+            button.style.backgroundColor = 'gray'; 
         }
     });
 
@@ -494,10 +501,10 @@ function checkAnswer(selectedIndex) {
         scoreElement.innerText = score;
     }
 
-    // nextButton.style.display = 'inline-block'; // Show "Next" button
+    
 }
 
-// Go to the next question
+
 function goToNextQuestion() {
     currentIndex++;
 
@@ -534,8 +541,8 @@ function showResults() {
     
     
     
-    nextButton.style.display = 'none'; // Hide "Next" button
-    timerElement.innerText = '00:00'; // Show 00:00 when the quiz ends
+    nextButton.style.display = 'none'; 
+    timerElement.innerText = '00:00'; 
 }
 
 // Initialize the quiz
