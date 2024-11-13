@@ -23,8 +23,10 @@
                     </div>
                     <div class="time"> <p><span>TIME: </span>5 munite</p></div>
                     <div class="level"> <p><span>LEVEL: </span>beginner</p></div>
+                    <div  id="categorie" data-categorie="html" onclick=""> </div>
+                    <div id="level" data-level="beginner"></div>
                
-                <button > start</button>
+                <button id="start" > start</button>
                 
                 
            
@@ -40,10 +42,13 @@
                         
                     </div>
                     <div class="time"> <p><span>TIME: </span>5 munite</p></div>
-                    <div class="level"> <p><span>LEVEL: </span>beginner</p></div>
-                    <div  id="categorie" data-categorie="html"> </div>
+                    <div class="level"> <p><span>LEVEL: </span></p></div>
+                    <div  id="categorie" data-categorie="javascript"> </div>
+
+                    <div  id="categorie" data-categorie="javascript" onclick=""> </div>
+                    <div id="level" data-level="moyen"></div>
                
-                <button> start</button>
+                <button id="start"> start</button>
                 
                 
            
@@ -51,7 +56,7 @@
             </div>
             <div class="card">
                 <div> <img src="https://codingal.s3.amazonaws.com/media/quizcontest/thumbnail/2021/12/24/24.png "style="width:350px"  ></div>
-                <h1>BASICS OF CSS</h1> 
+                <h1>CSS</h1> 
                 
                     <div class="qs">
                          
@@ -61,9 +66,10 @@
                     <div class="time"> <p><span>TIME: </span>5 munite</p></div>
                     <div class="level"> <p><span>LEVEL: </span>beginner</p></div>
                     <div  id="categorie" data-categorie="css" onclick=""> </div>
+                    <div id="level" data-level="difficile"></div>
                 
                
-                <button> start</button>
+                <button id="start"> start</button>
                 
                 
            
@@ -80,9 +86,10 @@
                     </div>
                     <div class="time"> <p><span>TIME: </span>5 munite</p></div>
                     <div class="level"> <p><span>LEVEL: </span>beginner</p></div>
-                    <div  id="categorie" data-categorie="javascript"> </div>
+                    <div  id="categorie" data-categorie="css" onclick=""> </div>
+                    <div id="level" data-level="level"></div>
                
-                <button  onclick="comparaison()"> start</button>
+                <button  id="start"> start</button>
                 
                 
            
@@ -99,8 +106,10 @@
                     </div>
                     <div class="time"> <p><span>TIME: </span>5 munite</p></div>
                     <div class="level"> <p><span>LEVEL: </span>beginner</p></div>
+                    <div  id="categorie" data-categorie="css" onclick=""> </div>
+                    <div id="level" data-level="level"></div>
                
-                <button> start</button>
+                <button id="start"> start</button>
                 
                 
            
@@ -117,8 +126,10 @@
                     </div>
                     <div class="time"> <p><span>TIME: </span>5 munite</p></div>
                     <div class="level"> <p><span>LEVEL: </span>beginner</p></div>
+                    <div  id="categorie" data-categorie="css" onclick=""> </div>
+                    <div id="level" data-level="level"></div>
                
-                <button> start</button>
+                <button id="start"> start</button>
                 
                 
            
@@ -135,8 +146,12 @@
                     </div>
                     <div class="time"> <p><span>TIME: </span>5 munite</p></div>
                     <div class="level"> <p><span>LEVEL: </span>beginner</p></div>
+                    <div  id="categorie" data-categorie="css" onclick=""> </div>
+                    <div id="level" data-level="level"></div>
+                    <div  id="categorie" data-categorie="css" onclick=""> </div>
+                    <div id="level" data-level="level"></div>
                
-                <button> start</button>
+                <button id="start"> start</button>
                 
                 
            
@@ -180,7 +195,7 @@
             </div>
         </div>
     </section>
-    <script src="app.js"></script>
+  
    
     <script> let type_categorie = document.getElementById("categorie");
 
@@ -191,14 +206,61 @@
 
         localStorage.setItem('categories', categorie_dt);
         localStorage.getItem.categories;
+        let level_type=document.getElementById("level");
+        let level_dt=level_type.getAttribute("data-level");
+        localStorage.setItem('level',level_dt);
+        localStorage.getItem.level;
       
         console.log("hello");
-        // start=document.getElementById("start");
+        function hello() {
+        window.alert("hello");
+    }
+tart=document.getElementById("start");
         // localStorage.setItem("step",start);
         // localStorage.getItem('step');
         // console.log(   localStorage.getItem('step'))
 
+        const startButton = document.getElementById('start');
+console.log(startButton);
 
+    //     document.addEventListener('DOMContentLoaded', function () {
+    //  // Pour vérifier si le bouton est trouvé
+    
+    // if (startButton) {
+    //     startButton.addEventListener('click', function () {
+    //         // Votre logique pour démarrer le quiz
+    //         let level = localStorage.getItem('level');
+    //         let categorie = localStorage.getItem('categories');
+            
+    //         if (categorie && level) {
+    //             if (categorie.toLowerCase() === currentQuestion.category.toLowerCase() && level.toLowerCase() === currentQuestion.level.toLowerCase()) {
+    //                 alert("Commence le quiz !");
+    //                 window.location.href = 'quiz.html'; // Redirige vers la page du quiz
+    //                 startQuiz();  // Démarre le quiz
+    //             } else {
+    //                 alert("La catégorie ou le niveau ne correspondent pas.");
+    //             }
+    //         } else {
+    //             alert("Veuillez définir la catégorie et le niveau.");
+    //         }
+    //     });
+    // } else {
+    //     console.error("Le bouton Start n'a pas été trouvé.");
+    // }
+// startButton=document.getElementById('start');
+//  console.log(startButton);
+//  let level= localStorage.getItem('level').trim();
+//         let categorie= localStorage.getItem('categories').trim();
+ 
+// startButton.addEventListener('click', function() {
+//     if(categorie.toLowerCase() === currentQuestion.category.toLowerCase() &&  level.toLowerCase() === currentQuestion.level.toLowerCase() ){ 
+       
+//        alert("commence le quiz") ;
+//        window.location.href = 'quiz.html';
+//     //   startQuiz();
+//      }
+   
+// });
 
 
         

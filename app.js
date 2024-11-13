@@ -1,6 +1,38 @@
 var answerar = document.getElementById("answers-area")
 
 
+
+
+
+
+
+
+
+// function startQuiz() {
+//     let categorie = localStorage.getItem('categories').trim();
+//     let niveau = localStorage.getItem('level').trim(); 
+
+//     let filteredQuestions = questions.filter(question => 
+//         question.category.toLowerCase() === categorie.toLowerCase() &&
+//         question.level.toLowerCase() === niveau.toLowerCase()
+//     );
+
+//     if (filteredQuestions.length === 0) {
+//         alert("Aucune question disponible pour cette catégorie et ce niveau.");
+//         return;
+//     }
+
+//     questions = filteredQuestions; 
+//     currentIndex = 0;
+//     score = 0;
+//     timeRemaining = 180;
+//     progress = 0;
+//     startTimer();
+//     showQuestion();
+// }
+var answerar = document.getElementById("answers-area")
+
+
 // function getQuestions() {
 //     let myRequest = new XMLHttpRequest();
   
@@ -774,6 +806,8 @@ let currentIndex = 0;
         document.getElementById('answer4')
     ];
     const submitButton = document.getElementById("submit-button");
+    console.log(submitButton)
+    console.log(submitButton);
     const nextButton = document.getElementById("next-button");
     const scoreElement = document.getElementById("score");
     const timerElement = document.getElementById("time");
@@ -914,51 +948,45 @@ let currentIndex = 0;
     }
 
     function startQuiz() {
+       
+
         startTimer();
         showQuestion();
     }
 
-    submitButton.addEventListener('click', () => {
-        if (questions[currentIndex].type === "textual") {
-            checkTextualAnswer();
+    // submitButton.addEventListener('click', () => {
+    //     if (questions[currentIndex].type === "textual") {
+    //         checkTextualAnswer();
             
-        } else {
-            goToNextQuestion();
-        }
-    });
+    //     } else {
+    //         goToNextQuestion();
+    //     }
+    // });
 
     nextButton.addEventListener('click', goToNextQuestion);
 
-    startQuiz();
-    // start=document.getElementById('start');
-    // console.log(start)
- 
-    comparaison();
-    const startButton = document.getElementById('start');
-    console.log(startButton)
+   startQuiz();
+   
 
-// // Attacher l'événement de clic au bouton
+// Attacher l'événement de clic au bouton 
+// startButton=document.getElementById('start');
+//  console.log(startButton);
+//  let level= localStorage.getItem('level').trim();
+//         let categorie= localStorage.getItem('categories').trim();
+ 
 // startButton.addEventListener('click', function() {
-//     // Démarrer le quiz lorsque l'utilisateur clique sur le bouton
-//     startQuiz();
+//     if(categorie.toLowerCase() === currentQuestion.category.toLowerCase() &&  level.toLowerCase() === currentQuestion.level.toLowerCase() ){ 
+       
+//        alert("commence le quiz") ;
+//        window.location.href = 'quiz.html';
+//        startQuiz();}
+    
+   
 // });
+
+
+
+
+
     
   
- function comparaison(){
-     let categorie = localStorage.getItem('categories').trim();
-     const currentQuestion = questions[currentIndex];
- console.log(categorie);
- console.log(currentQuestion.category);
-
-   if (categorie.toLowerCase() === currentQuestion.category.toLowerCase()) {
-    startQuiz();
- }
-}
-
-  
-
-
-
-
-
-
