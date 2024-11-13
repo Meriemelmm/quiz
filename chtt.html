@@ -645,4 +645,40 @@
 
   
   
-  
+// Récupérer le bouton "start" depuis le DOM
+const startButton = document.getElementById('start');
+
+// Attacher l'événement de clic au bouton
+startButton.addEventListener('click', function() {
+    // Démarrer le quiz lorsque l'utilisateur clique sur le bouton
+    startQuiz();
+});
+
+function startQuiz() {
+    // Récupérer la catégorie stockée dans le localStorage
+    let categorie = localStorage.getItem('categories').trim();
+    const currentQuestion = questions[currentIndex]; // La question actuelle à afficher
+
+    // Vérifier si la catégorie stockée correspond à celle du quiz
+    if (categorie.toLowerCase() === currentQuestion.category.toLowerCase()) {
+        // Démarrer le quiz si les catégories correspondent
+        console.log("Les catégories correspondent. Démarrage du quiz.");
+
+        // Initialiser le timer et commencer le quiz
+        startTimer();  // Lance le timer
+        showQuestion(); // Affiche la première question
+    } else {
+        // Afficher un message d'erreur si les catégories ne correspondent pas
+        console.log("Les catégories ne correspondent pas.");
+    }
+}
+
+function startTimer() {
+    // Logique pour démarrer le timer
+    console.log("Timer démarré !");
+}
+
+function showQuestion() {
+    // Logique pour afficher la question
+    console.log("Question affichée !");
+}

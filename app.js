@@ -930,15 +930,31 @@ let currentIndex = 0;
     nextButton.addEventListener('click', goToNextQuestion);
 
     startQuiz();
-  
-    let categorie = localStorage.getItem('categories');
-    
-    console.log(categorie);
-    // start=localStorage.getItem('step');
-    // console.log(start);
+    // start=document.getElementById('start');
+    // console.log(start)
+ 
+    comparaison();
+    const startButton = document.getElementById('start');
+    console.log(startButton)
 
+// // Attacher l'événement de clic au bouton
+// startButton.addEventListener('click', function() {
+//     // Démarrer le quiz lorsque l'utilisateur clique sur le bouton
+//     startQuiz();
+// });
+    
   
-  
+ function comparaison(){
+     let categorie = localStorage.getItem('categories').trim();
+     const currentQuestion = questions[currentIndex];
+ console.log(categorie);
+ console.log(currentQuestion.category);
+
+   if (categorie.toLowerCase() === currentQuestion.category.toLowerCase()) {
+    startQuiz();
+ }
+}
+
   
 
 
