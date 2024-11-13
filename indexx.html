@@ -24,7 +24,7 @@
                     <div class="time"> <p><span>TIME: </span>5 munite</p></div>
                     <div class="level"> <p><span>LEVEL: </span>beginner</p></div>
                
-                <button> start</button>
+                <button > start</button>
                 
                 
            
@@ -41,6 +41,7 @@
                     </div>
                     <div class="time"> <p><span>TIME: </span>5 munite</p></div>
                     <div class="level"> <p><span>LEVEL: </span>beginner</p></div>
+                    <div  id="categorie" data-categorie="html"> </div>
                
                 <button> start</button>
                 
@@ -59,6 +60,27 @@
                     </div>
                     <div class="time"> <p><span>TIME: </span>5 munite</p></div>
                     <div class="level"> <p><span>LEVEL: </span>beginner</p></div>
+                    <div  id="categorie" data-categorie="css" onclick=""> </div>
+                
+               
+                <button> start</button>
+                
+                
+           
+               
+            </div>
+            <div class="card">
+                <div> <img src="https://codingal.s3.amazonaws.com/media/quizcontest/thumbnail/2021/12/24/25.png" style="width:350px"  ></div>
+                <h1>BASICS HTML</h1> 
+                
+                    <div class="qs">
+                         
+                            <p><SPan>QS: </SPan> 14  Questions</p> 
+                        
+                    </div>
+                    <div class="time"> <p><span>TIME: </span>5 munite</p></div>
+                    <div class="level"> <p><span>LEVEL: </span>beginner</p></div>
+                    <div  id="categorie" data-categorie="javascript"> </div>
                
                 <button> start</button>
                 
@@ -132,25 +154,7 @@
                     <div class="time"> <p><span>TIME: </span>5 munite</p></div>
                     <div class="level"> <p><span>LEVEL: </span>beginner</p></div>
                
-                <button> start</button>
-                
-                
-           
-               
-            </div>
-            <div class="card">
-                <div> <img src="https://codingal.s3.amazonaws.com/media/quizcontest/thumbnail/2021/12/24/25.png" style="width:350px"  ></div>
-                <h1>BASICS HTML</h1> 
-                
-                    <div class="qs">
-                         
-                            <p><SPan>QS: </SPan> 14  Questions</p> 
-                        
-                    </div>
-                    <div class="time"> <p><span>TIME: </span>5 munite</p></div>
-                    <div class="level"> <p><span>LEVEL: </span>beginner</p></div>
-               
-                <button> start</button>
+                <button id="start"> start</button>
                 
                 
            
@@ -176,5 +180,28 @@
             </div>
         </div>
     </section>
+    <script> let type_categorie = document.getElementById("categorie");
+
+
+    
+        //let categorie_dt = type_categorie.dataset.categorie;
+        let categorie_dt = type_categorie.getAttribute("data-categorie");
+
+        localStorage.setItem('categories', categorie_dt);
+        localStorage.getItem.categories;
+      
+        console.log("hello");
+        // start=document.getElementById("start");
+        // localStorage.setItem("step",start);
+        // localStorage.getItem('step');
+        // console.log(   localStorage.getItem('step'))
+
+
+
+
+        
+       
+        </script>
+
 </body>
 </html>

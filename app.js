@@ -235,10 +235,297 @@ var answerar = document.getElementById("answers-area")
 
 
 // showQuestion();
+// const questions = [
+//     // Question QCM
+//     {
+//         type: "multiple-choice",  // Type de la question : Choix multiple
+//         question: "What does HTML stand for?",
+//         answers: [
+//             "HyperText Markup Language", 
+//             "HighText Machine Language", 
+//             "Hyperlink Text Markup Language", 
+//             "None of the above"
+//         ],
+//         correctAnswer: 0  // L'index de la réponse correcte
+//     },
+    
+//     // Question Vrai/Faux
+//     {
+//         type: "true-false",  // Type de la question : Vrai ou Faux
+//         question: "HTML is used to style web pages.",
+//         answers: [
+//             "True",
+//             "False"
+//         ],
+//         correctAnswer: 1  // La réponse correcte est "False"
+//     },
+
+//     // Question Textuelle
+//     {
+//         type: "textual",  // Type de la question : Question textuelle
+//         question: "What is the purpose of the <title> tag in HTML?",
+//         correctAnswer: "It defines the title of the document, shown in the browser tab."  // Réponse libre à fournir par l'utilisateur
+//     },
+
+//     // Question QCM
+//     {
+//         type: "multiple-choice",
+//         question: "Which tag is used for a line break in HTML?",
+//         answers: ["<break>", "<lb>", "<br>", "<line>"],
+//         correctAnswer: 2
+//     },
+
+//     // Question Vrai/Faux
+//     {
+//         type: "true-false",
+//         question: "The <img> tag is used to insert images in HTML.",
+//         answers: ["True", "False"],
+//         correctAnswer: 0  // La réponse correcte est "True"
+//     },
+
+//     // Question Textuelle
+//     {
+//         type: "textual",
+//         question: "What is the purpose of the <head> element in an HTML document?",
+//         correctAnswer: "It contains metadata like the document's title, links to stylesheets, and scripts." 
+//     },
+
+//     // Question QCM
+//     {
+//         type: "multiple-choice",
+//         question: "What is the correct HTML for creating a hyperlink?",
+//         answers: ["<a url='www.example.com'>Link</a>", "<a href='www.example.com'>Link</a>", "<link href='www.example.com'>Link</link>", "<a link='www.example.com'>Link</a>"],
+//         correctAnswer: 1
+//     },
+
+//     // Question Vrai/Faux
+//     {
+//         type: "true-false",
+//         question: "HTML stands for HyperText Markup Language.",
+//         answers: ["True", "False"],
+//         correctAnswer: 0  // La réponse correcte est "True"
+//     },
+
+//     // Question Textuelle
+//     {
+//         type: "textual",
+//         question: "best you ",
+//         correctAnswer: "me" 
+//     },
+
+//     // Question QCM
+//     {
+//         type: "multiple-choice",
+//         question: "What does the <title> tag define in an HTML document?",
+//         answers: ["The document title", "The body of the document", "The header of the document", "The footer of the document"],
+//         correctAnswer: 0
+//     },
+
+//     // Question QCM
+//     {
+//         type: "multiple-choice",
+//         question: "Which tag is used to define a table in HTML?",
+//         answers: ["<table>", "<grid>", "<tab>", "<list>"],
+//         correctAnswer: 0
+//     },
+
+//     // Question Vrai/Faux
+//     {
+//         type: "true-false",
+//         question: "The <div> tag is used to create a division or section in HTML.",
+//         answers: ["True", "False"],
+//         correctAnswer: 0  // La réponse correcte est "True"
+//     },
+
+//     // Question QCM
+//     {
+//         type: "multiple-choice",
+//         question: "What tag is used to create a form in HTML?",
+//         answers: ["<form>", "<input>", "<button>", "<textarea>"],
+//         correctAnswer: 0
+//     }
+// ];
+// const questions = [
+//     // HTML - Question QCM
+//     {
+//         category: "HTML",  // Catégorie : HTML
+//         type: "multiple-choice",  // Type de la question : Choix multiple
+//         question: "What does HTML stand for?",
+//         answers: [
+//             "HyperText Markup Language", 
+//             "HighText Machine Language", 
+//             "Hyperlink Text Markup Language", 
+//             "None of the above"
+//         ],
+//         correctAnswer: 0  // L'index de la réponse correcte
+//     },
+
+//     // HTML - Question Vrai/Faux
+//     {
+//         category: "HTML",  // Catégorie : HTML
+//         type: "true-false",  // Type de la question : Vrai ou Faux
+//         question: "HTML is used to style web pages.",
+//         answers: [
+//             "True",
+//             "False"
+//         ],
+//         correctAnswer: 1  // La réponse correcte est "False"
+//     },
+
+//     // HTML - Question Textuelle
+//     {
+//         category: "HTML",  // Catégorie : HTML
+//         type: "textual",  // Type de la question : Question textuelle
+//         question: "What is the purpose of the <title> tag in HTML?",
+//         correctAnswer: "It defines the title of the document, shown in the browser tab."  // Réponse libre à fournir par l'utilisateur
+//     },
+
+//     // HTML - Question QCM
+//     {
+//         category: "HTML",  // Catégorie : HTML
+//         type: "multiple-choice",
+//         question: "Which tag is used for a line break in HTML?",
+//         answers: ["<break>", "<lb>", "<br>", "<line>"],
+//         correctAnswer: 2
+//     },
+
+//     // HTML - Question Vrai/Faux
+//     {
+//         category: "HTML",  // Catégorie : HTML
+//         type: "true-false",
+//         question: "The <img> tag is used to insert images in HTML.",
+//         answers: ["True", "False"],
+//         correctAnswer: 0  // La réponse correcte est "True"
+//     },
+
+//     // HTML - Question Textuelle
+//     {
+//         category: "HTML",  // Catégorie : HTML
+//         type: "textual",
+//         question: "What is the purpose of the <head> element in an HTML document?",
+//         correctAnswer: "It contains metadata like the document's title, links to stylesheets, and scripts." 
+//     },
+
+//     // HTML - Question QCM
+//     {
+//         category: "HTML",  // Catégorie : HTML
+//         type: "multiple-choice",
+//         question: "What is the correct HTML for creating a hyperlink?",
+//         answers: ["<a url='www.example.com'>Link</a>", "<a href='www.example.com'>Link</a>", "<link href='www.example.com'>Link</link>", "<a link='www.example.com'>Link</a>"],
+//         correctAnswer: 1
+//     },
+
+//     // HTML - Question Vrai/Faux
+//     {
+//         category: "HTML",  // Catégorie : HTML
+//         type: "true-false",
+//         question: "HTML stands for HyperText Markup Language.",
+//         answers: ["True", "False"],
+//         correctAnswer: 0  // La réponse correcte est "True"
+//     },
+
+//     // HTML - Question Textuelle
+//     {
+//         category: "HTML",  // Catégorie : HTML
+//         type: "textual",
+//         question: "best you ",
+//         correctAnswer: "me" 
+//     },
+
+//     // HTML - Question QCM
+//     {
+//         category: "HTML",  // Catégorie : HTML
+//         type: "multiple-choice",
+//         question: "What does the <title> tag define in an HTML document?",
+//         answers: ["The document title", "The body of the document", "The header of the document", "The footer of the document"],
+//         correctAnswer: 0
+//     },
+
+//     // HTML - Question QCM
+//     {
+//         category: "HTML",  // Catégorie : HTML
+//         type: "multiple-choice",
+//         question: "Which tag is used to define a table in HTML?",
+//         answers: ["<table>", "<grid>", "<tab>", "<list>"],
+//         correctAnswer: 0
+//     },
+
+//     // HTML - Question Vrai/Faux
+//     {
+//         category: "HTML",  // Catégorie : HTML
+//         type: "true-false",
+//         question: "The <div> tag is used to create a division or section in HTML.",
+//         answers: ["True", "False"],
+//         correctAnswer: 0  // La réponse correcte est "True"
+//     },
+
+//     // HTML - Question QCM
+//     {
+//         category: "HTML",  // Catégorie : HTML
+//         type: "multiple-choice",
+//         question: "What tag is used to create a form in HTML?",
+//         answers: ["<form>", "<input>", "<button>", "<textarea>"],
+//         correctAnswer: 0
+//     },
+
+//     // JavaScript - Question QCM
+//     {
+//         category: "JavaScript",  // Catégorie : JavaScript
+//         type: "multiple-choice",
+//         question: "Which keyword is used to define a constant in JavaScript?",
+//         answers: ["const", "let", "var", "constant"],
+//         correctAnswer: 0
+//     },
+
+//     // JavaScript - Question Vrai/Faux
+//     {
+//         category: "JavaScript",  // Catégorie : JavaScript
+//         type: "true-false",
+//         question: "JavaScript can be used to manipulate the DOM (Document Object Model).",
+//         answers: ["True", "False"],
+//         correctAnswer: 0  // La réponse correcte est "True"
+//     },
+
+//     // JavaScript - Question Textuelle
+//     {
+//         category: "JavaScript",  // Catégorie : JavaScript
+//         type: "textual",
+//         question: "What is the purpose of the 'return' statement in JavaScript?",
+//         correctAnswer: "The 'return' statement is used to exit a function and return a value to the caller."
+//     },
+
+//     // JavaScript - Question QCM
+//     {
+//         category: "JavaScript",  // Catégorie : JavaScript
+//         type: "multiple-choice",
+//         question: "Which of the following methods is used to add an element to the end of an array in JavaScript?",
+//         answers: ["push()", "pop()", "shift()", "unshift()"],
+//         correctAnswer: 0
+//     },
+
+//     // JavaScript - Question Vrai/Faux
+//     {
+//         category: "JavaScript",  // Catégorie : JavaScript
+//         type: "true-false",
+//         question: "In JavaScript, 'null' is a type of object.",
+//         answers: ["True", "False"],
+//         correctAnswer: 0  // La réponse correcte est "True"
+//     },
+
+//     // JavaScript - Question Textuelle
+//     {
+//         category: "JavaScript",  // Catégorie : JavaScript
+//         type: "textual",
+//         question: "What is the difference between '==' and '===' in JavaScript?",
+//         correctAnswer: "'==' checks for equality of values, while '===' checks for both equality of values and types."
+//     }
+// ];
+
 const questions = [
-    // Question QCM
+    // HTML - Question QCM
     {
-        type: "multiple-choice",  // Type de la question : Choix multiple
+        category: "HTML", 
+        type: "multiple-choice",  
         question: "What does HTML stand for?",
         answers: [
             "HyperText Markup Language", 
@@ -246,510 +533,233 @@ const questions = [
             "Hyperlink Text Markup Language", 
             "None of the above"
         ],
-        correctAnswer: 0  // L'index de la réponse correcte
+        correctAnswer: 0 
     },
-    
-    // Question Vrai/Faux
+
+    // HTML - Question Vrai/Faux
     {
-        type: "true-false",  // Type de la question : Vrai ou Faux
+        category: "HTML", 
+        type: "true-false",  
         question: "HTML is used to style web pages.",
         answers: [
             "True",
             "False"
         ],
-        correctAnswer: 1  // La réponse correcte est "False"
+        correctAnswer: 1  
     },
 
-    // Question Textuelle
+    // HTML - Question Textuelle
     {
-        type: "textual",  // Type de la question : Question textuelle
+        category: "HTML",  
+        type: "textual",  
         question: "What is the purpose of the <title> tag in HTML?",
-        correctAnswer: "It defines the title of the document, shown in the browser tab."  // Réponse libre à fournir par l'utilisateur
+        correctAnswer: "It defines the title of the document, shown in the browser tab."
     },
 
-    // Question QCM
+    // HTML - Question QCM
     {
+        category: "HTML",  
         type: "multiple-choice",
         question: "Which tag is used for a line break in HTML?",
         answers: ["<break>", "<lb>", "<br>", "<line>"],
         correctAnswer: 2
     },
 
-    // Question Vrai/Faux
+    // HTML - Question Vrai/Faux
     {
+        category: "HTML",  
         type: "true-false",
         question: "The <img> tag is used to insert images in HTML.",
         answers: ["True", "False"],
-        correctAnswer: 0  // La réponse correcte est "True"
+        correctAnswer: 0 
     },
 
-    // Question Textuelle
+    // HTML - Question Textuelle
     {
+        category: "HTML",  
         type: "textual",
         question: "What is the purpose of the <head> element in an HTML document?",
         correctAnswer: "It contains metadata like the document's title, links to stylesheets, and scripts." 
     },
 
-    // Question QCM
+    // HTML - Question QCM
     {
+        category: "HTML",  
         type: "multiple-choice",
         question: "What is the correct HTML for creating a hyperlink?",
         answers: ["<a url='www.example.com'>Link</a>", "<a href='www.example.com'>Link</a>", "<link href='www.example.com'>Link</link>", "<a link='www.example.com'>Link</a>"],
         correctAnswer: 1
     },
 
-    // Question Vrai/Faux
+    // HTML - Question Vrai/Faux
     {
+        category: "HTML",  
         type: "true-false",
         question: "HTML stands for HyperText Markup Language.",
         answers: ["True", "False"],
-        correctAnswer: 0  // La réponse correcte est "True"
+        correctAnswer: 0  
     },
 
-    // Question Textuelle
+    // HTML - Question Textuelle
     {
+        category: "HTML",  
         type: "textual",
         question: "best you ",
         correctAnswer: "me" 
     },
 
-    // Question QCM
+    // HTML - Question QCM
     {
+        category: "HTML",  
         type: "multiple-choice",
         question: "What does the <title> tag define in an HTML document?",
         answers: ["The document title", "The body of the document", "The header of the document", "The footer of the document"],
         correctAnswer: 0
     },
 
-    // Question QCM
+    // HTML - Question QCM
     {
+        category: "HTML",  
         type: "multiple-choice",
         question: "Which tag is used to define a table in HTML?",
         answers: ["<table>", "<grid>", "<tab>", "<list>"],
         correctAnswer: 0
     },
 
-    // Question Vrai/Faux
+    // HTML - Question Vrai/Faux
     {
+        category: "HTML",  
         type: "true-false",
         question: "The <div> tag is used to create a division or section in HTML.",
         answers: ["True", "False"],
-        correctAnswer: 0  // La réponse correcte est "True"
+        correctAnswer: 0  
     },
 
-    // Question QCM
+    // HTML - Question QCM
     {
+        category: "HTML",  
         type: "multiple-choice",
         question: "What tag is used to create a form in HTML?",
         answers: ["<form>", "<input>", "<button>", "<textarea>"],
         correctAnswer: 0
+    },
+
+    // JavaScript - Question QCM
+    {
+        category: "JavaScript",  
+        type: "multiple-choice",
+        question: "Which keyword is used to define a constant in JavaScript?",
+        answers: ["const", "let", "var", "constant"],
+        correctAnswer: 0
+    },
+
+    // JavaScript - Question Vrai/Faux
+    {
+        category: "JavaScript",  
+        type: "true-false",
+        question: "JavaScript can be used to manipulate the DOM (Document Object Model).",
+        answers: ["True", "False"],
+        correctAnswer: 0  
+    },
+
+    // JavaScript - Question Textuelle
+    {
+        category: "JavaScript",  
+        type: "textual",
+        question: "What is the purpose of the 'return' statement in JavaScript?",
+        correctAnswer: "The 'return' statement is used to exit a function and return a value to the caller."
+    },
+
+    // JavaScript - Question QCM
+    {
+        category: "JavaScript",  
+        type: "multiple-choice",
+        question: "Which of the following methods is used to add an element to the end of an array in JavaScript?",
+        answers: ["push()", "pop()", "shift()", "unshift()"],
+        correctAnswer: 0
+    },
+
+    // JavaScript - Question Vrai/Faux
+    {
+        category: "JavaScript",  
+        type: "true-false",
+        question: "In JavaScript, 'null' is a type of object.",
+        answers: ["True", "False"],
+        correctAnswer: 0  
+    },
+
+    // JavaScript - Question Textuelle
+    {
+        category: "JavaScript",  
+        type: "textual",
+        question: "What is the difference between '==' and '===' in JavaScript?",
+        correctAnswer: "'==' checks for equality of values, while '===' checks for both equality of values and types."
+    },
+
+    // CSS - Question QCM
+    {
+        category: "CSS",  
+        type: "multiple-choice",
+        question: "Which property is used to change the background color in CSS?",
+        answers: ["background-color", "color", "bg-color", "background"],
+        correctAnswer: 0
+    },
+
+    // CSS - Question Vrai/Faux
+    {
+        category: "CSS",  
+        type: "true-false",
+        question: "CSS is used to structure web pages.",
+        answers: ["True", "False"],
+        correctAnswer: 1  
+    },
+
+    // CSS - Question Textuelle
+    {
+        category: "CSS",  
+        type: "textual",
+        question: "What does the CSS property 'margin' do?",
+        correctAnswer: "It creates space around elements, outside of their border."
+    },
+
+    // CSS - Question QCM
+    {
+        category: "CSS",  
+        type: "multiple-choice",
+        question: "Which CSS property is used to change the text color?",
+        answers: ["color", "font-color", "text-color", "background-color"],
+        correctAnswer: 0
+    },
+
+    // CSS - Question Vrai/Faux
+    {
+        category: "CSS",  
+        type: "true-false",
+        question: "The 'border' property is used to define the spacing inside an element.",
+        answers: ["True", "False"],
+        correctAnswer: 1  
+    },
+
+    // CSS - Question Textuelle
+    {
+        category: "CSS",  
+        type: "textual",
+        question: "What is the difference between 'padding' and 'margin' in CSS?",
+        correctAnswer: "'Padding' creates space inside the element, while 'margin' creates space outside the element."
+    },
+
+    // CSS - Question QCM
+    {
+        category: "CSS",  
+        type: "multiple-choice",
+        question: "What is the default value of the 'display' property in CSS?",
+        answers: ["block", "inline", "none", "inline-block"],
+        correctAnswer: 1
     }
 ];
 
 
-// var quiz_app=0;
-// QuizApp(quiz_app);
-// function QuizApp(n){
-//     var x = document.getElementsByClassName("quiz-app");
-//     x[n].style.display = "block";
-//     if(n=0){
 
-        
-// } 
-
-// else if(n=1){
-
-// }
-// else if(n=2){
-
-// }}
-
-
-// let currentIndex = 0;
-// console.log( question[0].correctAnswer)
-
-// let score = 0;
-// let timeRemaining = 180; 
-// let quizTimer;
-// let progress = 0; 
-
-
-  
-
-
-
-    
-
-// const questionElement = document.getElementById("question");
-// const answerButtons = [
-//     document.getElementById('answer1'),
-//     document.getElementById('answer2'),
-//     document.getElementById('answer3'),
-//     document.getElementById('answer4')
-// ];
-// const submitButton = document.getElementById("submit-button");
-// const nextButton = document.getElementById("next-button");
-// console.log(nextButton)
-// const scoreElement = document.getElementById("score");
-// const timerElement = document.getElementById("time");
-// const progressBar = document.getElementById("progress-bar");
-//  const next=document.getElementById("next");
- 
-
-
-// function startTimer() {
-//     quizTimer = setInterval(() => {
-//         let minutes = Math.floor(timeRemaining / 60);
-//         let seconds = timeRemaining % 60;
-//         timerElement.innerText = `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-
-//         if (timeRemaining <= 0) {
-//             clearInterval(quizTimer);
-//             showResults(); 
-//         }
-//         timeRemaining--;
-//     }, 1000);
-// }
-
-
-// function showQuestion() {
-//     const currentQuestion = questions[currentIndex];
-//     questionElement.innerText = currentQuestion.question;
-//     if("answers" in questions[currentIndex]){
-        
-        
-//         document.getElementById("enter").style.display = "none";
-//         answerar.style.display = "block"
-        
-    
-        
-//         answerButtons.forEach((button, index) => {
-//             if(currentQuestion.answers[index] == undefined){
-//                 let answer3 = document.getElementById("answer3"); 
-//                 let answer4 = document.getElementById("answer4"); 
-//                 answer3.style.display = "none";
-//                 answer4.style.display = "none";
-                
-//             }else{
-//                 let answer3 = document.getElementById("answer3"); 
-//                 let answer4 = document.getElementById("answer4"); 
-//                 answer3.style.display = "block";
-//                 answer4.style.display = "block";
-//             }
-    
-          
-//             button.innerText = currentQuestion.answers[index];
-//             console.log("hani ; " ,currentQuestion.answers[index]);
-    
-//             button.style.backgroundColor = ""; 
-//             button.disabled = false; 
-//             button.onclick = () => checkAnswer(index); 
-//         });
-    
-       
-//     }
-//     // else{
-//     //     let answers_text = document.getElementById("answers-text");
-//     //     let answers_area = document.getElementById("answers-area");
-//     //     let index
-        
-//     //     answers_area.style.display = "none";
-//     //     input=document.getElementById('enter').style.display="block";
-//     //     submitButton.addEventListener('click',correctinswer);
-       
-
-//     // }
-   
-        
-//         else if (currentQuestion.type === "textual") {
-//             document.getElementById("answers-area").style.display = "none";
-//             document.getElementById("enter").style.display = "block";
-//             nextButton.style.display = "none"; // Masquer le bouton "Next" jusqu'à ce qu'une réponse soit soumise
-//           }
-//     updateProgressBar(); 
-//      }
-//      function checkTextualAnswer() {
-//         const currentQuestion = questions[currentIndex];
-//         const userAnswer = document.getElementById("enter").value.trim();
-      
-//         if (userAnswer.toLowerCase() === currentQuestion.correctAnswer.toLowerCase()) {
-//           score++;
-//           scoreElement.innerText = score;
-//         }
-      
-//         nextButton.style.display = 'block'; // Afficher le bouton "Next"
-//       }
-//       submitButton.addEventListener('click', () => {
-//         if (questions[currentIndex].type === "textual") {
-//           checkTextualAnswer();
-//         } else {
-//           goToNextQuestion();
-//         }
-//       });
-//       nextButton.addEventListener('click', goToNextQuestion);      
-// // correctInput{
-// //     let userAnswer=document.getElementById('enter').value;
-// //     let  correctAnswer
-// // }
-
-// // function correctAnswer() {
-   
-// //     const currentQuestion = questions[currentIndex];
-// //     // let userAnswer = document.getElementById('enter').value.trim().toLowerCase(); // Récupère la réponse de l'utilisateur
-
-// //     let correctAnswer = currentQuestion.correctAnswer;
-// //     console.log( correctAnswer)
-// //     // console.log(correctAnswer);
-
-    
-// //     // let result = document.createElement('h1');
-// //     // if (userAnswer === correctAnswer) {
-// //     //     result.innerText = "Correct answer!";
-        
-// //     // } else {
-// //     //     result.innerText = `Incorrect! The correct answer is: ${currentQuestion.answers}`;
-// //     // }
-
-    
-// // }
-
-
-// function checkAnswer(selectedIndex) {
-//     const currentQuestion = questions[currentIndex];
-//     answerButtons.forEach(button => button.disabled = true); 
-
-//     answerButtons.forEach((button, index) => {
-//         if (index === currentQuestion.correctAnswer) {
-//             button.style.backgroundColor = 'green'; 
-//         } else if (index === selectedIndex) {
-//             button.style.backgroundColor = 'red'; 
-//         } else {
-//             button.style.backgroundColor = 'gray'; 
-//         }
-//     });
-
-//     if (selectedIndex === currentQuestion.correctAnswer) {
-//         score++;
-//         scoreElement.innerText = score;
-//     }
-
-    
-// }
-
-
-// function goToNextQuestion() {
-//     currentIndex++;
-
-//     if (currentIndex < questions.length) {
-//         showQuestion(); // Show the next question
-//         nextButton.style.display = 'none'; // Hide "Next" button until an answer is chosen
-//     } else {
-//         showResults(); // All questions answered, show results
-//     }
-// }
-
-// // Update progress bar
-// function updateProgressBar() {
-//     progress = ((currentIndex + 1) / questions.length) * 100;
-//     progressBar.style.width = `${progress}%`; // Update the width of the progress bar
-// }
-
-// // Show results
-// function showResults() {
-//        // Créer un élément h1 pour afficher le résultat
-//        const result = document.createElement('h1');
-//        result.innerText = `Quiz complete! Your score is ${score} out of ${questions.length}`;
-       
-//        // Styliser l'élément h1
-//        result.style.background = score === questions.length ? 'green' : 'red'; // Si le score est égal au nombre total de questions, vert, sinon rouge.
-//        result.style.color = 'white'; // Mettre le texte en blanc pour le contraste
-//        result.style.textAlign = 'center'; // Centrer le texte
-//        result.style.padding = '20px'; // Ajouter un peu de padding
-//        result.style.marginTop = '20px'; // Ajouter un peu de marge en haut
-       
-//        // Ajouter l'élément à la page
-//        document.body.appendChild(result);
-   
-    
-    
-    
-//     nextButton.style.display = 'none'; 
-//     timerElement.innerText = '00:00'; 
-// }
-
-// // Initialize the quiz
-// function startQuiz() {
-//     startTimer(); // Start the timer
-//     showQuestion(); // Show the first question
-// }
-
-// submitButton.addEventListener('click', goToNextQuestion);
-
-// // Start the quiz
-// startQuiz();
-// // window location a href
-// let currentIndex = 0;
-// let score = 0;
-// let timeRemaining = 180;
-// let quizTimer;
-// let progress = 0;
-
-// const questionElement = document.getElementById("question");
-// const answerButtons = [
-//     document.getElementById('answer1'),
-//     document.getElementById('answer2'),
-//     document.getElementById('answer3'),
-//     document.getElementById('answer4')
-// ];
-// const submitButton = document.getElementById("submit-button");
-// const nextButton = document.getElementById("next-button");
-// const scoreElement = document.getElementById("score");
-// const timerElement = document.getElementById("time");
-// const progressBar = document.getElementById("progress-bar");
-// const answerFeedback = document.getElementById("answer-feedback");
-
-// function startTimer() {
-//     quizTimer = setInterval(() => {
-//         let minutes = Math.floor(timeRemaining / 60);
-//         let seconds = timeRemaining % 60;
-//         timerElement.innerText = `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-
-//         if (timeRemaining <= 0) {
-//             clearInterval(quizTimer);
-//             showResults();
-//         }
-//         timeRemaining--;
-//     }, 1000);
-// }
-
-// function showQuestion() {
-//     const currentQuestion = questions[currentIndex];
-//     questionElement.innerText = currentQuestion.question;
-
-//     // Effacer la rétroaction de la question précédente
-    
-//     answerFeedback.innerHTML = "";
-
-//     if (currentQuestion.type === "multiple-choice" || currentQuestion.type === "true-false") {
-//         document.getElementById("enter").style.display = "none";
-//         document.getElementById("answers-area").style.display = "block";
-
-//         answerButtons.forEach((button, index) => {
-//             if (currentQuestion.answers[index] === undefined) {
-//                 button.style.display = "none";
-//             } else {
-//                 button.style.display = "block";
-//                 button.innerText = currentQuestion.answers[index];
-//                 button.style.backgroundColor = "";
-//                 button.disabled = false;
-//                 button.onclick = () => checkAnswer(index);
-//             }
-//         });
-
-//     } else if (currentQuestion.type === "textual") {
-//         document.getElementById("answers-area").style.display = "none";
-//         document.getElementById("enter").style.display = "block";
-//         nextButton.style.display = "none"; // Masquer "Next" tant que la réponse n'est pas soumise
-//     }
-
-//     updateProgressBar();
-// }
-
-// function checkTextualAnswer() {
-//     const currentQuestion = questions[currentIndex];
-//     const userAnswer = document.getElementById("enter").value.trim();
-
-//     // Afficher la réponse immédiatement sous la question
-//     const resultMessage = document.createElement('h3');
-//     resultMessage.style.textAlign = 'center';
-//     if (userAnswer.toLowerCase() === currentQuestion.correctAnswer.toLowerCase()) {
-//         score++;
-//         scoreElement.innerText = score;
-//         resultMessage.innerText = "Correct!";
-//         resultMessage.style.color = 'green';
-//         document.getElementById('enter').style.display="none";
-//     } else {
-//         resultMessage.innerText = `Incorrect! The correct answer is: ${currentQuestion.correctAnswer}`;
-//         resultMessage.style.color = 'red';
-//         document.getElementById('enter').style.display="none";
-
-//     }
-
-//     // Ajouter le message au DOM dans la zone de rétroaction
-//     answerFeedback.appendChild(resultMessage);
-
-//     nextButton.style.display = 'block'; // Afficher le bouton "Next" après soumission de la réponse
-// }
-
-// function checkAnswer(selectedIndex) {
-//     const currentQuestion = questions[currentIndex];
-//     answerButtons.forEach(button => button.disabled = true);
-
-//     answerButtons.forEach((button, index) => {
-//         if (index === currentQuestion.correctAnswer) {
-//             button.style.backgroundColor = 'green';
-//         } else if (index === selectedIndex) {
-//             button.style.backgroundColor = 'red';
-//         } else {
-//             button.style.backgroundColor = 'gray';
-//         }
-//     });
-
-//     if (selectedIndex === currentQuestion.correctAnswer) {
-//         score++;
-//         scoreElement.innerText = score;
-//     }
-
-//     // nextButton.style.display = 'block'; // Afficher "Next"
-// }
-
-// function goToNextQuestion() {
-//     currentIndex++;
-
-//     if (currentIndex < questions.length) {
-//         showQuestion(); // Afficher la prochaine question
-//         nextButton.style.display = 'none'; // Masquer le bouton "Next" jusqu'à ce qu'une réponse soit donnée
-//     } else {
-//         showResults(); // Si toutes les questions sont répondues, afficher les résultats
-//     }
-// }
-
-// function updateProgressBar() {
-//     progress = ((currentIndex + 1) / questions.length) * 100;
-//     progressBar.style.width = `${progress}%`;
-// }
-
-// function showResults() {
-//     const result = document.createElement('h1');
-//     result.innerText = `Quiz complete! Your score is ${score} out of ${questions.length}`;
-//     result.style.background = score === questions.length ? 'green' : 'red';
-//     result.style.color = 'white';
-//     result.style.textAlign = 'center';
-//     result.style.padding = '20px';
-//     result.style.marginTop = '20px';
-
-//     document.body.appendChild(result);
-
-//     nextButton.style.display = 'none';
-//     timerElement.innerText = '00:00';
-// }
-
-// function startQuiz() {
-//     startTimer();
-//     showQuestion();
-// }
-
-// submitButton.addEventListener('click', () => {
-//     if (questions[currentIndex].type === "textual") {
-//         checkTextualAnswer();
-//     } else {
-//         goToNextQuestion();
-//     }
-// });
-
-// nextButton.addEventListener('click', goToNextQuestion);
-
-// startQuiz();
 let currentIndex = 0;
     let score = 0;
     let timeRemaining = 180;
@@ -823,10 +833,10 @@ let currentIndex = 0;
         let userAnswer = document.getElementById("enter").value.trim();
        
         correctAnswer=currentQuestion.correctAnswer;
-        console.log("User Answer: ", userAnswer);  // عرض الإجابة المدخلة
-  console.log("Correct Answer: ", correctAnswer);  // عرض الإجابة الصحيحة
+        console.log("User Answer: ", userAnswer);  
+  console.log("Correct Answer: ", correctAnswer);  
 
-        // Afficher la réponse immédiatement sous la question
+        
         const resultMessage = document.createElement('h3');
         resultMessage.style.textAlign = 'center';
         if (userAnswer.toLowerCase() === currentQuestion.correctAnswer.toLowerCase()) {
@@ -920,8 +930,12 @@ let currentIndex = 0;
     nextButton.addEventListener('click', goToNextQuestion);
 
     startQuiz();
-
-
+  
+    let categorie = localStorage.getItem('categories');
+    
+    console.log(categorie);
+    // start=localStorage.getItem('step');
+    // console.log(start);
 
   
   
