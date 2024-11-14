@@ -854,44 +854,90 @@ let currentIndex = 0;
         } else if (currentQuestion.type === "textual") {
             document.getElementById("answers-area").style.display = "none";
             document.getElementById("enter").style.display = "block";
-            nextButton.style.display = "none"; // Masquer "Next" tant que la réponse n'est pas soumise
+            nextButton.style.display = "none"; 
             document.getElementById("enter").value = "";
         }
 
         updateProgressBar();
     }
-
     function checkTextualAnswer() {
-        const currentQuestion = questions[currentIndex];
-        
-        let userAnswer = document.getElementById("enter").value.trim();
        
-        correctAnswer=currentQuestion.correctAnswer;
+        const currentQuestion = questions[currentIndex];  // Récupère la question actuelle
+        let userAnswer = document.getElementById("enter").value.trim();  // Récupère la réponse de l'utilisateur
+     console.log(currentQuestion)
+        let correctAnswer = currentQuestion.correctAnswer.trim(); 
+    
         console.log("User Answer: ", userAnswer);  
-  console.log("Correct Answer: ", correctAnswer);  
-
-        
-        const resultMessage = document.createElement('h3');
-        resultMessage.style.textAlign = 'center';
-        if (userAnswer.toLowerCase() === currentQuestion.correctAnswer.toLowerCase()) {
-            score++;
-            scoreElement.innerText = score;
-            resultMessage.innerText = "Correct!";
-            resultMessage.style.color = 'green';
-            document.getElementById('enter').style.display="none";
+        console.log("Correct Answer: ", correctAnswer);  
+    
+       
+        const resultMessage = document.createElement('h1');
+        resultMessage.style.textAlign = 'center';  // Centrer le message
+    
+        // Vérification si la réponse de l'utilisateur est correcte
+        if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+            // Si la réponse est correcte
+            score++;  // Augmente le score
+            document.getElementById('enter').style.display = "none";  // Masque le champ de texte
+            scoreElement.innerText = score;  // Met à jour le score affiché
+            resultMessage.innerText = "Correct!";  // Affiche le message de succès
+            resultMessage.style.color = 'green';  // Couleur du texte : vert
         } else {
-            resultMessage.innerText = `Incorrect! The correct answer is: ${currentQuestion.correctAnswer}`;
-            resultMessage.style.color = 'red';
-            document.getElementById('enter').style.display="none";
-
+            // Si la réponse est incorrecte
+            resultMessage.innerText = `Incorrect! The correct answer is: ${correctAnswer}`;  // Affiche le message d'erreur avec la bonne réponse
+            resultMessage.style.color = 'red';  // Couleur du texte : rouge
+            document.getElementById('enter').style.display = "none";  // Masque le champ de texte
+            submitButton.style.display = "none";  // Masque le bouton "Submit"
+            nextButton.style.display = "block";  // Affiche le bouton "Next" pour passer à la question suivante
         }
-
+    
         // Ajouter le message au DOM dans la zone de rétroaction
         answerFeedback.appendChild(resultMessage);
-
-        nextButton.style.display = 'block'; 
-        submitButton.style.display='none';// Afficher le bouton "Next" après soumission de la réponse
+        console.log(answerFeedback);
+    
+        // Afficher/masquer les boutons selon le résultat
+        nextButton.style.display = 'block';  // Affiche le bouton "Next"
+        submitButton.style.display = 'none';  // Masque le bouton "Submit"
     }
+    
+    // Assure-toi que le bouton submit est cliquable et que la fonction est bien attachée
+    submitButton.addEventListener('click', checkTextualAnswer);
+    
+//     function checkTextualAnswer() {
+//         const currentQuestion = questions[currentIndex];
+        
+//         let userAnswer = document.getElementById("enter").value.trim();
+       
+//         correctAnswer=currentQuestion.correctAnswer.trim;
+//         console.log("User Answer: ", userAnswer);  
+//   console.log("Correct Answer: ", correctAnswer);  
+
+        
+//         const resultMessage = document.createElement('h3');
+//         resultMessage.style.textAlign = 'center';
+//         if (userAnswer.toLowerCase() === currentQuestion.correctAnswer.toLowerCase()) {
+//             score++; 
+//             document.getElementById('enter').style.display="none";
+//             scoreElement.innerText = score;
+//             resultMessage.innerText = "Correct!";
+//             resultMessage.style.color = 'green';
+           
+//         } else {
+//             resultMessage.innerText = `Incorrect! The correct answer is: ${currentQuestion.correctAnswer}`;
+//             resultMessage.style.color = 'red';
+//             document.getElementById('enter').style.display="none";
+//             submitButton.style.display="none";
+//             nextButton.style.display="block";
+
+//         }
+
+//         // Ajouter le message au DOM dans la zone de rétroaction
+//         answerFeedback.appendChild(resultMessage);
+
+//         nextButton.style.display = 'block'; 
+//         submitButton.style.display='none';// Afficher le bouton "Next" après soumission de la réponse
+//     }
+//     submitButton.addEventListener('click', checkTextualAnswer);
 
     function checkAnswer(selectedIndex) {
         const currentQuestion = questions[currentIndex];
@@ -956,17 +1002,17 @@ let currentIndex = 0;
 
  
 
-    nextButton.addEventListener('click', goToNextQuestion);
-    localStorage.setItem('startQuiz', JSON.stringify(startQuiz()));
-console.log(JSON.parse(localStorage.getItem('startQuiz')));
+    submitButton.addEventListener('click', goToNextQuestion);
+//     localStorage.setItem('startQuiz', JSON.stringify(startQuiz()));
+// console.log(JSON.parse(localStorage.getItem('startQuiz')));
 
    startQuiz();  
    
 
 
 
-let startButton=document.getElementById('start1');
- console.log(startButton);
+// let startButton=document.getElementById('start1');
+//  console.log(startButton);
 
  
 // startButton.addEventListener('click', () => {
