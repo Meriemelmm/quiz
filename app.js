@@ -551,7 +551,7 @@ var answerar = document.getElementById("answers-area")
 //         question: "What is the difference between '==' and '===' in JavaScript?",
 //         correctAnswer: "'==' checks for equality of values, while '===' checks for both equality of values and types."
 //     }
-// ];
+// ];d
 
 const questions = [
     // HTML - Question QCM
