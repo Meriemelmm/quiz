@@ -26,7 +26,7 @@
                     <div  id="categorie" data-categorie="html" onclick=""> </div>
                     <div id="level" data-level="beginner"></div>
                
-                <button id="start" > start</button>
+                <button class="start" > start</button>
                 
                 
            
@@ -48,7 +48,7 @@
                     <div  id="categorie" data-categorie="javascript" onclick=""> </div>
                     <div id="level" data-level="moyen"></div>
                
-                <button id="start"> start</button>
+                <button class="start"> start</button>
                 
                 
            
@@ -69,7 +69,7 @@
                     <div id="level" data-level="difficile"></div>
                 
                
-                <button id="start"> start</button>
+                <button class="start"> start</button>
                 
                 
            
@@ -89,7 +89,7 @@
                     <div  id="categorie" data-categorie="css" onclick=""> </div>
                     <div id="level" data-level="level"></div>
                
-                <button  id="start"> start</button>
+                <button  class="start"> start</button>
                 
                 
            
@@ -109,7 +109,7 @@
                     <div  id="categorie" data-categorie="css" onclick=""> </div>
                     <div id="level" data-level="level"></div>
                
-                <button id="start"> start</button>
+                <button class="start"> start</button>
                 
                 
            
@@ -129,7 +129,7 @@
                     <div  id="categorie" data-categorie="css" onclick=""> </div>
                     <div id="level" data-level="level"></div>
                
-                <button id="start"> start</button>
+                <button class="start"> start</button>
                 
                 
            
@@ -151,7 +151,7 @@
                     <div  id="categorie" data-categorie="css" onclick=""> </div>
                     <div id="level" data-level="level"></div>
                
-                <button id="start"> start</button>
+                <button class="start"> start</button>
                 
                 
            
@@ -169,7 +169,7 @@
                     <div class="time"> <p><span>TIME: </span>5 munite</p></div>
                     <div class="level"> <p><span>LEVEL: </span>beginner</p></div>
                
-                <button id="start"> start</button>
+                <button class="start"> start</button>
                 
                 
            
@@ -187,7 +187,7 @@
                     <div class="time"> <p><span>TIME: </span>5 munite</p></div>
                     <div class="level"> <p><span>LEVEL: </span>beginner</p></div>
                
-                <button  id="start"> start</button>
+                <button  class="start"> start</button>
                 
                 
            
@@ -196,12 +196,14 @@
         </div>
     </section>
   
+
+
    
     <script> let type_categorie = document.getElementById("categorie");
 
 
     
-        //let categorie_dt = type_categorie.dataset.categorie;
+       
         let categorie_dt = type_categorie.getAttribute("data-categorie");
 
         localStorage.setItem('categories', categorie_dt);
@@ -211,56 +213,24 @@
         localStorage.setItem('level',level_dt);
         localStorage.getItem.level;
       
-        console.log("hello");
-        function hello() {
-        window.alert("hello");
-    }
-tart=document.getElementById("start");
-        // localStorage.setItem("step",start);
-        // localStorage.getItem('step');
-        // console.log(   localStorage.getItem('step'))
+      
+        
 
-        const startButton = document.getElementById('start');
+        
+
+        const startButton = document.getElementsByClassName('start');
+        localStorage.setItem("start",startButton);
+        localStorage.getItem("start");
+        console.log(localStorage.getItem("start"))
 console.log(startButton);
 
-    //     document.addEventListener('DOMContentLoaded', function () {
-    //  // Pour vérifier si le bouton est trouvé
-    
-    // if (startButton) {
-    //     startButton.addEventListener('click', function () {
-    //         // Votre logique pour démarrer le quiz
-    //         let level = localStorage.getItem('level');
-    //         let categorie = localStorage.getItem('categories');
-            
-    //         if (categorie && level) {
-    //             if (categorie.toLowerCase() === currentQuestion.category.toLowerCase() && level.toLowerCase() === currentQuestion.level.toLowerCase()) {
-    //                 alert("Commence le quiz !");
-    //                 window.location.href = 'quiz.html'; // Redirige vers la page du quiz
-    //                 startQuiz();  // Démarre le quiz
-    //             } else {
-    //                 alert("La catégorie ou le niveau ne correspondent pas.");
-    //             }
-    //         } else {
-    //             alert("Veuillez définir la catégorie et le niveau.");
-    //         }
-    //     });
-    // } else {
-    //     console.error("Le bouton Start n'a pas été trouvé.");
-    // }
-// startButton=document.getElementById('start');
-//  console.log(startButton);
-//  let level= localStorage.getItem('level').trim();
-//         let categorie= localStorage.getItem('categories').trim();
- 
-// startButton.addEventListener('click', function() {
-//     if(categorie.toLowerCase() === currentQuestion.category.toLowerCase() &&  level.toLowerCase() === currentQuestion.level.toLowerCase() ){ 
-       
-//        alert("commence le quiz") ;
-//        window.location.href = 'quiz.html';
-//     //   startQuiz();
-//      }
    
-// });
+ 
+
+   
+     
+   
+
 
 
         

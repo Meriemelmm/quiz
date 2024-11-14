@@ -954,32 +954,34 @@ let currentIndex = 0;
         showQuestion();
     }
 
-    // submitButton.addEventListener('click', () => {
-    //     if (questions[currentIndex].type === "textual") {
-    //         checkTextualAnswer();
-            
-    //     } else {
-    //         goToNextQuestion();
-    //     }
-    // });
+ 
 
     nextButton.addEventListener('click', goToNextQuestion);
+    localStorage.setItem('startQuiz', JSON.stringify(startQuiz()));
+console.log(JSON.parse(localStorage.getItem('startQuiz')));
 
-   startQuiz();
+   startQuiz();  
    
 
-// Attacher l'événement de clic au bouton 
-// startButton=document.getElementById('start');
-//  console.log(startButton);
-//  let level= localStorage.getItem('level').trim();
-//         let categorie= localStorage.getItem('categories').trim();
+
+
+let startButton=document.getElementById('start1');
+ console.log(startButton);
+
  
-// startButton.addEventListener('click', function() {
-//     if(categorie.toLowerCase() === currentQuestion.category.toLowerCase() &&  level.toLowerCase() === currentQuestion.level.toLowerCase() ){ 
+// startButton.addEventListener('click', () => {
+//     console.log("hello me");
+    // if(categorie.toLowerCase() === currentQuestion.category.toLowerCase() &&  level.toLowerCase() === currentQuestion.level.toLowerCase() ){ 
        
-//        alert("commence le quiz") ;
-//        window.location.href = 'quiz.html';
-//        startQuiz();}
+    //    alert("commence le quiz") ;
+    //    window.location.href = 'quiz.html';
+    //    startQuiz();}
+    
+    
+    // Conversion de la fonction en une chaîne
+   
+    // localStorage.setItem('startQuiz', startQuiz());
+    // console.log(localStorage.getItem('startQuiz'));
     
    
 // });
