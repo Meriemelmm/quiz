@@ -23,8 +23,7 @@
                     </div>
                     <div class="time"> <p><span>TIME: </span>5 munite</p></div>
                     <div class="level"> <p><span>LEVEL: </span>beginner</p></div>
-                    <div  id="categorie" data-categorie="html" onclick=""> </div>
-                    <div id="level" data-level="beginner"></div>
+                    
                
                     <button class="start-quiz" data-category="HTML" data-level="easy">Start Quiz</button>
                 
@@ -34,7 +33,7 @@
             </div>
             <div class="card">
                 <div> <img src="https://codingal.s3.amazonaws.com/media/quizcontest/thumbnail/2021/10/27/14.png" style="width:350px"  ></div>
-                <h1> INTRODUCTION OF JS</h1> 
+                <h1> JAVASCRIPT</h1> 
                 
                     <div class="qs">
                          
@@ -42,7 +41,7 @@
                         
                     </div>
                     <div class="time"> <p><span>TIME: </span>5 munite</p></div>
-                    <div class="level"> <p><span>LEVEL: </span></p></div>
+                    <div class="level"> <p><span>LEVEL: </span>  HARD</p></div>
                     <div  id="categorie" data-categorie="javascript"> </div>
 
                     <!-- <div  id="categorie" data-categorie="javascript" onclick=""> </div>
@@ -65,7 +64,7 @@
                         
                     </div>
                     <div class="time"> <p><span>TIME: </span>5 munite</p></div>
-                    <div class="level"> <p><span>LEVEL: </span>beginner</p></div>
+                    <div class="level"> <p><span>LEVEL: </span>medium</p></div>
                     <!-- <div  id="categorie" data-categorie="css" onclick=""> </div>
                     <div id="level" data-level="difficile"></div>
                  -->
@@ -199,23 +198,25 @@
     </section>
   
  <script>  
-//  const startQuizButtons = document.querySelectorAll('.start-quiz');
+ const startQuizButtons = document.querySelectorAll('.start-quiz');
 
-//     // Ajouter un événement au clic sur chaque bouton "Start Quiz"
-//     startQuizButtons.forEach(button => {
-//         button.addEventListener('click', () => {
-//             // Récupérer les informations sur la catégorie et le niveau
-//             const category = button.dataset.category;
-//             const level = button.dataset.level;
+    // Ajouter un événement au clic sur chaque bouton "Start Quiz"
+    startQuizButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Récupérer les informations sur la catégorie et le niveau
+            const category = button.dataset.category;
+            const level = button.dataset.level;
     
-//             // Stocker les informations dans le localStorage pour les utiliser dans la page du quiz
-//             localStorage.setItem('selectedCategory', category);
-//             localStorage.setItem('selectedLevel', level);
+            // Stocker les informations dans le localStorage pour les utiliser dans la page du quiz
+            localStorage.setItem('selectedCategory', category);
+            localStorage.setItem('selectedLevel', level);
+           localStorage.getItem('selectedCategory');
+
     
-//             // Rediriger l'utilisateur vers la page du quiz
-//             window.location.href = 'app.html'; // page du quiz
-//         });
-//     });
+            // Rediriger l'utilisateur vers la page du quiz
+            window.location.href = 'app.html'; // page du quiz
+        });
+    });
     </script>
 
    
