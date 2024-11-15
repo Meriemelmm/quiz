@@ -898,6 +898,7 @@ total.innerHTML=filteredQuestions.length;
 
     function showResults() {
         
+        
         const result = document.createElement('h1');
         result.innerText = `Quiz complete! Your score is ${score} out of ${filteredQuestions.length}`;
         result.style.background = score === questions.length ? 'green' : 'red';
