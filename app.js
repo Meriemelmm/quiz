@@ -797,6 +797,7 @@ let currentIndex = 0;
     let timeRemaining = 180;
     let quizTimer;
     let progress = 0;
+    
 
     const questionElement = document.getElementById("question");
     const answerButtons = [
@@ -861,10 +862,12 @@ let currentIndex = 0;
         updateProgressBar();
     }
     function checkTextualAnswer() {
-       
-        const currentQuestion = questions[currentIndex];  // Récupère la question actuelle
+        const currentQuestion = questions[currentIndex];
+        questionElement.innerText = currentQuestion.question;
+          
+          // Récupère la question actuelle
         let userAnswer = document.getElementById("enter").value.trim();  // Récupère la réponse de l'utilisateur
-     console.log(currentQuestion)
+   
         let correctAnswer = currentQuestion.correctAnswer.trim(); 
     
         console.log("User Answer: ", userAnswer);  
@@ -881,11 +884,11 @@ let currentIndex = 0;
             document.getElementById('enter').style.display = "none";  // Masque le champ de texte
             scoreElement.innerText = score;  // Met à jour le score affiché
             resultMessage.innerText = "Correct!";  // Affiche le message de succès
-            resultMessage.style.color = 'green';  // Couleur du texte : vert
+            resultMessage.style.backgroundColor = 'green';  // Couleur du texte : vert
         } else {
             // Si la réponse est incorrecte
             resultMessage.innerText = `Incorrect! The correct answer is: ${correctAnswer}`;  // Affiche le message d'erreur avec la bonne réponse
-            resultMessage.style.color = 'red';  // Couleur du texte : rouge
+            resultMessage.style.background = 'red';  // Couleur du texte : rouge
             document.getElementById('enter').style.display = "none";  // Masque le champ de texte
             submitButton.style.display = "none";  // Masque le bouton "Submit"
             nextButton.style.display = "block";  // Affiche le bouton "Next" pour passer à la question suivante
