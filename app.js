@@ -268,21 +268,33 @@ const questions = [
         question: "What is the default value of the 'display' property in CSS?",
         answers: ["block", "inline", "none", "inline-block"],
         correctAnswer: 1
+    },
+    {
+        category: "html",  
+        level: "easy",  // Added level field
+        type: "multiple-choice",
+        question: "What is the default value of the 'display' property in CSS?",
+        answers: ["block", "inline", "none", "inline-block"],
+        correctAnswer: 1
     }
 ];
 
 let selectedCategory = localStorage.getItem('selectedCategory');
 let selectedLevel = localStorage.getItem('selectedLevel');
-
+console.log(questions[5].correctAnswer);
+console.log()
+console.log(questions)
 
 const filteredQuestions = questions.filter(q => q.category === selectedCategory && q.level === selectedLevel);
 
-let currentIndex = 0;
+let currentIndex=0;
     let score = 0;
-    let timeRemaining = 180;
+    let timeRemaining = 120;
     let quizTimer;
     let progress = 0;
     
+const currentQuestion=filteredQuestions[currentIndex];
+
 
     const questionElement = document.getElementById("question");
     const answerButtons = [
@@ -315,11 +327,11 @@ let currentIndex = 0;
     }
 
     function showQuestion() {
-        // const currentQuestion = questions[currentIndex];
+     
         const currentQuestion = filteredQuestions[currentIndex];
         questionElement.innerText = currentQuestion.question;
 
-        // Effacer la rétroaction de la question précédente
+       
         answerFeedback.innerHTML = "";
 
         if (currentQuestion.type === "multiple-choice" || currentQuestion.type === "true-false") {
@@ -343,62 +355,65 @@ let currentIndex = 0;
             document.getElementById("enter").style.display = "block";
             nextButton.style.display = "none"; 
             document.getElementById("enter").value = "";
+      
+             submitButton.onclick = checkTextualAnswer ;
         }
 
         updateProgressBar();
     }
     function checkTextualAnswer() {
-        // const currentQuestion = questions[currentIndex];
+        
         const currentQuestion = filteredQuestions[currentIndex];
         questionElement.innerText = currentQuestion.question;
         
           
-          // Récupère la question actuelle
-        let userAnswer = document.getElementById("enter").value.trim();  // Récupère la réponse de l'utilisateur
+          
+         const userAnswer = document.getElementById("enter").value.trim();  
    
-        let correctAnswer = currentQuestion.correctAnswer.trim(); 
-    
-        // console.log("User Answer: ", userAnswer);  
-        // console.log("Correct Answer: ", correctAnswer);  
+        const correctAnswer = currentQuestion.correctAnswer;
+        if(typeof checkAnswerorrectAnswer==="string"){ const resultMessage = document.createElement('h1');
+        resultMessage.style.textAlign = 'center';  
     
        
-        const resultMessage = document.createElement('h1');
-        resultMessage.style.textAlign = 'center';  // Centrer le message
-    
-        // Vérification si la réponse de l'utilisateur est correcte
         if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
-            // Si la réponse est correcte
-            score++;  // Augmente le score
-            document.getElementById('enter').style.display = "none";  // Masque le champ de texte
-            scoreElement.innerText = score;  // Met à jour le score affiché
-            resultMessage.innerText = "Correct!";  // Affiche le message de succès
-            resultMessage.style.Color = 'green';  // Couleur du texte : vert
+           
+            score++;  
+            document.getElementById('enter').style.display = "none";  
+            scoreElement.innerText = score; 
+            resultMessage.innerText = "Correct!";  
+            resultMessage.style.Color = 'green'; 
         } else {
-            // Si la réponse est incorrecte
-            resultMessage.innerText = `Incorrect! The correct answer is: ${correctAnswer}`;  // Affiche le message d'erreur avec la bonne réponse
-            resultMessage.style.color = 'red';  // Couleur du texte : rouge
-            document.getElementById('enter').style.display = "none";  // Masque le champ de texte
-            submitButton.style.display = "none";  // Masque le bouton "Submit"
-            nextButton.style.display = "block";  // Affiche le bouton "Next" pour passer à la question suivante
+            
+            resultMessage.innerText = `Incorrect! The correct answer is: ${correctAnswer}`;  
+            resultMessage.style.color = 'red';  
+            document.getElementById('enter').style.display = "none"; 
+             submitButton.style.display = "none"; 
+             nextButton.style.display = "block";  
         }
     
-        // Ajouter le message au DOM dans la zone de rétroaction
         answerFeedback.appendChild(resultMessage);
         console.log(resultMessage);
     
-        // Afficher/masquer les boutons selon le résultat
-        nextButton.style.display = 'block';  // Affiche le bouton "Next"
-        submitButton.style.display = 'none';  // Masque le bouton "Submit"
-    }
+        
+        nextButton.style.display = 'block'; 
+        submitButton.style.display = 'none';
+        // nextButton.onclick = goToNextQuestion;
+    scoreElement.innerText = score;  
+        
+       
+       
+    }}
+  
     
-    // Assure-toi que le bouton submit est cliquable et que la fonction est bien attachée
-    submitButton.addEventListener('click', checkTextualAnswer);
+    
     
 
 
     function checkAnswer(selectedIndex) {
-        // const currentQuestion = questions[currentIndex];
+  
         const currentQuestion = filteredQuestions[currentIndex];
+         
+
         answerButtons.forEach(button => button.disabled = true);
         submitButton.style.display='block';
 
@@ -417,17 +432,17 @@ let currentIndex = 0;
             scoreElement.innerText = score;
         }
 
-        // nextButton.style.display = 'block'; // Afficher "Next"
+        
     }
 
     function goToNextQuestion() {
         currentIndex++;
 
         if (currentIndex < filteredQuestions.length) {
-            showQuestion(); // Afficher la prochaine question
-            nextButton.style.display = 'none'; // Masquer le bouton "Next" jusqu'à ce qu'une réponse soit donnée
+            showQuestion(); 
+        
         } else {
-            showResults(); // Si toutes les questions sont répondues, afficher les résultats
+            showResults(); 
         }
     }
 
@@ -448,7 +463,7 @@ let currentIndex = 0;
 
         document.body.appendChild(result);
 
-        nextButton.style.display = 'none';
+        submitButton.style.display = 'none';
         timerElement.innerText = '00:00';
         
     }
@@ -463,34 +478,9 @@ let currentIndex = 0;
  
 
     submitButton.addEventListener('click', goToNextQuestion);
-//     localStorage.setItem('startQuiz', JSON.stringify(startQuiz()));
-// console.log(JSON.parse(localStorage.getItem('startQuiz')));
 
    startQuiz();  
    
-
-
-
-// let startButton=document.getElementById('start1');
-//  console.log(startButton);
-
- 
-// startButton.addEventListener('click', () => {
-//     console.log("hello me");
-    // if(categorie.toLowerCase() === currentQuestion.category.toLowerCase() &&  level.toLowerCase() === currentQuestion.level.toLowerCase() ){ 
-       
-    //    alert("commence le quiz") ;
-    //    window.location.href = 'quiz.html';
-    //    startQuiz();}
-    
-    
-    // Conversion de la fonction en une chaîne
-   
-    // localStorage.setItem('startQuiz', startQuiz());
-    // console.log(localStorage.getItem('startQuiz'));
-    
-   
-// });
 
 
 
