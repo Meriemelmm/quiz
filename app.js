@@ -697,7 +697,14 @@ const questions = [
                 ],
                 correctAnswer: 3
             }
-       
+            , {
+        category: "HTML", 
+        level: "medium", 
+        type: "true-false", 
+        question: "The <body> tag is used to define the metadata of the document.", 
+        answers: ["True", "False"], 
+        correctAnswer: 1  // False, <body> contains the visible content, not metadata
+    }
         
    
     
@@ -905,7 +912,9 @@ total.innerHTML=filteredQuestions.length;
         timerElement.innerText = '00:00';
         retour.style.display='block';
         again.style.display='block';
-        again.addEventListener('click', startQuiz);
+        again.addEventListener('click', ()=>{
+            window.location.reload()
+        } );
        
         
         
