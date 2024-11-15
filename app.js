@@ -704,7 +704,10 @@ const questions = [
     
    
 ];
-
+let retour= document.getElementById('retour');
+let again=document.getElementById('again')
+// <div > <button id=" retour"> <a href="indexx.html">retour a home</a> </button>
+//             <button  id="again" > tray again</button></div>
 
 
 
@@ -813,6 +816,7 @@ total.innerHTML=filteredQuestions.length;
             scoreElement.innerText = score; 
             resultMessage.innerText = "Correct!";  
             resultMessage.style.Color = 'green'; 
+            console.log( resultMessage)
         } else {
             
             resultMessage.innerText = `Incorrect! The correct answer is: ${correctAnswer}`;  
@@ -820,6 +824,7 @@ total.innerHTML=filteredQuestions.length;
             document.getElementById('enter').style.display = "none"; 
              submitButton.style.display = "none"; 
              nextButton.style.display = "block";  
+             console.log(resultMessage)
         }
     
         answerFeedback.appendChild(resultMessage);
@@ -881,6 +886,8 @@ total.innerHTML=filteredQuestions.length;
         progress = ((currentIndex + 1) / filteredQuestions.length) * 100;
         progressBar.style.width = `${progress}%`;
     }
+    retour.style.display='none';
+    again.style.display='none';
 
     function showResults() {
         
@@ -896,11 +903,21 @@ total.innerHTML=filteredQuestions.length;
 
         submitButton.style.display = 'none';
         timerElement.innerText = '00:00';
+        retour.style.display='block';
+        again.style.display='block';
+        again.addEventListener('click', startQuiz);
+       
+        
+        
         
     }
-
+   
+    
+    
+    
     function startQuiz() {
-       
+        retour.style.display='none';
+        again.style.display='none';
 
         startTimer();
         showQuestion();

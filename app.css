@@ -125,6 +125,43 @@ padding:15px}
  .quiz-app #second #third{
   display:none;
  }
+ #retour button {
+  background-color: #018ABE;
+   
+    margin: 0 auto;
+   
+    padding:10px 15px;
+    border:none;
+    font-weight: #fff;
+    font-size:18px;
+    cursor:pointer;
+    margin-top: 15px
+ }
+ #again{
+  background-color: #018ABE;
+   
+    margin: 0 auto;
+   
+    padding:10px 15px;
+    border:none;
+    font-weight: #fff;
+    font-size:18px;
+    cursor:pointer;
+    margin-top: 15px;
+ 
+ }
+ #retour{ background-color: #018ABE;
+   
+  margin: 0 auto;
+ 
+  
+ 
+  padding:10px 15px;
+  border:none;
+  font-weight: #fff;
+  font-size:18px;
+  cursor:pointer;
+  margin-top: 15px}
 /* .quiz-app .bullets {
 border-top: 1px solid #dfdfdf;
 
@@ -134,7 +171,7 @@ padding
 .barre{
   width:100%; */
 
-}
+
 /* * {
     box-sizing: border-box;
   }

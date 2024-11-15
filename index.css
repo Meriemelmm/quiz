@@ -1,46 +1,88 @@
-/* 
-body{ background-color: #D76C82;
-} */
-*{color:#273238;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
 
+*{
+    box-sizing: border-box;
+    /* color: #003049; */
+    color:#06090f
+    
 }
 body{
-    background-color: grey;
-}.cards{
-margin-bottom: 400px;
-    width:80%;
+    font-family: tahoma,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: tahoma,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ font-family: tahoma,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+   
+}
+.cards{
     display: flex;
+    flex-wrap: wrap;
+    gap:20px;
+    justify-items: center;
     justify-content: center;
     align-items: center;
-    gap: 50px;
-    flex-wrap: wrap;
-    margin:0 auto;
- 
+   margin:0 auto;
+   width:80%
+}.card{
+    background-color: white;
+    
+   width:350px;
+   height: 500px;
+   /* background-color: #fdf0d5; */
+   box-shadow: 1px 1px 1px 1px grey;
+   border-color: #001B48;
+
+border-radius: 0px;
+/* border-bottom-left-radius:  80px 80px;
+border-top-right-radius:   80px 80px; */
+display: flex;
+flex-direction:column;
+align-items: center;
+margin:0 auto;
+
+
+
+
+
+
+
 }
-/* .card{
-    border-radius: 10px;
-    height:900px;
-    width: 400px;
-} */
- .card{ line-height: 0.8em;
-    background-color:red;
-    height: 550px;
-    border-color:#273238;
-    border-style: solid;
-    border-radius:  10px ;
-    background-color:wheat
- }
-h1{ text-align: center;
-font-family: arial;
-font-weight: bold;
+img{
+width: 350px;
+height: 250px;
+/* border-top-right-radius:   80px 80px; */
+/* border-top-left-radius: 15px;
+border-top-right-radius: 15px; */
+
 }
-p{
-    font-size: medium;
-    font-weight:lighter;
+h1{font-family:cursive;
+    text-align: center;
+    font-size: 1.6rem;
+    
+    
+
+}
+p{text-align: center;
+    margin-top: 0px;
+    font-family:cursive;
+line-height: 1.2em;}
+
+span{
+    font-family:cursive;
+    font-size: 1em;
+  
+    text-align: center;
 }
 button{
-    font-size: 16px;
-    font-weight: bolder;
+    width:150px;
+    height: 30px;
+    text-align: center;
+    background-color:#001B48;
+    color: white;
+  
+   
+   
+    font-size: 1.2em;
+    font-weight: lighter;
+    
+  
+
 }
