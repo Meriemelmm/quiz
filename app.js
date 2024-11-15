@@ -396,13 +396,312 @@ const questions = [
         question: "Explain the 'position' property in CSS and describe the differences between 'relative', 'absolute', 'fixed', and 'sticky' positions.",
         correctAnswer: "'position' controls how an element is positioned in relation to its parent or the viewport. 'relative' moves an element relative to its normal position. 'absolute' removes the element from the document flow and positions it relative to the nearest positioned ancestor. 'fixed' fixes an element in place relative to the viewport, and 'sticky' makes an element stick to its position based on scroll behavior."
     },
+   
     {
-        category: "computer" , 
+        category: "Computer",  
+        level: "easy",  
+        type: "multiple-choice",
+        question: "What does CPU stand for?",
+        answers: ["Central Processing Unit", "Central Program Unit", "Computer Processing Unit", "Central Process Unit"],
+        correctAnswer: 0
+    },
+
+    // Informatique - Question QCM
+    {
+        category: "Computer",  
+        level: "easy",  
+        type: "multiple-choice",
+        question: "Which device is used to input data into a computer?",
+        answers: ["Monitor", "Keyboard", "Printer", "Speaker"],
+        correctAnswer: 1
+    },
+
+    // Informatique - Question QCM
+    {
+        category: "Computer",  
+        level: "easy",  
+        type: "multiple-choice",
+        question: "What is the primary function of the computer’s memory?",
+        answers: ["To store data permanently", "To process data", "To temporarily store data for active programs", "To output data"],
+        correctAnswer: 2
+    },
+
+    // Informatique - Question True/False
+    {
+        category: "Computer",  
+        level: "easy",  
+        type: "true-false",
+        question: "RAM is a type of permanent memory.",
+        answers: ["True", "False"],
+        correctAnswer: 1
+    },
+
+    // Informatique - Question True/False
+    {
+        category: "Computer",  
+        level: "easy",  
+        type: "true-false",
+        question: "A hard drive is used to store data permanently.",
+        answers: ["True", "False"],
+        correctAnswer: 0
+    }, {
+        category: "Computer",  
         level: "easy",  
         type: "textual",
-        question: "Explain the 'position' property in CSS and describe the differences between 'relative', 'absolute', 'fixed', and 'sticky' positions.",
-        correctAnswer: "'position' controls how an element is positioned in relation to its parent or the viewport. 'relative' moves an element relative to its normal position. 'absolute' removes the element from the document flow and positions it relative to the nearest positioned ancestor. 'fixed' fixes an element in place relative to the viewport, and 'sticky' makes an element stick to its position based on scroll behavior."
-    },
+        question: "What is the purpose of an operating system?",
+        correctAnswer: "An operating system manages hardware resources, provides a user interface, and allows software applications to run."
+    }
+   ,
+        // Algorithm - Question QCM
+        {
+            category: "Algorithm",  
+            level: "easy",  
+            type: "multiple-choice",
+            question: "What is an algorithm?",
+            answers: [
+                "A step-by-step procedure for solving a problem",
+                "A type of programming language",
+                "A computer hardware component",
+                "An error in a program"
+            ],
+            correctAnswer: 0
+        },
+    
+        // Algorithm - Question QCM
+        {
+            category: "Algorithm",  
+            level: "easy",  
+            type: "multiple-choice",
+            question: "Which of the following is an example of an algorithm?",
+            answers: [
+                "Recipe for making a cake",
+                "A list of items in a store",
+                "A drawing of a house",
+                "A shopping list"
+            ],
+            correctAnswer: 0
+        },
+    
+        // Algorithm - Question True/False
+        {
+            category: "Algorithm",  
+            level: "easy",  
+            type: "true-false",
+            question: "An algorithm must always be written in a programming language.",
+            answers: ["True", "False"],
+            correctAnswer: 1
+        },
+    
+        // Algorithm - Question Textuelle
+        {
+            category: "Algorithm",  
+            level: "easy",  
+            type: "textual",
+            question: "What are the key characteristics of a good algorithm?",
+            correctAnswer: "A good algorithm should be clear, efficient, and finite."
+        },
+    
+        // Algorithm - Question True/False
+        {
+            category: "Algorithm",  
+            level: "easy",  
+            type: "true-false",
+            question: "An algorithm must produce a result in a finite amount of time.",
+            answers: ["True", "False"],
+            correctAnswer: 0
+        },
+    
+        // Algorithm - Question QCM
+        {
+            category: "Algorithm",  
+            level: "easy",  
+            type: "multiple-choice",
+            question: "Which of the following is not an example of an algorithm?",
+            answers: [
+                "A set of instructions for sorting numbers",
+                "A set of cooking instructions",
+                "A list of your favorite movies",
+                "A step-by-step guide for finding the shortest path"
+            ],
+            correctAnswer: 2
+        },
+    
+        // Algorithm - Question QCM
+        {
+            category: "Algorithm",  
+            level: "easy",  
+            type: "multiple-choice",
+            question: "Which of the following algorithms is commonly used for sorting data?",
+            answers: [
+                "Bubble Sort",
+                "Binary Search",
+                "Merge Sort",
+                "Both Bubble Sort and Merge Sort"
+            ],
+            correctAnswer: 3
+        },
+    
+        // Algorithm - Question Textuelle
+        {
+            category: "Algorithm",  
+            level: "easy",  
+            type: "textual",
+            question: "What is the purpose of a sorting algorithm?",
+            correctAnswer: "The purpose of a sorting algorithm is to arrange data in a specific order, such as ascending or descending."
+        },
+    
+        // Algorithm - Question True/False
+        {
+            category: "Algorithm",  
+            level: "easy",  
+            type: "true-false",
+            question: "A sorting algorithm can only be used on numbers.",
+            answers: ["True", "False"],
+            correctAnswer: 1
+        },
+    
+        // Algorithm - Question QCM
+        {
+            category: "Algorithm",  
+            level: "easy",  
+            type: "multiple-choice",
+            question: "Which of the following is the first step in writing an algorithm?",
+            answers: [
+                "Understanding the problem",
+                "Writing the code",
+                "Testing the algorithm",
+                "Debugging the algorithm"
+            ],
+            correctAnswer: 0
+        },
+       
+            // AI - Question QCM
+            {
+                category: "Intelligence Artificielle",  
+                level: "easy",  
+                type: "multiple-choice",
+                question: "What does AI stand for?",
+                answers: [
+                    "Artificial Intelligence",
+                    "Automated Interface",
+                    "Advanced Internet",
+                    "Artificial Internet"
+                ],
+                correctAnswer: 0
+            },
+        
+            // AI - Question QCM
+            {
+                category: "Intelligence Artificielle",  
+                level: "easy",  
+                type: "multiple-choice",
+                question: "Which of the following is a common application of AI?",
+                answers: [
+                    "Speech recognition",
+                    "Sorting email",
+                    "Playing chess",
+                    "All of the above"
+                ],
+                correctAnswer: 3
+            },
+        
+            // AI - Question True/False
+            {
+                category: "Intelligence Artificielle",  
+                level: "easy",  
+                type: "true-false",
+                question: "Artificial intelligence can learn from experience.",
+                answers: ["True", "False"],
+                correctAnswer: 0
+            },
+        
+            // AI - Question Textuelle
+            {
+                category: "Intelligence Artificielle",  
+                level: "easy",  
+                type: "textual",
+                question: "What is machine learning in AI?",
+                correctAnswer: "Machine learning is a type of AI where systems can learn from data without being explicitly programmed."
+            },
+        
+            // AI - Question QCM
+            {
+                category: "Intelligence Artificielle",  
+                level: "easy",  
+                type: "multiple-choice",
+                question: "Which of these is a type of AI?",
+                answers: [
+                    "Supervised learning",
+                    "Unsupervised learning",
+                    "Reinforcement learning",
+                    "All of the above"
+                ],
+                correctAnswer: 3
+            },
+        
+            // AI - Question True/False
+            {
+                category: "Intelligence Artificielle",  
+                level: "easy",  
+                type: "true-false",
+                question: "AI systems can only work with structured data.",
+                answers: ["True", "False"],
+                correctAnswer: 1
+            },
+        
+            // AI - Question Textuelle
+            {
+                category: "Intelligence Artificielle",  
+                level: "easy",  
+                type: "textual",
+                question: "What is the purpose of neural networks in AI?",
+                correctAnswer: "Neural networks are used to mimic the way the human brain processes information and to perform tasks such as classification and pattern recognition."
+            },
+        
+            // AI - Question QCM
+            {
+                category: "Intelligence Artificielle",  
+                level: "easy",  
+                type: "multiple-choice",
+                question: "Which of the following is a popular programming language used in AI development?",
+                answers: [
+                    "Python",
+                    "JavaScript",
+                    "HTML",
+                    "C#"
+                ],
+                correctAnswer: 0
+            },
+        
+            // AI - Question True/False
+            {
+                category: "Intelligence Artificielle",  
+                level: "easy",  
+                type: "true-false",
+                question: "AI can make decisions without human intervention.",
+                answers: ["True", "False"],
+                correctAnswer: 0
+            },
+        
+            // AI - Question QCM
+            {
+                category: "Intelligence Artificielle",  
+                level: "easy",  
+                type: "multiple-choice",
+                question: "Which of the following is an example of AI in daily life?",
+                answers: [
+                    "Virtual assistants like Siri or Alexa",
+                    "Autonomous vehicles",
+                    "Recommendation systems on streaming platforms",
+                    "All of the above"
+                ],
+                correctAnswer: 3
+            }
+       
+        
+   
+    
+    
    
 ];
 
@@ -410,282 +709,11 @@ const questions = [
 
 
 
-// const questions = [
-//     // HTML - Question QCM
-//     {
-//         category: "HTML", 
-//         level: "easy",  // Added level field
-//         type: "multiple-choice",  
-//         question: "What does HTML stand for?",
-//         answers: [
-//             "HyperText Markup Language", 
-//             "HighText Machine Language", 
-//             "Hyperlink Text Markup Language", 
-//             "None of the above"
-//         ],
-//         correctAnswer: 0 
-//     },
 
-//     // HTML - Question Vrai/Faux
-//     {
-//         category: "HTML", 
-//         level: "easy",  // Added level field
-//         type: "true-false",  
-//         question: "HTML is used to style web pages.",
-//         answers: [
-//             "True",
-//             "False"
-//         ],
-//         correctAnswer: 1  
-//     },
-
-//     // HTML - Question Textuelle
-//     {
-//         category: "HTML",  
-//         level: "medium",  // Added level field
-//         type: "textual",  
-//         question: "What is the purpose of the <title> tag in HTML?",
-//         correctAnswer: "It defines the title of the document, shown in the browser tab."
-//     },
-
-//     // HTML - Question QCM
-//     {
-//         category: "HTML",  
-//         level: "medium",  // Added level field
-//         type: "multiple-choice",
-//         question: "Which tag is used for a line break in HTML?",
-//         answers: ["<break>", "<lb>", "<br>", "<line>"],
-//         correctAnswer: 2
-//     },
-
-//     // HTML - Question Vrai/Faux
-//     {
-//         category: "HTML",  
-//         level: "easy",  // Added level field
-//         type: "true-false",
-//         question: "The <img> tag is used to insert images in HTML.",
-//         answers: ["True", "False"],
-//         correctAnswer: 0 
-//     },
-
-//     // HTML - Question Textuelle
-//     {
-//         category: "HTML",  
-//         level: "medium",  // Added level field
-//         type: "textual",
-//         question: "What is the purpose of the <head> element in an HTML document?",
-//         correctAnswer: "It contains metadata like the document's title, links to stylesheets, and scripts." 
-//     },
-
-//     // HTML - Question QCM
-//     {
-//         category: "HTML",  
-//         level: "hard",  // Added level field
-//         type: "multiple-choice",
-//         question: "What is the correct HTML for creating a hyperlink?",
-//         answers: ["<a url='www.example.com'>Link</a>", "<a href='www.example.com'>Link</a>", "<link href='www.example.com'>Link</link>", "<a link='www.example.com'>Link</a>"],
-//         correctAnswer: 1
-//     },
-
-//     // HTML - Question Vrai/Faux
-//     {
-//         category: "HTML",  
-//         level: "medium",  // Added level field
-//         type: "true-false",
-//         question: "HTML stands for HyperText Markup Language.",
-//         answers: ["True", "False"],
-//         correctAnswer: 0  
-//     },
-
-//     // HTML - Question Textuelle
-//     {
-//         category: "HTML",  
-//         level: "easy",  // Added level field
-//         type: "textual",
-//         question: "best you ",
-//         correctAnswer: "me" 
-//     },
-
-//     // HTML - Question QCM
-//     {
-//         category: "HTML",  
-//         level: "medium",  // Added level field
-//         type: "multiple-choice",
-//         question: "What does the <title> tag define in an HTML document?",
-//         answers: ["The document title", "The body of the document", "The header of the document", "The footer of the document"],
-//         correctAnswer: 0
-//     },
-
-//     // HTML - Question QCM
-//     {
-//         category: "HTML",  
-//         level: "easy",  // Added level field
-//         type: "multiple-choice",
-//         question: "Which tag is used to define a table in HTML?",
-//         answers: ["<table>", "<grid>", "<tab>", "<list>"],
-//         correctAnswer: 0
-//     },
-
-//     // HTML - Question Vrai/Faux
-//     {
-//         category: "HTML",  
-//         level: "easy",  // Added level field
-//         type: "true-false",
-//         question: "The <div> tag is used to create a division or section in HTML.",
-//         answers: ["True", "False"],
-//         correctAnswer: 0  
-//     },
-
-//     // HTML - Question QCM
-//     {
-//         category: "HTML",  
-//         level: "medium",  // Added level field
-//         type: "multiple-choice",
-//         question: "What tag is used to create a form in HTML?",
-//         answers: ["<form>", "<input>", "<button>", "<textarea>"],
-//         correctAnswer: 0
-//     },
-
-//     // JavaScript - Question QCM
-//     {
-//         category: "JavaScript",  
-//         level: "medium",  // Added level field
-//         type: "multiple-choice",
-//         question: "Which keyword is used to define a constant in JavaScript?",
-//         answers: ["const", "let", "var", "constant"],
-//         correctAnswer: 0
-//     },
-
-//     // JavaScript - Question Vrai/Faux
-//     {
-//         category: "JavaScript",  
-//         level: "easy",  // Added level field
-//         type: "true-false",
-//         question: "JavaScript can be used to manipulate the DOM (Document Object Model).",
-//         answers: ["True", "False"],
-//         correctAnswer: 0  
-//     },
-
-//     // JavaScript - Question Textuelle
-//     {
-//         category: "JavaScript",  
-//         level: "medium",  // Added level field
-//         type: "textual",
-//         question: "What is the purpose of the 'return' statement in JavaScript?",
-//         correctAnswer: "The 'return' statement is used to exit a function and return a value to the caller."
-//     },
-
-//     // JavaScript - Question QCM
-//     {
-//         category: "JavaScript",  
-//         level: "medium",  // Added level field
-//         type: "multiple-choice",
-//         question: "Which of the following methods is used to add an element to the end of an array in JavaScript?",
-//         answers: ["push()", "pop()", "shift()", "unshift()"],
-//         correctAnswer: 0
-//     },
-
-//     // JavaScript - Question Vrai/Faux
-//     {
-//         category: "JavaScript",  
-//         level: "easy",  // Added level field
-//         type: "true-false",
-//         question: "In JavaScript, 'null' is a type of object.",
-//         answers: ["True", "False"],
-//         correctAnswer: 0  
-//     },
-
-//     // JavaScript - Question Textuelle
-//     {
-//         category: "JavaScript",  
-//         level: "hard",  // Added level field
-//         type: "textual",
-//         question: "What is the difference between '==' and '===' in JavaScript?",
-//         correctAnswer: "'==' checks for equality of values, while '===' checks for both equality of values and types."
-//     },
-
-//     // CSS - Question QCM
-//     {
-//         category: "CSS",  
-//         level: "easy",  // Added level field
-//         type: "multiple-choice",
-//         question: "Which property is used to change the background color in CSS?",
-//         answers: ["background-color", "color", "bg-color", "background"],
-//         correctAnswer: 0
-//     },
-
-//     // CSS - Question Vrai/Faux
-//     {
-//         category: "CSS",  
-//         level: "easy",  // Added level field
-//         type: "true-false",
-//         question: "CSS is used to structure web pages.",
-//         answers: ["True", "False"],
-//         correctAnswer: 1  
-//     },
-
-//     // CSS - Question Textuelle
-//     {
-//         category: "CSS",  
-//         level: "medium",  // Added level field
-//         type: "textual",
-//         question: "What does the CSS property 'margin' do?",
-//         correctAnswer: "It creates space around elements, outside of their border."
-//     },
-
-//     // CSS - Question QCM
-//     {
-//         category: "CSS",  
-//         level: "medium",  // Added level field
-//         type: "multiple-choice",
-//         question: "Which CSS property is used to change the text color?",
-//         answers: ["color", "font-color", "text-color", "background-color"],
-//         correctAnswer: 0
-//     },
-
-//     // CSS - Question Vrai/Faux
-//     {
-//         category: "CSS",  
-//         level: "hard",  // Added level field
-//         type: "true-false",
-//         question: "The 'border' property is used to define the spacing inside an element.",
-//         answers: ["True", "False"],
-//         correctAnswer: 1  
-//     },
-
-//     // CSS - Question Textuelle
-//     {
-//         category: "CSS",  
-//         level: "hard",  // Added level field
-//         type: "textual",
-//         question: "What is the difference between 'padding' and 'margin' in CSS?",
-//         correctAnswer: "'Padding' creates space inside the element, while 'margin' creates space outside the element."
-//     },
-
-//     // CSS - Question QCM
-//     {
-//         category: "CSS",  
-//         level: "easy",  // Added level field
-//         type: "multiple-choice",
-//         question: "What is the default value of the 'display' property in CSS?",
-//         answers: ["block", "inline", "none", "inline-block"],
-//         correctAnswer: 1
-//     },
-//     {
-//         category: "html",  
-//         level: "easy",  // Added level field
-//         type: "multiple-choice",
-//         question: "What is the default value of the 'display' property in CSS?",
-//         answers: ["block", "inline", "none", "inline-block"],
-//         correctAnswer: 1
-//     }
-// ];
 
 let selectedCategory = localStorage.getItem('selectedCategory');
 let selectedLevel = localStorage.getItem('selectedLevel');
-console.log(questions[5].correctAnswer);
-console.log()
-console.log(questions)
+total=document.getElementById('total');
 
 const filteredQuestions = questions.filter(q => q.category === selectedCategory && q.level === selectedLevel);
 
@@ -696,6 +724,7 @@ let currentIndex=0;
     let progress = 0;
     
 const currentQuestion=filteredQuestions[currentIndex];
+total.innerHTML=filteredQuestions.length;
 
 
     const questionElement = document.getElementById("question");
