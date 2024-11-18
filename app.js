@@ -905,20 +905,36 @@ total.innerHTML=filteredQuestions.length;
     function showResults() {
 
         
+        // const result = document.createElement('h1');
+        // result.innerText = `Quiz complete! Your score is ${score} out of ${filteredQuestions.length}`;
+        // result.style.background = score === questions.length ? 'green' : 'red';
+        // result.style.color = 'white';
+        // result.style.textAlign = 'center';
+        // result.style.padding = '20px';
+        // result.style.marginTop = '20px';
+
+        // document.body.appendChild(result);
+
+        // submitButton.style.display = 'none';
+        // timerElement.innerText = '00:00';
+        // retour.style.display='block';
         const result = document.createElement('h1');
-        result.innerText = `Quiz complete! Your score is ${score} out of ${filteredQuestions.length}`;
-        result.style.background = score === questions.length ? 'green' : 'red';
+        const successPercentage = (score / filteredQuestions.length) * 100;
+        result.innerText = `Quiz complete! Your score is ${score} out of ${filteredQuestions.length} (${successPercentage+"%"})`;
+    
+        result.style.background = score === filteredQuestions.length ? 'green' : 'red';
         result.style.color = 'white';
         result.style.textAlign = 'center';
         result.style.padding = '20px';
         result.style.marginTop = '20px';
-
+    
         document.body.appendChild(result);
-
+    
         submitButton.style.display = 'none';
         timerElement.innerText = '00:00';
-        retour.style.display='block';
-        again.style.display='block';
+        retour.style.display = 'block';
+        again.style.display = 'block';
+        // again.style.display='block';
         again.addEventListener('click', ()=>{
             window.location.reload()
         } );
