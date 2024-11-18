@@ -863,8 +863,14 @@ total.innerHTML=filteredQuestions.length;
         answerButtons.forEach((button, index) => {
             if (index === currentQuestion.correctAnswer) {
                 button.style.backgroundColor = 'green';
+                
             } else if (index === selectedIndex) {
+
                 button.style.backgroundColor = 'red';
+              
+                
+                
+                
             } else {
                 button.style.backgroundColor = 'gray';
             }
@@ -897,7 +903,7 @@ total.innerHTML=filteredQuestions.length;
     again.style.display='none';
 
     function showResults() {
-        
+
         
         const result = document.createElement('h1');
         result.innerText = `Quiz complete! Your score is ${score} out of ${filteredQuestions.length}`;
